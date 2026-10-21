@@ -1,0 +1,374 @@
+crop,crop_name_fr,crop_name_en,grp,grp_name_fr,grp_name_en
+BTH,Blé tendre d'hiver,Winter soft wheat,1,Blé tendre,Soft wheat
+BTP,Blé tendre de printemps,Spring soft wheat,1,Blé tendre,Soft wheat
+MID,Maïs doux,Sweet corn,2,Maïs grain et ensilage,Grain maize and silage maize
+MIE,Maïs ensilage,Silage maize,2,Maïs grain et ensilage,Grain maize and silage maize
+MIS,Maïs,Maize / Corn,2,Maïs grain et ensilage,Grain maize and silage maize
+ORH,Orge d'hiver,Winter barley,3,Orge,Barley
+AVP,Avoine de printemps,Spring oats,4,Autres céréales,Other cereals
+BDH,Blé dur d’hiver,Winter durum wheat,4,Autres céréales,Other cereals
+BDP,Blé dur de printemps,Spring durum wheat,4,Autres céréales,Other cereals
+BDT,Blé dur de printemps semé tardivement (après le 31/05),Late-sown spring durum wheat (after 31/05),4,Autres céréales,Other cereals
+CAG,Autre céréale d’un autre genre,Other cereal of another genus,4,Autres céréales,Other cereals
+CGF,Autre céréale de genre Fagopyrum,Other cereal of genus Fagopyrum,4,Autres céréales,Other cereals
+CGH,Autre céréale de genre Phalaris,Other cereal of genus Phalaris,4,Autres céréales,Other cereals
+CGO,Autre céréale de genre Sorghum,Other cereal of genus Sorghum,4,Autres céréales,Other cereals
+CGP,Autre céréale de genre Panicum,Other cereal of genus Panicum,4,Autres céréales,Other cereals
+CGS,Autre céréale de genre Setaria,Other cereal of genus Setaria,4,Autres céréales,Other cereals
+CHA,Autre céréale d’hiver de genre Avena,Other winter cereal of genus Avena,4,Autres céréales,Other cereals
+CHH,Autre céréale d’hiver de genre Hordeum,Other winter cereal of genus Hordeum,4,Autres céréales,Other cereals
+CHS,Autre céréale d’hiver de genre Secale,Other winter cereal of genus Secale,4,Autres céréales,Other cereals
+CPA,Autre céréale de printemps de genre Avena,Other spring cereal of genus Avena,4,Autres céréales,Other cereals
+CPH,Autre céréale de printemps de genre Hordeum,Other spring cereal of genus Hordeum,4,Autres céréales,Other cereals
+CPS,Autre céréale de printemps de genre Secale,Other spring cereal of genus Secale,4,Autres céréales,Other cereals
+CPT,Autre céréale de printemps de genre Triticum,Other spring cereal of genus Triticum,4,Autres céréales,Other cereals
+CPZ,Autre céréale de printemps de genre Zea,Other spring cereal of genus Zea,4,Autres céréales,Other cereals
+EPE,Épeautre,Spelt,4,Autres céréales,Other cereals
+MCR,Mélange de céréales,Cereal mixture,4,Autres céréales,Other cereals
+MLT,Millet,Millet,4,Autres céréales,Other cereals
+SGH,Seigle d’hiver,Winter rye,4,Autres céréales,Other cereals
+SGP,Seigle de printemps,Spring rye,4,Autres céréales,Other cereals
+SOG,Sorgho,Sorghum,4,Autres céréales,Other cereals
+SRS,Sarrasin,Buckwheat,4,Autres céréales,Other cereals
+TTH,Triticale d’hiver,Winter triticale,4,Autres céréales,Other cereals
+TTP,Triticale de printemps,Spring triticale,4,Autres céréales,Other cereals
+CZH,Colza d’hiver,Winter oilseed rape,5,Colza,Oilseed rape
+CZP,Colza de printemps,Spring oilseed rape,5,Colza,Oilseed rape
+TRN,Tournesol,Sunflower,6,Tournesol,Sunflower
+ARA,Arachide,Groundnut / Peanut,7,Autres oléagineux,Other oilseeds
+LIP,Lin non textile de printemps,Spring non-textile linseed,7,Autres oléagineux,Other oilseeds
+MOL,Mélange d’oléagineux,Oilseed mixture,7,Autres oléagineux,Other oilseeds
+NVE,Navette d’été,Summer turnip rape,7,Autres oléagineux,Other oilseeds
+NVH,Navette d’hiver,Winter turnip rape,7,Autres oléagineux,Other oilseeds
+OAG,Autre oléagineux d’un autre genre,Other oilseed of another genus,7,Autres oléagineux,Other oilseeds
+OEH,Autre oléagineux d’espèce Helianthus,Other oilseed of species Helianthus,7,Autres oléagineux,Other oilseeds
+OEI,Œillette,Oil poppy,7,Autres oléagineux,Other oilseeds
+OHN,Autre oléagineux d’hiver d’espèce Brassica napus,Other winter oilseed of species Brassica napus,7,Autres oléagineux,Other oilseeds
+OHR,Autre oléagineux d’hiver d’espèce Brassica rapa,Other winter oilseed of species Brassica rapa,7,Autres oléagineux,Other oilseeds
+OPN,Autre oléagineux de printemps d’espèce Brassica napus,Other spring oilseed of species Brassica napus,7,Autres oléagineux,Other oilseeds
+SOJ,Soja,Soybean,7,Autres oléagineux,Other oilseeds
+FEV,Fève,Broad bean,8,Protéagineux,Protein crops
+FVL,Féverole semée avant le 31/05,Field bean sown before 31/05,8,Protéagineux,Protein crops
+FVT,Féverole semée tardivement (après le 31/05),Late-sown field bean (after 31/05),8,Protéagineux,Protein crops
+LDH,Lupin doux d’hiver,Winter sweet lupin,8,Protéagineux,Protein crops
+LDP,Lupin doux de printemps semé avant le 31/05,Spring sweet lupin sown before 31/05,8,Protéagineux,Protein crops
+LDT,Lupin doux de printemps semé tardivement (après le 31/05),Late-sown spring sweet lupin (after 31/05),8,Protéagineux,Protein crops
+MPP,Mélange de protéagineux (pois et/ou lupin et/ou féverole),Protein crop mixture (peas and/or lupin and/or field bean),8,Protéagineux,Protein crops
+MPT,Mélange de protéagineux semés tardivement (après le 31/05),Late-sown protein crop mixture (after 31/05),8,Protéagineux,Protein crops
+PAG,Autre protéagineux d’un autre genre,Other protein crop of another genus,8,Protéagineux,Protein crops
+PHI,Pois d’hiver,Winter peas,8,Protéagineux,Protein crops
+PPR,Pois de printemps semé avant le 31/05,Spring peas sown before 31/05,8,Protéagineux,Protein crops
+PPT,Pois de printemps semé tardivement (après le 31/05),Late-sown spring peas (after 31/05),8,Protéagineux,Protein crops
+CHV,Chanvre,Hemp,9,Plantes à fibres,Fibre crops
+CSE,Chanvre sans étiquette conforme,Hemp without compliant label,9,Plantes à fibres,Fibre crops
+LIF,Lin fibres,Fibre flax,9,Plantes à fibres,Fibre crops
+JAC,Jachère,Fallow,11,Gel (surfaces gelées sans production),Set-aside (frozen areas with no production)
+J5M,Jachère de 5 ans ou moins,Fallow of 5 years or less,11,Gel (surfaces gelées sans production),Set-aside (frozen areas with no production)
+J6P,Jachère de 6 ans ou plus,Fallow of 6 years or more,11,Gel (surfaces gelées sans production),Set-aside (frozen areas with no production)
+J6S,Jachère de 6 ans ou plus déclarée comme Surface d’intérêt écologique,Fallow of 6 years or more declared as Ecological Focus Area,11,Gel (surfaces gelées sans production),Set-aside (frozen areas with no production)
+RIZ,Riz,Rice,14,Riz,Rice
+LEC,Lentille cultivée (non fourragère),Cultivated lentil (non-fodder),15,Légumineuses à grains,Grain legumes
+PCH,Pois chiche,Chickpea,15,Légumineuses à grains,Grain legumes
+BVF,Betterave fourragère,Fodder beet,16,Fourrage,Fodder
+CHF,Chou fourrager,Fodder kale,16,Fourrage,Fodder
+CPL,Fourrage composé de céréales et/ou de protéagineux (en proportion < 50%) et/ou de légumineuses fourragères (en proportion < 50%),Fodder composed of cereals and/or protein crops (proportion < 50%) and/or fodder legumes (proportion < 50%),16,Fourrage,Fodder
+DTY,Dactyle de 5 ans ou moins,Cocksfoot 5 years or less,16,Fourrage,Fodder
+FAG,Autre fourrage annuel d’un autre genre,Other annual fodder of another genus,16,Fourrage,Fodder
+FF5,Féverole fourragère implantée pour la récolte 2015,Fodder field bean established for 2015 harvest,16,Fourrage,Fodder
+FF7,Féverole fourragère implantée pour la récolte 2017,Fodder field bean established for 2017 harvest,16,Fourrage,Fodder
+FF8,Féverole fourragère implantée pour la récolte 2018,Fodder field bean established for 2018 harvest,16,Fourrage,Fodder
+FFO,Autre féverole fourragère,Other fodder field bean,16,Fourrage,Fodder
+FLO,Fléole de 5 ans ou moins,Timothy grass 5 years or less,16,Fourrage,Fodder
+FSG,Autre plante fourragère sarclée d’un autre genre,Other root fodder crop of another genus,16,Fourrage,Fodder
+GAI,Gaillet,Bedstraw,16,Fourrage,Fodder
+GES,Gesse,Grass pea / Vetchling,16,Fourrage,Fodder
+GFP,Autre graminée fourragère pure de 5 ans ou moins,Other pure fodder grass 5 years or less,16,Fourrage,Fodder
+JO5,Jarosse implantée pour la récolte 2015,Chickling vetch established for 2015 harvest,16,Fourrage,Fodder
+JO7,Jarosse implantée pour la récolte 2017,Chickling vetch established for 2017 harvest,16,Fourrage,Fodder
+JO8,Jarosse implantée pour la récolte 2018,Chickling vetch established for 2018 harvest,16,Fourrage,Fodder
+JOD,Jarosse déshydratée,Dehydrated chickling vetch,16,Fourrage,Fodder
+JOS,Autre jarosse,Other chickling vetch,16,Fourrage,Fodder
+LEF,Lentille fourragère,Fodder lentil,16,Fourrage,Fodder
+LFH,Autre lupin fourrager d’hiver,Other winter fodder lupin,16,Fourrage,Fodder
+LH5,Lupin fourrager d’hiver implanté pour la récolte 2015,Winter fodder lupin established for 2015 harvest,16,Fourrage,Fodder
+LH6,Lupin fourrager d’hiver implanté pour la récolte 2016,Winter fodder lupin established for 2016 harvest,16,Fourrage,Fodder
+LH7,Lupin fourrager d’hiver implanté pour la récolte 2017,Winter fodder lupin established for 2017 harvest,16,Fourrage,Fodder
+LH8,Lupin fourrager d’hiver implanté pour la récolte 2018,Winter fodder lupin established for 2018 harvest,16,Fourrage,Fodder
+LO7,Lotier implanté pour la récolte 2017,Bird's-foot trefoil established for 2017 harvest,16,Fourrage,Fodder
+LO8,Lotier implanté pour la récolte 2018,Bird's-foot trefoil established for 2018 harvest,16,Fourrage,Fodder
+LP5,Lupin fourrager de printemps implanté pour la récolte 2015,Spring fodder lupin established for 2015 harvest,16,Fourrage,Fodder
+LP6,Lupin fourrager de printemps implanté pour la récolte 2016,Spring fodder lupin established for 2016 harvest,16,Fourrage,Fodder
+LP7,Lupin fourrager de printemps implanté pour la récolte 2017,Spring fodder lupin established for 2017 harvest,16,Fourrage,Fodder
+LP8,Lupin fourrager de printemps implanté pour la récolte 2018,Spring fodder lupin established for 2018 harvest,16,Fourrage,Fodder
+LU5,Luzerne implantée pour la récolte 2015,Alfalfa established for 2015 harvest,16,Fourrage,Fodder
+LU6,Luzerne implantée pour la récolte 2016,Alfalfa established for 2016 harvest,16,Fourrage,Fodder
+LU7,Luzerne implantée pour la récolte 2017,Alfalfa established for 2017 harvest,16,Fourrage,Fodder
+LU8,Luzerne implantée pour la récolte 2018,Alfalfa established for 2018 harvest,16,Fourrage,Fodder
+LUD,Luzerne déshydratée,Dehydrated alfalfa,16,Fourrage,Fodder
+LUZ,Autre luzerne,Other alfalfa,16,Fourrage,Fodder
+MC5,Mélange de légumineuses fourragères prépondérantes au semis implantées pour la récolte 2015 et de céréales,Mixture of predominant fodder legumes established for 2015 harvest and cereals,16,Fourrage,Fodder
+MC6,Mélange de légumineuses fourragères prépondérantes au semis implantées pour la récolte 2016 et de céréales,Mixture of predominant fodder legumes established for 2016 harvest and cereals,16,Fourrage,Fodder
+MC7,Mélange de légumineuses fourragères prépondérantes au semis implantées pour la récolte 2017 et de céréales,Mixture of predominant fodder legumes established for 2017 harvest and cereals,16,Fourrage,Fodder
+MC8,Mélange de légumineuses fourragères prépondérantes au semis implantées pour la récolte 2018 et de céréales,Mixture of predominant fodder legumes established for 2018 harvest and cereals,16,Fourrage,Fodder
+ME5,Mélilot implanté pour la récolte 2015,Sweet clover established for 2015 harvest,16,Fourrage,Fodder
+ME6,Mélilot implanté pour la récolte 2016,Sweet clover established for 2016 harvest,16,Fourrage,Fodder
+ME7,Mélilot implanté pour la récolte 2017,Sweet clover established for 2017 harvest,16,Fourrage,Fodder
+ME8,Mélilot implanté pour la récolte 2018,Sweet clover established for 2018 harvest,16,Fourrage,Fodder
+MED,Mélilot déshydraté,Dehydrated sweet clover,16,Fourrage,Fodder
+MEL,Autre mélilot,Other sweet clover,16,Fourrage,Fodder
+MH5,Mélange de légumineuses fourragères prépondérantes au semis implantées pour la récolte 2015 et d’herbacées ou de graminées fourragères,Mixture of predominant fodder legumes established for 2015 harvest and herbaceous or fodder grasses,16,Fourrage,Fodder
+MH6,Mélange de légumineuses fourragères prépondérantes au semis implantées pour la récolte 2016 et d’herbacées ou de graminées fourragères,Mixture of predominant fodder legumes established for 2016 harvest and herbaceous or fodder grasses,16,Fourrage,Fodder
+MH7,Mélange de légumineuses fourragères prépondérantes au semis implantées pour la récolte 2017 et d’herbacées ou de graminées fourragères,Mixture of predominant fodder legumes established for 2017 harvest and herbaceous or fodder grasses,16,Fourrage,Fodder
+MI7,Minette implanté pour la récolte 2017,Black medick established for 2017 harvest,16,Fourrage,Fodder
+MI8,Minette implanté pour la récolte 2018,Black medick established for 2018 harvest,16,Fourrage,Fodder
+MIN,Minette,Black medick,16,Fourrage,Fodder
+ML5,Mélange de légumineuses fourragères implantées pour la récolte 2015 (entre elles),Fodder legume mixture established for 2015 harvest (among themselves),16,Fourrage,Fodder
+ML7,Mélange de légumineuses fourragères implantées pour la récolte 2017 (entre elles),Fodder legume mixture established for 2017 harvest (among themselves),16,Fourrage,Fodder
+ML8,Mélange de légumineuses fourragères implantées pour la récolte 2018 (entre elles),Fodder legume mixture established for 2018 harvest (among themselves),16,Fourrage,Fodder
+MLD,Mélange de légumineuses déshydratées (entre elles),Dehydrated fodder legume mixture (among themselves),16,Fourrage,Fodder
+MLF,Mélange de légumineuses fourragères (entre elles),Fodder legume mixture (among themselves),16,Fourrage,Fodder
+MLG,Mélange de légumineuses prépondérantes au semis et de graminées fourragères de 5 ans ou moins,Mixture of predominant legumes at sowing and fodder grasses 5 years or less,16,Fourrage,Fodder
+MLS,Mélange de légumineuses non fourragères prépondérantes et de céréales et/ou oléagineux,Mixture of predominant non-fodder legumes and cereals and/or oilseeds,16,Fourrage,Fodder
+MOH,Moha,Hungarian millet / Foxtail millet,16,Fourrage,Fodder
+NVF,Navet fourrager,Fodder turnip,16,Fourrage,Fodder
+PAT,Pâturin commun de 5 ans ou moins,Common meadow grass 5 years or less,16,Fourrage,Fodder
+PFH,Autre pois fourrager d’hiver,Other winter fodder peas,16,Fourrage,Fodder
+PH5,Pois fourrager d’hiver implanté pour la récolte 2015,Winter fodder peas established for 2015 harvest,16,Fourrage,Fodder
+PH6,Pois fourrager d’hiver implanté pour la récolte 2016,Winter fodder peas established for 2016 harvest,16,Fourrage,Fodder
+PH7,Pois fourrager d’hiver implanté pour la récolte 2017,Winter fodder peas established for 2017 harvest,16,Fourrage,Fodder
+PH8,Pois fourrager d’hiver implanté pour la récolte 2018,Winter fodder peas established for 2018 harvest,16,Fourrage,Fodder
+PP7,Pois fourrager de printemps implanté pour la récolte 2017,Spring fodder peas established for 2017 harvest,16,Fourrage,Fodder
+PP8,Pois fourrager de printemps implanté pour la récolte 2018,Spring fodder peas established for 2018 harvest,16,Fourrage,Fodder
+RDF,Radis fourrager,Fodder radish,16,Fourrage,Fodder
+SA5,Sainfoin implanté pour la récolte 2015,Sainfoin established for 2015 harvest,16,Fourrage,Fodder
+SA7,Sainfoin implanté pour la récolte 2017,Sainfoin established for 2017 harvest,16,Fourrage,Fodder
+SAD,Sainfoin déshydraté,Dehydrated sainfoin,16,Fourrage,Fodder
+SAI,Autre sainfoin,Other sainfoin,16,Fourrage,Fodder
+SE5,Serradelle implantée pour la récolte 2015,Serradella established for 2015 harvest,16,Fourrage,Fodder
+SE6,Serradelle implantée pour la récolte 2016,Serradella established for 2016 harvest,16,Fourrage,Fodder
+SE7,Serradelle implantée pour la récolte 2017,Serradella established for 2017 harvest,16,Fourrage,Fodder
+SE8,Serradelle implantée pour la récolte 2018,Serradella established for 2018 harvest,16,Fourrage,Fodder
+SED,Serradelle déshydratée,Dehydrated serradella,16,Fourrage,Fodder
+TR5,Trèfle implanté pour la récolte 2015,Clover established for 2015 harvest,16,Fourrage,Fodder
+TR8,Trèfle implanté pour la récolte 2018,Clover established for 2018 harvest,16,Fourrage,Fodder
+TRD,Trèfle déshydraté,Dehydrated clover,16,Fourrage,Fodder
+TRE,Autre trèfle,Other clover,16,Fourrage,Fodder
+VE6,Vesce implantée pour la récolte 2016,Vetch established for 2016 harvest,16,Fourrage,Fodder
+VED,Vesce déshydratée,Dehydrated vetch,16,Fourrage,Fodder
+VES,Autre vesce,Other vetch,16,Fourrage,Fodder
+XFE,X-Felium de 5 ans ou moins,X-Felium 5 years or less,16,Fourrage,Fodder
+BOP,Bois pâturé,Wooded pasture,17,Estives et landes,Mountain pastures and moorlands
+SPL,Surface pastorale - ressources fourragères ligneuses prédominantes,Pastoral land – predominantly woody fodder resources,17,Estives et landes,Mountain pastures and moorlands
+PPH,Prairie permanente - herbe prédominante (ressources fourragères ligneuses absentes ou peu présentes),Permanent grassland – predominantly grass (woody fodder resources absent or sparse),18,Prairies permanentes,Permanent grasslands
+PRL,Prairie en rotation longue (6 ans ou plus),Long-rotation grassland (6 years or more),18,Prairies permanentes,Permanent grasslands
+PTR,Autre prairie temporaire de 5 ans ou moins,Other temporary grassland 5 years or less,19,Prairies temporaires,Temporary grasslands
+RGA,Ray-grass de 5 ans ou moins,Ryegrass 5 years or less,19,Prairies temporaires,Temporary grasslands
+AGR,Agrume,Citrus fruit,20,Vergers,Orchards
+ANA,Ananas,Pineapple,20,Vergers,Orchards
+BCA,Banane créole (fruit et légume) - autre,Creole banana (fruit and vegetable) – other,20,Vergers,Orchards
+BCF,Banane créole (fruit et légume) - fermage,Creole banana (fruit and vegetable) – tenancy,20,Vergers,Orchards
+BCI,Banane créole (fruit et légume) - indivision,Creole banana (fruit and vegetable) – joint ownership,20,Vergers,Orchards
+BCP,Banane créole (fruit et légume) - propriété ou faire valoir direct,Creole banana (fruit and vegetable) – owned or directly farmed,20,Vergers,Orchards
+BCR,Banane créole (fruit et légume) - réforme foncière,Creole banana (fruit and vegetable) – land reform,20,Vergers,Orchards
+BEF,Banane export - fermage,Export banana – tenancy,20,Vergers,Orchards
+BEI,Banane export - indivision,Export banana – joint ownership,20,Vergers,Orchards
+BEP,Banane export - propriété ou faire valoir direct,Export banana – owned or directly farmed,20,Vergers,Orchards
+BER,Banane export - réforme foncière,Export banana – land reform,20,Vergers,Orchards
+CAC,Café / Cacao,Coffee / Cocoa,20,Vergers,Orchards
+CBT,Cerise bigarreau pour transformation,Bigarreau cherry for processing,20,Vergers,Orchards
+PFR,Petit fruit rouge,Small red fruit / Berry,20,Vergers,Orchards
+PRU,Prune d’Ente pour transformation,Ente plum for processing,20,Vergers,Orchards
+PVT,Pêche Pavie pour transformation,Pavie peach for processing,20,Vergers,Orchards
+PWT,Poire Williams pour transformation,Williams pear for processing,20,Vergers,Orchards
+VGD,Verger (DROM),Orchard (French overseas territories),20,Vergers,Orchards
+VRG,Verger,Orchard,20,Vergers,Orchards
+RVI,Restructuration du vignoble,Vineyard restructuring,21,Vignes,Vines
+VRC,Vigne : raisins de cuve,Vine: wine grapes,21,Vignes,Vines
+VRN,Vigne : raisins de cuve non en production,Vine: wine grapes not in production,21,Vignes,Vines
+VRT,Vigne : raisins de table,Vine: table grapes,21,Vignes,Vines
+CAB,Caroube,Carob,22,Fruits à coque,Nuts
+CTG,Châtaigne,Chestnut,22,Fruits à coque,Nuts
+NOX,Noix,Walnut,22,Fruits à coque,Nuts
+PIS,Pistache,Pistachio,22,Fruits à coque,Nuts
+ANE,Aneth,Dill,24,Autres cultures industrielles,Other industrial crops
+ANG,Angélique,Angelica,24,Autres cultures industrielles,Other industrial crops
+ANI,Anis,Anise,24,Autres cultures industrielles,Other industrial crops
+BAR,Bardane,Burdock,24,Autres cultures industrielles,Other industrial crops
+BAS,Basilic,Basil,24,Autres cultures industrielles,Other industrial crops
+BRH,Bourrache de 5 ans ou moins,Borage 5 years or less,24,Autres cultures industrielles,Other industrial crops
+BTN,Betterave non fourragère / Bette,Non-fodder beet / Chard,24,Autres cultures industrielles,Other industrial crops
+CAV,Carvi,Caraway,24,Autres cultures industrielles,Other industrial crops
+CIB,Ciboulette,Chives,24,Autres cultures industrielles,Other industrial crops
+CML,Cameline,Camelina,24,Autres cultures industrielles,Other industrial crops
+CRD,Coriandre,Coriander,24,Autres cultures industrielles,Other industrial crops
+CRF,Cerfeuil,Chervil,24,Autres cultures industrielles,Other industrial crops
+CUM,Cumin,Cumin,24,Autres cultures industrielles,Other industrial crops
+CUR,Curcuma,Turmeric,24,Autres cultures industrielles,Other industrial crops
+EST,Estragon,Tarragon,24,Autres cultures industrielles,Other industrial crops
+FNO,Fenouil,Fennel,24,Autres cultures industrielles,Other industrial crops
+FNU,Fenugrec,Fenugreek,24,Autres cultures industrielles,Other industrial crops
+HBL,Houblon,Hops,24,Autres cultures industrielles,Other industrial crops
+LAV,Lavande / Lavandin,Lavender / Lavandin,24,Autres cultures industrielles,Other industrial crops
+MAV,Mauve,Mallow,24,Autres cultures industrielles,Other industrial crops
+MLI,Mélisse,Lemon balm,24,Autres cultures industrielles,Other industrial crops
+MLP,Millepertuis,St. John's wort,24,Autres cultures industrielles,Other industrial crops
+MOT,Moutarde,Mustard,24,Autres cultures industrielles,Other industrial crops
+MRJ,Marjolaine / Origan,Marjoram / Oregano,24,Autres cultures industrielles,Other industrial crops
+MTH,Menthe,Mint,24,Autres cultures industrielles,Other industrial crops
+ORT,Ortie,Nettle,24,Autres cultures industrielles,Other industrial crops
+PAR,Plante aromatique (autre que vanille),Aromatic plant (other than vanilla),24,Autres cultures industrielles,Other industrial crops
+PMD,Plante médicinale,Medicinal plant,24,Autres cultures industrielles,Other industrial crops
+PPA,"Autre plante à parfum, aromatique et médicinale annuelle",Other annual aromatic medicinal and perfume plant,24,Autres cultures industrielles,Other industrial crops
+PPF,Plante à parfum (autre que géranium et vétiver),Perfume plant (other than geranium and vetiver),24,Autres cultures industrielles,Other industrial crops
+PSN,Psyllium noir de Provence,Provence black psyllium,24,Autres cultures industrielles,Other industrial crops
+PSY,Plantain psyllium,Psyllium plantain,24,Autres cultures industrielles,Other industrial crops
+ROM,Romarin,Rosemary,24,Autres cultures industrielles,Other industrial crops
+SGE,Sauge,Sage,24,Autres cultures industrielles,Other industrial crops
+SRI,Sarriette,Savory,24,Autres cultures industrielles,Other industrial crops
+TAB,Tabac,Tobacco,24,Autres cultures industrielles,Other industrial crops
+THY,Thym,Thyme,24,Autres cultures industrielles,Other industrial crops
+TOT,Tomate pour transformation,Processing tomato,24,Autres cultures industrielles,Other industrial crops
+VAL,Valériane,Valerian,24,Autres cultures industrielles,Other industrial crops
+VNL,Vanille,Vanilla,24,Autres cultures industrielles,Other industrial crops
+VNV,Vanille verte,Green vanilla,24,Autres cultures industrielles,Other industrial crops
+YLA,Ylang-ylang,Ylang-ylang,24,Autres cultures industrielles,Other industrial crops
+AIL,Ail,Garlic,25,Légumes ou fleurs,Vegetables or flowers
+ART,Artichaut,Artichoke,25,Légumes ou fleurs,Vegetables or flowers
+AUB,Aubergine,Aubergine / Eggplant,25,Légumes ou fleurs,Vegetables or flowers
+BLT,Bleuet,Cornflower / Blueberry,25,Légumes ou fleurs,Vegetables or flowers
+CAR,Carotte,Carrot,25,Légumes ou fleurs,Vegetables or flowers
+CCN,Concombre / Cornichon,Cucumber / Gherkin,25,Légumes ou fleurs,Vegetables or flowers
+CCT,Courgette / Citrouille,Courgette / Pumpkin,25,Légumes ou fleurs,Vegetables or flowers
+CEL,Céleri,Celery,25,Légumes ou fleurs,Vegetables or flowers
+CES,Chicorée / Endive / Scarole,Chicory / Endive / Escarole,25,Légumes ou fleurs,Vegetables or flowers
+CHU,Chou,Cabbage,25,Légumes ou fleurs,Vegetables or flowers
+CMB,Courge musquée / Butternut,Butternut squash,25,Légumes ou fleurs,Vegetables or flowers
+CRA,Cresson alénois de 5 ans ou moins,Garden cress 5 years or less,25,Légumes ou fleurs,Vegetables or flowers
+CRN,Cornille,Cowpea,25,Légumes ou fleurs,Vegetables or flowers
+CRS,Cresson,Watercress,25,Légumes ou fleurs,Vegetables or flowers
+CSS,Culture sous serre hors sol,Soilless greenhouse crop,25,Légumes ou fleurs,Vegetables or flowers
+DOL,Dolique,Lablab / Hyacinth bean,25,Légumes ou fleurs,Vegetables or flowers
+FLA,Autre légume ou fruit annuel,Other annual vegetable or fruit,25,Légumes ou fleurs,Vegetables or flowers
+FLP,Autre légume ou fruit pérenne,Other perennial vegetable or fruit,25,Légumes ou fleurs,Vegetables or flowers
+FRA,Fraise,Strawberry,25,Légumes ou fleurs,Vegetables or flowers
+GER,Géranium,Geranium,25,Légumes ou fleurs,Vegetables or flowers
+HAR,Haricot / Flageolet,Bean / Flageolet bean,25,Légumes ou fleurs,Vegetables or flowers
+HSA,Horticulture ornementale sous abri,Ornamental horticulture under cover,25,Légumes ou fleurs,Vegetables or flowers
+LBF,Laitue / Batavia / Feuille de chêne,Lettuce / Batavia / Oak leaf lettuce,25,Légumes ou fleurs,Vegetables or flowers
+LSA,Légume sous abri,Vegetable under cover,25,Légumes ou fleurs,Vegetables or flowers
+MAC,Mâche,Lamb's lettuce / Corn salad,25,Légumes ou fleurs,Vegetables or flowers
+MRG,Marguerite,Daisy / Marguerite,25,Légumes ou fleurs,Vegetables or flowers
+NVT,Navet,Turnip,25,Légumes ou fleurs,Vegetables or flowers
+OIG,Oignon / Échalote,Onion / Shallot,25,Légumes ou fleurs,Vegetables or flowers
+PAN,Panais,Parsnip,25,Légumes ou fleurs,Vegetables or flowers
+PAS,Pastèque,Watermelon,25,Légumes ou fleurs,Vegetables or flowers
+PMV,Primevère,Primrose,25,Légumes ou fleurs,Vegetables or flowers
+POR,Poireau,Leek,25,Légumes ou fleurs,Vegetables or flowers
+POT,Potiron / Potimarron,Pumpkin / Hubbard squash,25,Légumes ou fleurs,Vegetables or flowers
+PPO,Petits pois,Garden peas,25,Légumes ou fleurs,Vegetables or flowers
+PSE,Pensée,Pansy,25,Légumes ou fleurs,Vegetables or flowers
+PTF,Pomme de terre féculière,Starch potato,25,Légumes ou fleurs,Vegetables or flowers
+PVP,Poivron / Piment,Bell pepper / Chilli pepper,25,Légumes ou fleurs,Vegetables or flowers
+RDI,Radis,Radish,25,Légumes ou fleurs,Vegetables or flowers
+RUT,Rutabaga,Swede / Rutabaga,25,Légumes ou fleurs,Vegetables or flowers
+SFI,Salsifis,Salsify,25,Légumes ou fleurs,Vegetables or flowers
+TOM,Tomate,Tomato,25,Légumes ou fleurs,Vegetables or flowers
+TOP,Topinambour,Jerusalem artichoke,25,Légumes ou fleurs,Vegetables or flowers
+VER,Véronique,Speedwell / Veronica,25,Légumes ou fleurs,Vegetables or flowers
+CSA,Canne à sucre - autre,Sugar cane – other,26,Canne à sucre,Sugar cane
+CSF,Canne à sucre - fermage,Sugar cane – tenancy,26,Canne à sucre,Sugar cane
+CSI,Canne à sucre - indivision,Sugar cane – joint ownership,26,Canne à sucre,Sugar cane
+CSP,Canne à sucre - propriété ou faire valoir direct,Sugar cane – owned or directly farmed,26,Canne à sucre,Sugar cane
+CSR,Canne à sucre - réforme foncière,Sugar cane – land reform,26,Canne à sucre,Sugar cane
+ACA,Autre culture non précisée dans la liste (admissible),Other crop not listed (eligible),28,Divers,Miscellaneous
+BFP,Bande admissible le long d’une forêt avec production,Eligible strip along a forest with production,28,Divers,Miscellaneous
+BFS,Bande admissible le long d’une forêt sans production,Eligible strip along a forest without production,28,Divers,Miscellaneous
+BOR,Bordure de champ,Field margin,28,Divers,Miscellaneous
+BTA,Bande tampon,Buffer strip,28,Divers,Miscellaneous
+CAE,Châtaigneraie entretenue par des porcins ou des petits ruminants,Chestnut grove maintained by pigs or small ruminants,28,Divers,Miscellaneous
+CEE,Chênaie entretenue par des porcins ou des petits ruminants,Oak grove maintained by pigs or small ruminants,28,Divers,Miscellaneous
+CID,Cultures conduites en interrangs : 2 cultures représentant chacune plus de 25%,Intercropping: 2 crops each representing more than 25%,28,Divers,Miscellaneous
+CIT,Cultures conduites en interrangs : 3 cultures représentant chacune plus de 25%,Intercropping: 3 crops each representing more than 25%,28,Divers,Miscellaneous
+CNE,Chênaie entretenue par des porcins ou des petits ruminants,Oak grove maintained by pigs or small ruminants,28,Divers,Miscellaneous
+CUA,Culture sous abattis,Slash-and-burn cultivation,28,Divers,Miscellaneous
+MCT,Miscanthus,Miscanthus,28,Divers,Miscellaneous
+MPA,Autre mélange de plantes fixant l’azote,Other nitrogen-fixing plant mixture,28,Divers,Miscellaneous
+MRS,Marais salant,Salt marsh / Salt pan,28,Divers,Miscellaneous
+NYG,Nyger,Niger seed / Nyjer,28,Divers,Miscellaneous
+PCL,Phacélie de 5 ans ou moins,Phacelia 5 years or less,28,Divers,Miscellaneous
+PEP,Pépinière,Nursery,28,Divers,Miscellaneous
+ROS,Roselière,Reed bed,28,Divers,Miscellaneous
+SBO,Surface boisée sur une ancienne terre agricole,Wooded area on former agricultural land,28,Divers,Miscellaneous
+SNA,Surface non agricole non visible sur l’orthophotographie,Non-agricultural area not visible on aerial photography,28,Divers,Miscellaneous
+SNE,Surface agricole temporairement non exploitée,Temporarily unused agricultural land,28,Divers,Miscellaneous
+TBT,Tubercule tropical,Tropical tuber,28,Divers,Miscellaneous
+TCR,Taillis à courte rotation,Short rotation coppice,28,Divers,Miscellaneous
+VET,Vétiver,Vetiver,28,Divers,Miscellaneous
+ZZZ,Culture inconnue,Unknown crop,28,Divers,Miscellaneous
+ORP,Orge de printemps,Spring barley,3,Orge,Barley
+AVH,Avoine d’hiver,Winter oats,4,Autres céréales,Other cereals
+CHT,Autre céréale d’hiver de genre Triticum,Other winter cereal of genus Triticum,4,Autres céréales,Other cereals
+MPC,Mélange de protéagineux (pois et/ou lupin et/ou féverole) prépondérants semés avant le 31/05 et de céréales,Predominant protein crop mixture (peas and/or lupin and/or field bean) sown before 31/05 with cereals,8,Protéagineux,Protein crops
+JNO,Jachère noire,Black fallow (bare fallow),11,Gel (surfaces gelées sans production),Set-aside (frozen areas with no production)
+CAF,Carotte fourragère,Fodder carrot,16,Fourrage,Fodder
+FET,Fétuque de 5 ans ou moins,Fescue 5 years or less,16,Fourrage,Fodder
+LFP,Autre lupin fourrager de printemps,Other spring fodder lupin,16,Fourrage,Fodder
+LOT,Lotier,Bird's-foot trefoil,16,Fourrage,Fodder
+PFP,Autre pois fourrager de printemps,Other spring fodder peas,16,Fourrage,Fodder
+PP5,Pois fourrager de printemps implanté pour la récolte 2015,Spring fodder peas established for 2015 harvest,16,Fourrage,Fodder
+PP6,Pois fourrager de printemps implanté pour la récolte 2016,Spring fodder peas established for 2016 harvest,16,Fourrage,Fodder
+SA8,Sainfoin implanté pour la récolte 2018,Sainfoin established for 2018 harvest,16,Fourrage,Fodder
+SER,Autre serradelle,Other serradella,16,Fourrage,Fodder
+TR7,Trèfle implanté pour la récolte 2017,Clover established for 2017 harvest,16,Fourrage,Fodder
+VE5,Vesce implantée pour la récolte 2015,Vetch established for 2015 harvest,16,Fourrage,Fodder
+VE8,Vesce implantée pour la récolte 2018,Vetch established for 2018 harvest,16,Fourrage,Fodder
+AVO,Avocat,Avocado,20,Vergers,Orchards
+BEA,Banane export - autre,Export banana – other,20,Vergers,Orchards
+CHR,Chardon Marie,Milk thistle,24,Autres cultures industrielles,Other industrial crops
+PPP,"Autre plante à parfum, aromatique et médicinale pérenne",Other perennial aromatic medicinal and perfume plant,24,Autres cultures industrielles,Other industrial crops
+VNB,Vanille sous bois,Forest vanilla,24,Autres cultures industrielles,Other industrial crops
+HPC,Horticulture ornementale de plein champ,Open-field ornamental horticulture,25,Légumes ou fleurs,Vegetables or flowers
+MLO,Melon,Melon,25,Légumes ou fleurs,Vegetables or flowers
+PTC,Pomme de terre de consommation,Ware potato,25,Légumes ou fleurs,Vegetables or flowers
+ROQ,Roquette,Rocket / Arugula,25,Légumes ou fleurs,Vegetables or flowers
+ACP,Autre culture pérenne,Other perennial crop,28,Divers,Miscellaneous
+BRO,Brome de 5 ans ou moins,Brome grass 5 years or less,28,Divers,Miscellaneous
+TRU,Truffière (chênaie de plants mycorhizés),Truffle orchard (mycorrhizal oak plantation),28,Divers,Miscellaneous
+LIH,Lin non textile d’hiver,Winter non-textile linseed,7,Autres oléagineux,Other oilseeds
+OPR,Autre oléagineux de printemps d’espèce Brassica rapa,Other spring oilseed of species Brassica rapa,7,Autres oléagineux,Other oilseeds
+JO6,Jarosse implantée pour la récolte 2016,Chickling vetch established for 2016 harvest,16,Fourrage,Fodder
+ML6,Mélange de légumineuses fourragères implantées pour la récolte 2016 (entre elles),Fodder legume mixture established for 2016 harvest (among themselves),16,Fourrage,Fodder
+SA6,Sainfoin implanté pour la récolte 2016,Sainfoin established for 2016 harvest,16,Fourrage,Fodder
+TR6,Trèfle implanté pour la récolte 2016,Clover established for 2016 harvest,16,Fourrage,Fodder
+VE7,Vesce implantée pour la récolte 2017,Vetch established for 2017 harvest,16,Fourrage,Fodder
+NOS,Noisette,Hazelnut,22,Fruits à coque,Nuts
+OLI,Oliveraie,Olive grove,23,Oliviers,Olive trees
+CMM,Camomille,Chamomile,24,Autres cultures industrielles,Other industrial crops
+PSL,Persil,Parsley,24,Autres cultures industrielles,Other industrial crops
+EPI,Épinard,Spinach,25,Légumes ou fleurs,Vegetables or flowers
+PAQ,Pâquerette,Daisy (Bellis perennis),25,Légumes ou fleurs,Vegetables or flowers
+SPH,Surface pastorale - herbe prédominante et ressources fourragères ligneuses présentes,Pastoral land – predominantly grass with woody fodder resources present,17,Estives et landes,Mountain pastures and moorlands
+OSE,Oseille,Sorrel,24,Autres cultures industrielles,Other industrial crops
+BUR,Bugle rampante,Bugle / Ajuga reptans,25,Légumes ou fleurs,Vegetables or flowers
+FF6,Féverole fourragère implantée pour la récolte 2016,Fodder field bean established for 2016 harvest,16,Fourrage,Fodder
+MLC,Mélange de légumineuses fourragères prépondérantes et de céréales et/ou d’oléagineux,Mixture of predominant fodder legumes and cereals and/or oilseeds,16,Fourrage,Fodder
+abs,Pas de culture,No crop,0,Pas de culture,No crop
+AFG,"Autre plante fourragère annuelle (ni légumineuse, ni graminée, ni céréale, ni oléagineux)",Other annual fodder plant (neither legume nor grass nor cereal nor oilseed),16,Fourrage,Fodder
+AAR,Plantes aromatiques herbacées non pérennes (< 5 ans) autres que persil,Non-perennial herbaceous aromatic plants (< 5 years) other than parsley,24,Autres cultures industrielles,Other industrial crops
+AME,Plantes médicinales et à parfum non pérennes (< 5 ans),Non-perennial medicinal and perfume plants (< 5 years),24,Autres cultures industrielles,Other industrial crops
+ARP,Plante aromatique pérenne non arbustive ou arborée autre que la vanille,Non-shrub/non-tree perennial aromatic plant other than vanilla,24,Autres cultures industrielles,Other industrial crops
+PRF,Plantes à parfum pérennes autres que lavande et lavandin,Perennial perfume plants other than lavender and lavandin,24,Autres cultures industrielles,Other industrial crops
+MDI,Maraîchage diversifié (plusieurs espèces de fruits et légumes majoritairement non pérennes),Diversified market gardening (several mostly non-perennial fruit and vegetable species),25,Légumes ou fleurs,Vegetables or flowers
+PME,Plantes médicinales pérennes (autres que arbres),Perennial medicinal plants (other than trees),25,Légumes ou fleurs,Vegetables or flowers
+GRA,Graminée pure exclusivement pour gazon ou pour production de semences certifiées,Pure grass exclusively for turf or certified seed production,28,Divers,Miscellaneous
+MSW,"Culture pérenne à forte biomasse (miscanthus, switchgrass, silphie, canne fourragère, …)","High-biomass perennial crop (miscanthus, switchgrass, silphium, fodder cane, etc.)",28,Divers,Miscellaneous
+PEV,Pépinière (plants laissés en terre moins d’un an),Nursery (plants left in the ground less than one year),28,Divers,Miscellaneous
+SAG,Roselière (récolte de sagnes),Reed bed (reed harvesting),28,Divers,Miscellaneous
+SIN,Surface pastorale ou parcours non utilisé l’année en cours,Pastoral land or rangeland not used in the current year,28,Divers,Miscellaneous
+SNU,"Parc d''élevage de monogastriques avec couvert dégradé, voire sol nu",Monogastric livestock enclosure with degraded or bare ground cover,28,Divers,Miscellaneous
+CAH,Autre céréale ou pseudo-céréale secondaire d’hiver,Other minor winter cereal or pseudo-cereal,4,Autres céréales,Other cereals
+MCS,Mélange de céréales ou pseudo-céréales de printemps entre elles,Mixture of spring cereals or pseudo-cereals,4,Autres céréales,Other cereals
+FVP,Féverole de printemps,Spring field bean,8,Protéagineux,Protein crops
+PHF,Pois et haricot frais (alimentation humaine),Fresh peas and beans (human consumption),8,Protéagineux,Protein crops
+PHS,Pois et haricot secs (alimentation humaine),Dry peas and beans (human consumption),8,Protéagineux,Protein crops
+CNA,Pas de culture,No crop,0,Pas de culture,No crop
