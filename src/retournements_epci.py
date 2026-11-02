@@ -1,7 +1,7 @@
 """Retournements de prairies permanentes par EPCI et par an, à partir de RPG Explorer.
 
 Usage :
-    python src/retournements_epci.py <seq1524_dXX.gpkg> <ref_fr_en.csv> <communes_XX.geojson> <sortie.csv>
+    python src/retournements_epci.py <seq1524_dXX.gpkg> <ref_fr_en.csv> <dossier_communes> <sortie.csv>
 
 Chaque LCP (plus petite parcelle commune) est rattachée à la commune qui contient un point
 intérieur de sa géométrie, ou à défaut à la commune la plus proche, puis à l'EPCI de cette
@@ -18,7 +18,7 @@ import sys
 
 import duckdb
 
-from geo_utils import rattacher_plus_proche
+from geo_utils import charger_communes, rattacher_plus_proche
 
 GPKG, REF, COMMUNES, OUT = sys.argv[1:5]
 YEARS = [f"{y:02d}" for y in range(15, 25)]
@@ -28,12 +28,7 @@ con = duckdb.connect()
 con.execute("INSTALL spatial; LOAD spatial;")
 
 con.execute(f"CREATE TABLE ref AS SELECT crop, CAST(grp AS INTEGER) AS grp FROM read_csv_auto('{REF}', header=true)")
-con.execute(f"""
-    CREATE TABLE communes AS
-    SELECT code AS insee, nom, codeEpci AS epci_code, json_extract_string(epci, '$.nom') AS epci_nom,
-           ST_Transform(geom, 'EPSG:4326', 'EPSG:2154', always_xy := true) AS geom
-    FROM ST_Read('{COMMUNES}')
-""")
+charger_communes(con, COMMUNES)
 
 # Classe de chaque année : PP, PT, culture, fourrage, autre, ou NULL (non déclaré)
 classes = ",\n".join(

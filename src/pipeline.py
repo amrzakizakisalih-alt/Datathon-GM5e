@@ -36,7 +36,7 @@ if __name__ == "__main__":
     ref = RAW / "rpg_explorer" / "ref_fr_en.csv"
     for d in deps:
         fw = fenetres[d]
-        rpg, communes = RAW / "rpg_explorer" / f"seq1524_d{d}.gpkg", RAW / "geo" / f"communes_{d}.geojson"
+        rpg, communes = RAW / "rpg_explorer" / f"seq1524_d{d}.gpkg", RAW / "geo"
         print(f"===== département {d} (fenêtre OCS GE {fw['debut']}-{fw['fin']})", flush=True)
         lancer("retournements_epci.py", rpg, ref, communes, OUT / f"retournements_epci_{d}.csv")
         lancer("beton_charrue_epci.py", RACINE / fw["couche"], fw["debut"], fw["fin"], rpg, ref, communes,

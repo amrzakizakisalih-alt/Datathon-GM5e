@@ -1,11 +1,29 @@
 """Outils communs aux scripts : rattachement des objets aux communes et EPCI."""
+from pathlib import Path
+
+
+def charger_communes(con, dossier):
+    """Crée la table `communes` avec les communes de tous les fichiers communes_XX.geojson.
+
+    Tous les départements sont chargés : un objet d'un fichier départemental peut se trouver
+    dans une commune d'un autre département (limite de département, commune ayant changé de
+    département).
+    """
+    fichiers = sorted(Path(dossier).glob("communes_*.geojson"))
+    if not fichiers:
+        raise FileNotFoundError(f"aucun fichier communes_*.geojson dans {dossier}")
+    requetes = " UNION ALL ".join(f"""
+        SELECT code AS insee, nom, codeEpci AS epci_code, json_extract_string(epci, '$.nom') AS epci_nom,
+               ST_Transform(geom, 'EPSG:4326', 'EPSG:2154', always_xy := true) AS geom
+        FROM ST_Read('{f.as_posix()}')""" for f in fichiers)
+    con.execute(f"CREATE TABLE communes AS {requetes}")
 
 
 def rattacher_plus_proche(con, table, cle, point):
     """Rattache à la commune la plus proche les lignes de `table` sans commune.
 
     Ce sont les objets dont le point intérieur tombe hors des contours communaux simplifiés
-    de geo.api.gouv.fr : littoral, estrans, limites départementales. La table doit avoir les
+    de geo.api.gouv.fr : littoral, estrans, limite de la région. La table doit avoir les
     colonnes insee, epci_code et epci_nom. `point` est l'expression SQL du point de l'objet
     (alias t), et la table `communes` doit exister.
     """

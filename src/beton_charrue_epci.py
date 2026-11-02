@@ -2,7 +2,7 @@
 
 Usage :
     python src/beton_charrue_epci.py <zan_evol_AAAA_BBBB_XX.gpkg> <annee_debut> <annee_fin> \
-        <seq1524_dXX.gpkg> <ref_fr_en.csv> <communes_XX.geojson> <sortie.csv>
+        <seq1524_dXX.gpkg> <ref_fr_en.csv> <dossier_communes> <sortie.csv>
 
 Béton : polygones `artificialisation = 1` de la couche officielle IGN « OCS GE
 Artificialisation, différentiel » (ressource OCSGE-ARTIFICIALISATION, DIFF-AAAA-BBBB), qui
@@ -21,7 +21,7 @@ import sys
 
 import duckdb
 
-from geo_utils import rattacher_plus_proche
+from geo_utils import charger_communes, rattacher_plus_proche
 
 DIFF, Y0, Y1, GPKG, REF, COMMUNES, OUT = sys.argv[1:8]
 y0, y1 = int(Y0), int(Y1)
@@ -33,12 +33,7 @@ CULTURE = (1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 14, 15, 24, 25)
 con = duckdb.connect()
 con.execute("INSTALL spatial; LOAD spatial;")
 con.execute(f"CREATE TABLE ref AS SELECT crop, CAST(grp AS INTEGER) AS grp FROM read_csv_auto('{REF}', header=true)")
-con.execute(f"""
-    CREATE TABLE communes AS
-    SELECT code AS insee, codeEpci AS epci_code, json_extract_string(epci, '$.nom') AS epci_nom,
-           ST_Transform(geom, 'EPSG:4326', 'EPSG:2154', always_xy := true) AS geom
-    FROM ST_Read('{COMMUNES}')
-""")
+charger_communes(con, COMMUNES)
 
 # 1. Béton : polygones nouvellement artificialisés (couche officielle IGN)
 con.execute(f"""
@@ -132,7 +127,13 @@ charrue = " UNION ALL ".join(f"""
     FROM lcp_e WHERE k{YEARS[i]} = 'PP' AND k{YEARS[i + 1]} = 'culture'""" for i in range(len(YEARS) - 1))
 con.execute(f"""
     CREATE TABLE resultat AS
-    WITH e AS (SELECT DISTINCT epci_code, epci_nom FROM communes WHERE epci_code IS NOT NULL),
+    WITH e AS (
+        -- Seulement les EPCI où ce département a des objets, pas tous ceux des communes chargées
+        SELECT DISTINCT epci_code, epci_nom FROM (
+            SELECT epci_code, epci_nom FROM lcp_e UNION ALL
+            SELECT epci_code, epci_nom FROM beton_e UNION ALL
+            SELECT epci_code, epci_nom FROM desartif)
+        WHERE epci_code IS NOT NULL),
     b AS (SELECT epci_code, sum(ha) AS beton_total, sum(ha_herbe_hors_pac) AS beton_herbe_hors_pac
           FROM beton_e WHERE epci_code IS NOT NULL GROUP BY ALL),
     bq AS (
