@@ -23,11 +23,11 @@ from pathlib import Path
 
 import duckdb
 
+from definitions import ANNEES as YEARS, GRP_CULTURE as CULTURE, GRP_PP
+
 RACINE = Path(__file__).resolve().parent.parent
 RAW = RACINE / "data" / "raw"
 OUT = RACINE / "data" / "processed" / "test_rattachement_epci.csv"
-YEARS = [f"{y:02d}" for y in range(15, 25)]
-CULTURE = (1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 14, 15, 24, 25)
 
 with open(RAW / "ocsge_artif" / "fenetres.csv", encoding="utf-8") as f:
     FENETRES = list(csv.DictReader(f, delimiter=";"))
@@ -52,11 +52,11 @@ for x in FENETRES:
     gpkg = RAW / "rpg_explorer" / f"seq1524_d{d}.gpkg"
     joins = " ".join(f"LEFT JOIN ref r{y} ON r{y}.crop = l.crop{y}" for y in YEARS)
     passages = " + ".join(
-        f"CASE WHEN r{a}.grp = 18 AND r{b}.grp IN {CULTURE} THEN 1 ELSE 0 END" for a, b in zip(YEARS, YEARS[1:]))
+        f"CASE WHEN r{a}.grp = {GRP_PP} AND r{b}.grp IN {CULTURE} THEN 1 ELSE 0 END" for a, b in zip(YEARS, YEARS[1:]))
     con.execute(f"""
         INSERT INTO objets
         SELECT '{d}', 'lcp', CAST(l.id_lcp AS VARCHAR), l.area_lcp,
-               CASE WHEN r15.grp = 18 THEN l.area_lcp ELSE 0 END, l.area_lcp * ({passages}),
+               CASE WHEN r15.grp = {GRP_PP} THEN l.area_lcp ELSE 0 END, l.area_lcp * ({passages}),
                ST_PointOnSurface(l.wkb_geometry)
         FROM ST_Read('{gpkg}') l {joins}
     """)

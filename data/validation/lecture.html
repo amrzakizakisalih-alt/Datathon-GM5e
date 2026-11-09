@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture des photos</title>
+<style>
+  :root { --fond:#f6f5f1; --carte:#fff; --texte:#22262a; --doux:#62686e; --trait:#d9d7cf; --accent:#1f6f54; --accent-fond:#e2f0ea; --alerte:#9a3b12; --contour:#ffd400; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--fond); color:var(--texte); font:15px/1.45 system-ui,"Segoe UI",Arial,sans-serif; }
+  button { font:inherit; cursor:pointer; color:inherit; }
+  a { color:var(--accent); }
+  header { display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; padding:10px 16px; background:var(--carte); border-bottom:1px solid var(--trait); }
+  header strong { font-size:16px; }
+  .barre { flex:1 1 160px; height:8px; background:var(--trait); border-radius:4px; overflow:hidden; }
+  .barre i { display:block; height:100%; background:var(--accent); }
+  .doux { color:var(--doux); }
+  .outil { padding:6px 10px; background:var(--carte); border:1px solid var(--trait); border-radius:6px; }
+  .outil:hover { background:var(--fond); }
+  .principal { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .principal:hover { background:#185a44; }
+  main { max-width:1400px; margin:0 auto; padding:14px 16px 24px; }
+  .photos { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+  .photo h2 { display:flex; justify-content:space-between; gap:8px; margin:0 0 6px; font-size:15px; }
+  .photo h2 span { font-weight:400; color:var(--doux); }
+  .cadre { position:relative; aspect-ratio:1; max-height:calc(100vh - 230px); margin:auto; overflow:hidden; background:#ccc; border-radius:6px; cursor:zoom-in; }
+  .cadre.zoom { cursor:zoom-out; }
+  .couche { position:absolute; inset:0; }
+  .couche img, .couche svg { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .zoom .couche { transform:scale(2.5); }
+  svg path { fill:none; stroke:var(--contour); stroke-width:.0035; }
+  .sans-contour svg { display:none; }
+  .choix { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-top:8px; padding:4px; border-radius:8px; }
+  .choix.actif { background:var(--accent-fond); }
+  .choix button { padding:8px 4px; background:var(--carte); border:1px solid var(--trait); border-radius:6px; }
+  .choix button:hover { border-color:var(--accent); }
+  .choix button.pris { background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; }
+  .choix kbd { display:block; font:11px system-ui; opacity:.65; }
+  .bas { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:10px; }
+  .bas input { flex:1 1 240px; min-width:0; padding:7px 9px; border:1px solid var(--trait); border-radius:6px; font:inherit; background:var(--carte); color:inherit; }
+  .feuille { max-width:680px; margin:24px auto; padding:20px; background:var(--carte); border:1px solid var(--trait); border-radius:10px; }
+  .feuille h1 { margin:0 0 8px; font-size:21px; }
+  .feuille h2 { margin:16px 0 4px; font-size:15px; }
+  .feuille label { display:block; margin:10px 0 3px; font-weight:600; }
+  .feuille input[type=text], .feuille input[type=number] { width:100%; padding:8px; border:1px solid var(--trait); border-radius:6px; font:inherit; }
+  .feuille ul { margin:4px 0; padding-left:20px; }
+  .deux { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .alerte { color:var(--alerte); font-weight:600; }
+  .voile { position:fixed; inset:0; display:none; padding:16px; overflow:auto; background:rgba(0,0,0,.45); }
+  .voile.ouvert { display:block; }
+  [hidden] { display:none !important; }
+  @media (max-width:760px) { .photos { grid-template-columns:1fr; } .cadre { max-height:none; } }
+</style>
+</head>
+<body>
+
+<div id="accueil" class="feuille">
+  <h1>Lecture des photos aériennes</h1>
+  <p>Pour chaque parcelle, on regarde une photo d'avant et une photo d'après, et on dit ce qu'on voit sur la parcelle entourée. <strong>La page ne dit pas de quel type de parcelle il s'agit, et c'est voulu :</strong> n'ouvrez pas <code>echantillon_retournements.csv</code> avant d'avoir terminé.</p>
+  <label for="nom">Votre prénom</label>
+  <input id="nom" type="text" autocomplete="off">
+  <div class="deux">
+    <div><label for="k">Vous êtes le lecteur n°</label><input id="k" type="number" min="1" value="1"></div>
+    <div><label for="n">Nombre total de lecteurs</label><input id="n" type="number" min="1" value="1"></div>
+  </div>
+  <p class="doux" id="volume"></p>
+  <div class="actions">
+    <button class="outil principal" id="commencer">Commencer</button>
+    <button class="outil" id="importer">Reprendre depuis un fichier</button>
+    <input id="fichier" type="file" accept=".csv" hidden>
+  </div>
+  <p class="alerte" id="err" hidden></p>
+</div>
+
+<div id="lecture" hidden>
+  <header>
+    <strong id="code"></strong>
+    <span class="doux" id="compte"></span>
+    <div class="barre"><i id="jauge"></i></div>
+    <button class="outil" id="aide">Aide</button>
+    <button class="outil principal" id="exporter">Enregistrer mes réponses</button>
+  </header>
+  <main>
+    <div class="photos">
+      <section class="photo">
+        <h2>Avant <span id="date-avant"></span></h2>
+        <div class="cadre" data-cadre><div class="couche"><img id="img-avant" alt="Photo d'avant"><svg viewBox="0 0 1 1" preserveAspectRatio="none"><path></path></svg></div></div>
+        <div class="choix" id="choix-avant"></div>
+      </section>
+      <section class="photo">
+        <h2>Après <span id="date-apres"></span></h2>
+        <div class="cadre" data-cadre><div class="couche"><img id="img-apres" alt="Photo d'après"><svg viewBox="0 0 1 1" preserveAspectRatio="none"><path></path></svg></div></div>
+        <div class="choix" id="choix-apres"></div>
+      </section>
+    </div>
+    <div class="bas">
+      <button class="outil" id="prec">← Précédent</button>
+      <button class="outil" id="suiv">Suivant →</button>
+      <button class="outil" id="bascule">Contour (C)</button>
+      <a class="outil" id="sentinel" target="_blank" rel="noopener">En cas de doute : Sentinel-2</a>
+      <input id="comm" type="text" placeholder="Commentaire (facultatif) : nuages, haie arrachée, bâtiment…" aria-label="Commentaire">
+    </div>
+  </main>
+</div>
+
+<div class="voile" id="voile">
+  <div class="feuille">
+    <h1>Comment lire</h1>
+    <p>Ne regardez que l'intérieur du contour jaune. Si la parcelle est partagée, répondez pour ce qui en couvre la plus grande partie.</p>
+    <h2>Herbe</h2>
+    <ul><li>Couvert irrégulier, marbré, sans rangs ; traces de pâturage, chemins d'animaux, abreuvoirs, clôtures, arbres isolés.</li><li>Une coupe de foin laisse des bandes régulières : c'est encore de l'herbe, si le couvert reste continu.</li></ul>
+    <h2>Culture</h2>
+    <ul><li>Sol nu ou labouré, rangs de semis, couleur très uniforme, chaumes clairs après moisson, traces régulières de pulvérisateur.</li></ul>
+    <h2>Autre</h2>
+    <ul><li>Bâtiment, chantier, route, bois, eau.</li></ul>
+    <h2>Incertain</h2>
+    <ul><li>Vous hésitez vraiment, ou la photo est illisible (nuage, ombre). C'est une réponse normale : ne forcez pas, et ne cherchez pas à deviner ce que « devrait » être la parcelle.</li></ul>
+    <h2>Raccourcis</h2>
+    <ul><li><strong>1 2 3 4</strong> : Herbe, Culture, Autre, Incertain. Le choix va d'abord à la photo d'avant, puis à celle d'après.</li><li><strong>C</strong> : afficher ou masquer le contour. <strong>Clic sur une photo</strong> : zoom sur les deux à la fois.</li><li><strong>← →</strong> : parcelle précédente ou suivante.</li></ul>
+    <h2>En cas de doute</h2>
+    <p>Le lien Sentinel-2 ouvre des images satellite moins précises mais plus fréquentes, de mars à septembre de l'année de la photo d'après. Un labour s'y voit comme un passage au sol nu. À l'ouverture, le site propose de se connecter ou de continuer en mode anonyme. Gardez-le pour les vrais doutes. Si cela a servi à trancher, écrivez-le en commentaire.</p>
+    <h2>Vos réponses</h2>
+    <p>Elles restent dans ce navigateur. Cliquez régulièrement sur « Enregistrer mes réponses » et gardez le fichier : c'est lui qu'il faudra déposer dans <code>data/validation/reponses/</code>.</p>
+    <div class="actions"><button class="outil principal" id="fermer">Fermer</button></div>
+  </div>
+</div>
+
+<script src="points_lecture.js"></script>
+<script>
+const CHOIX = ["Herbe", "Culture", "Autre", "Incertain"];
+const $ = id => document.getElementById(id);
+let moi = null, liste = [], rep = {}, i = 0, contour = true;
+
+const cleStock = () => `lecture_${moi.nom}`;
+function stocker() { try { localStorage.setItem(cleStock(), JSON.stringify(rep)); } catch (e) {} }
+function relire() { try { return JSON.parse(localStorage.getItem(cleStock())) || {}; } catch (e) { return {}; } }
+
+function tranche(k, n) {
+  const autres = POINTS.filter(p => !p.commun);
+  return POINTS.filter(p => p.commun || autres.indexOf(p) % n === k - 1);
+}
+function majVolume() {
+  const k = +$("k").value || 1, n = +$("n").value || 1;
+  $("volume").textContent = k >= 1 && k <= n ? `${tranche(k, n).length} parcelles à lire, dont ${POINTS.filter(p => p.commun).length} lues par tous les lecteurs pour vérifier que vous êtes d'accord.` : "";
+}
+function demarrer(reponses) {
+  const nom = $("nom").value.trim(), k = +$("k").value, n = +$("n").value;
+  if (!nom || !(k >= 1 && k <= n)) { $("err").hidden = false; $("err").textContent = "Indiquez votre prénom et un numéro de lecteur entre 1 et le nombre de lecteurs."; return; }
+  moi = { nom, k, n };
+  liste = tranche(k, n);
+  rep = reponses || relire();
+  const premier = liste.findIndex(p => !fini(p.code));
+  i = premier < 0 ? 0 : premier;
+  $("accueil").hidden = true;
+  $("lecture").hidden = false;
+  afficher();
+}
+const fini = code => rep[code] && rep[code].avant && rep[code].apres;
+
+function boutons(zone, question) {
+  const div = $("choix-" + zone);
+  div.innerHTML = "";
+  CHOIX.forEach((c, j) => {
+    const b = document.createElement("button");
+    b.innerHTML = `${c}<kbd>${j + 1}</kbd>`;
+    b.onclick = () => repondre(question, c);
+    div.append(b);
+  });
+}
+boutons("avant", "avant");
+boutons("apres", "apres");
+
+function afficher() {
+  const p = liste[i], r = rep[p.code] || {};
+  $("code").textContent = p.code;
+  $("compte").textContent = `${i + 1} / ${liste.length}`;
+  const faits = liste.filter(x => fini(x.code)).length;
+  $("jauge").style.width = `${100 * faits / liste.length}%`;
+  $("exporter").textContent = `Enregistrer mes réponses (${faits})`;
+  $("img-avant").src = `images/${p.code}_avant.jpg`;
+  $("img-apres").src = `images/${p.code}_apres.jpg`;
+  const mois = d => new Date(d + "T12:00:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+  $("date-avant").textContent = mois(p.date_avant);
+  $("date-apres").textContent = mois(p.date_apres);
+  const d = p.contour.map(a => "M" + a.map(c => c.join(" ")).join("L") + "Z").join("");
+  document.querySelectorAll("svg path").forEach(s => s.setAttribute("d", d));
+  $("comm").value = r.commentaire || "";
+  const an = p.date_apres.slice(0, 4);
+  $("sentinel").href = `https://browser.dataspace.copernicus.eu/?zoom=15&lat=${p.lat}&lng=${p.lon}&datasetId=S2_L2A_CDAS&fromTime=${an}-03-01T00:00:00.000Z&toTime=${an}-09-30T23:59:59.999Z`;
+  document.querySelectorAll("[data-cadre]").forEach(c => c.classList.remove("zoom"));
+  etat();
+}
+function etat() {
+  const r = rep[liste[i].code] || {};
+  for (const q of ["avant", "apres"]) {
+    const div = $("choix-" + q);
+    [...div.children].forEach((b, j) => b.classList.toggle("pris", r[q] === CHOIX[j]));
+    div.classList.toggle("actif", q === (r.avant ? "apres" : "avant") && !fini(liste[i].code));
+  }
+}
+function repondre(q, valeur) {
+  const code = liste[i].code, dejaFini = fini(code);
+  rep[code] = { ...rep[code], [q]: valeur, commentaire: $("comm").value, quand: new Date().toISOString() };
+  stocker();
+  if (fini(code) && !dejaFini) {
+    const suivant = liste.findIndex((p, j) => j > i && !fini(p.code));
+    const reste = suivant >= 0 ? suivant : liste.findIndex(p => !fini(p.code));
+    if (reste >= 0) { i = reste; afficher(); return; }
+    afficher();
+    alert("Toutes vos parcelles sont lues. Cliquez sur « Enregistrer mes réponses » et gardez le fichier.");
+    return;
+  }
+  afficher();
+}
+function aller(pas) {
+  noter();
+  i = Math.min(liste.length - 1, Math.max(0, i + pas));
+  afficher();
+}
+function noter() {
+  const code = liste[i].code, c = $("comm").value;
+  if (c !== ((rep[code] || {}).commentaire || "")) { rep[code] = { ...rep[code], commentaire: c }; stocker(); }
+}
+function exporter() {
+  noter();
+  const q = v => `"${String(v || "").replace(/"/g, '""')}"`;
+  const lignes = ["code;lecteur;numero;nb_lecteurs;avant;apres;commentaire;quand"];
+  for (const p of liste) {
+    const r = rep[p.code];
+    if (r) lignes.push([p.code, q(moi.nom), moi.k, moi.n, r.avant || "", r.apres || "", q(r.commentaire), r.quand || ""].join(";"));
+  }
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["﻿" + lignes.join("\n") + "\n"], { type: "text/csv;charset=utf-8" }));
+  a.download = `lecture_${moi.nom.replace(/[^\p{L}\p{N}-]+/gu, "_")}.csv`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function importer(texte) {
+  const lignes = texte.replace(/^﻿/, "").trim().split(/\r?\n/).slice(1);
+  const lu = {};
+  let nom = "", k = 1, n = 1;
+  for (const l of lignes) {
+    const c = l.match(/("([^"]|"")*"|[^;]*)(;|$)/g).map(x => x.replace(/;$/, "").replace(/^"|"$/g, "").replace(/""/g, '"'));
+    [nom, k, n] = [c[1], +c[2], +c[3]];
+    lu[c[0]] = { avant: c[4], apres: c[5], commentaire: c[6], quand: c[7] };
+  }
+  if (!lignes.length) return;
+  $("nom").value = nom; $("k").value = k; $("n").value = n;
+  demarrer({ ...lu });
+  stocker();
+}
+
+$("commencer").onclick = () => demarrer();
+$("importer").onclick = () => $("fichier").click();
+$("fichier").onchange = e => { const f = e.target.files[0]; if (f) f.text().then(importer); };
+$("k").oninput = $("n").oninput = majVolume;
+$("prec").onclick = () => aller(-1);
+$("suiv").onclick = () => aller(1);
+$("exporter").onclick = exporter;
+$("aide").onclick = () => $("voile").classList.add("ouvert");
+$("fermer").onclick = () => $("voile").classList.remove("ouvert");
+$("bascule").onclick = basculer;
+function basculer() { contour = !contour; document.querySelectorAll("[data-cadre]").forEach(c => c.classList.toggle("sans-contour", !contour)); }
+document.querySelectorAll("[data-cadre]").forEach(c => {
+  c.onclick = () => document.querySelectorAll("[data-cadre]").forEach(x => x.classList.toggle("zoom"));
+  c.onmousemove = e => {
+    const b = c.getBoundingClientRect(), o = `${100 * (e.clientX - b.left) / b.width}% ${100 * (e.clientY - b.top) / b.height}%`;
+    document.querySelectorAll("[data-cadre] .couche").forEach(x => x.style.transformOrigin = o);
+  };
+});
+document.addEventListener("keydown", e => {
+  if ($("lecture").hidden || e.target.tagName === "INPUT" || $("voile").classList.contains("ouvert")) return;
+  if (["1", "2", "3", "4"].includes(e.key)) {
+    const r = rep[liste[i].code] || {};
+    repondre(r.avant ? "apres" : "avant", CHOIX[+e.key - 1]);
+  } else if (e.key === "ArrowLeft") aller(-1);
+  else if (e.key === "ArrowRight") aller(1);
+  else if (e.key.toLowerCase() === "c") basculer();
+});
+window.addEventListener("beforeunload", () => { if (moi) noter(); });
+majVolume();
+</script>
+</body>
+</html>

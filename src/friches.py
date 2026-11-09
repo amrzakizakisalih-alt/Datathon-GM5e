@@ -38,6 +38,7 @@ import numpy as np
 import rasterio
 import rasterio.mask
 
+from definitions import GRP_PP
 from geo_utils import rattacher_plus_proche
 
 OUT, OUT_EPCI = sys.argv[1], sys.argv[2]
@@ -106,7 +107,7 @@ for d in DEPS:
     con.execute(f"""INSERT INTO pp SELECT ST_PointOnSurface(l.wkb_geometry), l.area_lcp
         FROM ST_Read('{RAW / 'rpg_explorer' / f'seq1524_d{d}.gpkg'}') l
         JOIN read_csv_auto('{RAW / 'rpg_explorer' / 'ref_fr_en.csv'}', header=true) r ON r.crop = l.crop24
-        WHERE CAST(r.grp AS INTEGER) = 18""")
+        WHERE CAST(r.grp AS INTEGER) = {GRP_PP}""")
 con.execute("""CREATE TABLE p_pp AS
     SELECT f.gid, sum(pp.ha) AS ha FROM f JOIN pp ON ST_DWithin(pp.pt, f.geom, 500) GROUP BY f.gid""")
 

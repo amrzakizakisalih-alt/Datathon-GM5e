@@ -17,7 +17,7 @@ Béton (polygones « artificialisés » de l'IGN sur la fenêtre OCS GE, surface
                      la part des pixels de 50 m du polygone ; point intérieur si le polygone est plus petit.
 
 Charrue (retournements stricts PP -> culture, cumulés sur les 9 paires 2015->2024, en ha ; même définition
-que retournements_epci.py) : charrue_<zone> et charrue_<zone>_anc (prairies anciennes), pour zone dans
+que retournements_epci.py, partagée par definitions.py) : charrue_<zone> et charrue_<zone>_anc (prairies anciennes), pour zone dans
 zh, mph, natura2000, znieff1. Une LCP est dans une zone si son point intérieur y est.
 Natura 2000 : un retournement dans le périmètre d'un site n'est pas une infraction. La PAC n'y interdit
 que le retournement des « prairies sensibles », et la plupart des sites concernés ne sont pas désignés
@@ -32,13 +32,12 @@ import duckdb
 import rasterio
 import rasterio.mask
 
+from definitions import ANNEES as YEARS, classes_sql, jointures_ref, pp_ancienne_sql, retournement_sql
 from geo_utils import charger_communes, rattacher_plus_proche
 
 DEP, OUT = sys.argv[1], sys.argv[2]
 RACINE = Path(__file__).resolve().parent.parent
 RAW = RACINE / "data" / "raw"
-YEARS = [f"{y:02d}" for y in range(15, 25)]
-CULTURE = (1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 15, 24, 25)  # le gel (groupe 11) n'est pas compté comme un labour
 MPH = RAW / "mph" / "mph_normandie.tif"
 ZONES = {  # nom -> source lue par ST_Read (Lambert-93)
     "znieff1": RAW / "zonages" / "znieff1.geojson",
@@ -115,21 +114,18 @@ con.execute("UPDATE beton_e SET geom = b.geom FROM beton b WHERE beton_e.fid = b
 rattacher_plus_proche(con, "beton_e", "fid", "ST_PointOnSurface(t.geom)")
 
 # 2. Charrue : nombre de retournements stricts par LCP sur 2015->2024, toutes PP et prairies anciennes
-def k(y):
-    return f"""CASE WHEN l.crop{y} IS NULL THEN NULL WHEN r{y}.grp = 18 THEN 'PP' WHEN r{y}.grp = 19 THEN 'PT'
-        WHEN r{y}.grp IN {CULTURE} THEN 'culture' ELSE 'autre' END AS k{y}"""
-
-
+# (classes et prairies anciennes : definitions.py, comme retournements_epci.py)
+# Une année non déclarée vaut 'non déclaré' et non NULL : avec NULL, un seul terme vide rendait toute la somme
+# NULL, et coalesce(..., 0) effaçait tous les retournements de la LCP, y compris ceux des autres années.
 con.execute(f"""
     CREATE TABLE lcp AS
-    SELECT l.id_lcp, l.area_lcp AS ha, ST_PointOnSurface(l.wkb_geometry) AS pt, {', '.join(k(y) for y in YEARS)}
+    SELECT l.id_lcp, l.area_lcp AS ha, ST_PointOnSurface(l.wkb_geometry) AS pt, {classes_sql(non_declare="'non déclaré'")}
     FROM ST_Read('{RAW / 'rpg_explorer' / f'seq1524_d{DEP}.gpkg'}') l
-    {' '.join(f'LEFT JOIN ref r{y} ON r{y}.crop = l.crop{y}' for y in YEARS)}
+    {jointures_ref()}
 """)
-toutes = " + ".join(f"(k{YEARS[i]} = 'PP' AND k{YEARS[i + 1]} = 'culture')::INT" for i in range(len(YEARS) - 1))
-anc = " + ".join(
-    f"({' AND '.join(f'k{y} = {chr(39)}PP{chr(39)}' for y in YEARS[: i + 1])} AND k{YEARS[i + 1]} = 'culture')::INT"
-    for i in range(len(YEARS) - 1))
+toutes = " + ".join(f"({retournement_sql(YEARS[i], YEARS[i + 1])})::INT" for i in range(len(YEARS) - 1))
+anc = " + ".join(f"({pp_ancienne_sql(YEARS[i])} AND {retournement_sql(YEARS[i], YEARS[i + 1])})::INT"
+                 for i in range(len(YEARS) - 1))
 con.execute(f"""
     CREATE TABLE retour AS
     SELECT id_lcp, ha, pt, coalesce({toutes}, 0) AS n_toutes, coalesce({anc}, 0) AS n_anc FROM lcp

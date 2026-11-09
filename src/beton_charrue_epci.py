@@ -16,23 +16,25 @@ Ce qui a été bétonné est qualifié par la culture RPG de l'année de début 
 
 Charrue : prairies permanentes passées en culture d'une année à la suivante sur la même
 fenêtre, en retirant la surface que le béton a prise sur les mêmes LCP (le béton l'emporte).
+Les classes RPG et la définition des prairies anciennes viennent de definitions.py.
 """
 import sys
 
 import duckdb
 
+from definitions import annees_entre, classes_sql, jointures_ref, pp_ancienne_sql, retournement_sql
 from geo_utils import charger_communes, rattacher_plus_proche
 
 DIFF, Y0, Y1, GPKG, REF, COMMUNES, OUT = sys.argv[1:8]
 y0, y1 = int(Y0), int(Y1)
 a0, a1 = f"{y0 % 100:02d}", f"{y1 % 100:02d}"
-YEARS = [f"{y:02d}" for y in range(y0 % 100, y1 % 100 + 1)]
-CULTURE = (1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 14, 15, 24, 25)
+YEARS = annees_entre(y0, y1)
 
 
 con = duckdb.connect()
 con.execute("INSTALL spatial; LOAD spatial;")
 con.execute(f"CREATE TABLE ref AS SELECT crop, CAST(grp AS INTEGER) AS grp FROM read_csv_auto('{REF}', header=true)")
+# Communes des 5 départements : un objet de ce département peut tomber dans une commune voisine
 charger_communes(con, COMMUNES)
 
 # 1. Béton : polygones nouvellement artificialisés (couche officielle IGN)
@@ -49,22 +51,14 @@ print(f"Béton {y0}->{y1} : {n:,} polygones, {ha:,.0f} ha ; désartificialisatio
 print("  occupation avant :", con.execute(
     "SELECT cs0, us0, round(sum(ST_Area(geom))/1e4) ha FROM beton GROUP BY ALL ORDER BY ha DESC LIMIT 6").fetchall())
 
-# 2. LCP avec classes annuelles
-def k(y):
-    return f"""CASE WHEN l.crop{y} IS NULL THEN 'non déclaré' WHEN r{y}.grp = 18 THEN 'PP'
-        WHEN r{y}.grp = 19 THEN 'PT' WHEN r{y}.grp IN {CULTURE} THEN 'culture'
-        WHEN r{y}.grp = 16 THEN 'fourrage' ELSE 'autre' END AS k{y}"""
-
-
-all_years = [f"{y:02d}" for y in range(15, 25)]
-anc = " AND ".join(f"r{y}.grp = 18" for y in all_years[: all_years.index(a0) + 1])
+# 2. LCP avec classes annuelles (definitions.py)
 con.execute(f"""
     CREATE TABLE lcp AS
     SELECT l.id_lcp, l.area_lcp AS ha, ST_MakeValid(l.wkb_geometry) AS geom,
-           ST_PointOnSurface(l.wkb_geometry) AS pt, ({anc}) AS pp_ancienne,
-           {', '.join(k(y) for y in all_years)}
+           ST_PointOnSurface(l.wkb_geometry) AS pt,
+           {classes_sql(non_declare="'non déclaré'")}
     FROM ST_Read('{GPKG}') l
-    {' '.join(f'LEFT JOIN ref r{y} ON r{y}.crop = l.crop{y}' for y in all_years)}
+    {jointures_ref()}
 """)
 
 # 3. Intersection béton x LCP : ce que le béton a pris aux terres agricoles déclarées
@@ -122,13 +116,14 @@ print("\nPP en", y0, "touchées par le béton - classe RPG en", y1, ":", con.exe
     SELECT k{a1}, round(sum(ha_beton)) FROM lcp_e WHERE k{a0} = 'PP' AND ha_beton > 0 GROUP BY 1 ORDER BY 2 DESC""").fetchall())
 
 # 6. Charrue sur la fenêtre, nette du béton : surface retournée moins la part bétonnée de la LCP
+# Prairie ancienne : PP chaque année de 2015 jusqu'à l'année N (definitions.py, comme retournements_epci.py)
 charrue = " UNION ALL ".join(f"""
-    SELECT epci_code, greatest(ha - ha_beton, 0) AS ha, pp_ancienne
-    FROM lcp_e WHERE k{YEARS[i]} = 'PP' AND k{YEARS[i + 1]} = 'culture'""" for i in range(len(YEARS) - 1))
+    SELECT epci_code, greatest(ha - ha_beton, 0) AS ha, ({pp_ancienne_sql(YEARS[i])}) AS pp_ancienne
+    FROM lcp_e WHERE {retournement_sql(YEARS[i], YEARS[i + 1])}""" for i in range(len(YEARS) - 1))
 con.execute(f"""
     CREATE TABLE resultat AS
     WITH e AS (
-        -- Seulement les EPCI où ce département a des objets, pas tous ceux des communes chargées
+        -- Seulement les EPCI où ce département a des objets, pas les 71 EPCI des communes chargées
         SELECT DISTINCT epci_code, epci_nom FROM (
             SELECT epci_code, epci_nom FROM lcp_e UNION ALL
             SELECT epci_code, epci_nom FROM beton_e UNION ALL
@@ -136,13 +131,14 @@ con.execute(f"""
         WHERE epci_code IS NOT NULL),
     b AS (SELECT epci_code, sum(ha) AS beton_total, sum(ha_herbe_hors_pac) AS beton_herbe_hors_pac
           FROM beton_e WHERE epci_code IS NOT NULL GROUP BY ALL),
+    -- Ventilation du béton par culture de l'année de début, rattachée à l'EPCI du POLYGONE de béton
+    -- (comme beton_total) : les deux s'additionnent toujours, même pour un béton en limite d'EPCI
     bq AS (
-        SELECT epci_code,
-               sum(ha_beton) FILTER (WHERE k{a0} = 'PP') AS beton_sur_pp,
-               sum(ha_beton) FILTER (WHERE k{a0} = 'PT') AS beton_sur_pt,
-               sum(ha_beton) FILTER (WHERE k{a0} IN ('culture', 'fourrage')) AS beton_sur_cultures,
-               sum(ha_beton) FILTER (WHERE k{a0} IN ('non déclaré', 'autre')) AS beton_sur_autre_rpg
-        FROM lcp_e WHERE epci_code IS NOT NULL GROUP BY ALL),
+        SELECT be.epci_code,
+               sum(bl.ha_beton) FILTER (WHERE bl.k0 = 'PP') AS beton_sur_pp,
+               sum(bl.ha_beton) FILTER (WHERE bl.k0 = 'PT') AS beton_sur_pt,
+               sum(bl.ha_beton) FILTER (WHERE bl.k0 IN ('culture', 'fourrage', 'gel')) AS beton_sur_cultures
+        FROM beton_lcp bl JOIN beton_e be USING (fid) WHERE be.epci_code IS NOT NULL GROUP BY ALL),
     ch AS (
         SELECT epci_code, sum(ha) AS charrue_pp, sum(ha) FILTER (WHERE pp_ancienne) AS charrue_pp_anciennes
         FROM ({charrue}) WHERE epci_code IS NOT NULL GROUP BY ALL)
