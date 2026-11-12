@@ -1,4 +1,4 @@
-# Données ouvertes pour détecter / quantifier le retournement de prairies en Normandie (2010–2025)
+# Open data for detecting and measuring grassland ploughing in Normandy (2010–2025)
 
 Research status: October 2026, from landing pages, metadata and documentation (no bulk download). PDFs from telepac and DRAAF Normandie were converted to text to read them. Anything not checked against a source is marked "UNVERIFIED" and appears only under Our reading or Open points.
 
