@@ -1,11 +1,11 @@
 # Open data for detecting and measuring grassland ploughing in Normandy (2010–2025)
 
-Research status: October 2026, from landing pages, metadata and documentation (no bulk download). PDFs from telepac and DRAAF Normandie were converted to text to read them. Anything not checked against a source is marked "UNVERIFIED" and appears only under Our reading or Open points.
+Statements marked "UNVERIFIED" were not checked against a source and appear only under Our reading or Open points.
 
 ## 1. RPG multi-year: crop codes for permanent and temporary grassland, history products, 2015 break
 
 ### In short
-The RPG is still the best source for parcel-level, year-to-year detection. From 2015 (RPG v2.0) each parcel carries a Telepac crop code: PPH and PRL fall in culture group 18 "Prairies permanentes", PTR in group 19 "Prairies temporaires". The 2024 edition added a separate "PP" (prairies permanentes) database among 8 databases. I found no official IGN/ASP "RPG transitions" product. INRAE's "RPG complété" (Cantelaube & Lardot, Etalab 2.0, 2018–2023) completes single years but does not track parcels across years.
+The RPG is still the best source for parcel-level, year-to-year detection. From 2015 (RPG v2.0) each parcel carries a Telepac crop code: PPH and PRL fall in culture group 18 "Prairies permanentes", PTR in group 19 "Prairies temporaires". The 2024 edition added a separate "PP" (prairies permanentes) database among 8 databases. We found no official IGN/ASP "RPG transitions" product. INRAE's "RPG complété" (Cantelaube & Lardot, Etalab 2.0, 2018–2023) completes single years but does not track parcels across years.
 
 ### Sources
 - **Producer, licence, coverage.** The RPG on data.gouv.fr is produced by IGN. ASP manages the programme and MASA checks regulatory compliance. Licence: Licence Ouverte v2.0, France entière, annual updates. Resources were updated 15 Apr 2026; the page was last updated 29 Sep 2026 — [data.gouv.fr RPG](https://www.data.gouv.fr/fr/datasets/registre-parcellaire-graphique-rpg-contours-des-parcelles-et-ilots-culturaux-et-leur-groupe-de-cultures-majoritaire/)
@@ -35,7 +35,7 @@ The RPG is still the best source for parcel-level, year-to-year detection. From 
 
 ### Open points
 - No official "RPG historique / parcel-tracking / transitions" product from IGN, ASP or MASA was found. "RPG Explorer" and Lab'IA/INRAE parcel-tracking products could not be confirmed.
-- I did not confirm whether a Normandy (or Normandy département) edition of "RPG complété" exists. Searching Recherche Data Gouv for "RPG complété Normandie" is recommended.
+- We did not confirm whether a Normandy (or Normandy département) edition of "RPG complété" exists. Searching Recherche Data Gouv for "RPG complété Normandie" is recommended.
 - The exact 2024+ code list and the schema of the new "PP" database (e.g. whether it includes the year the grassland was established) were not read, because the cartes.gouv.fr page could not be read.
 
 ## 2. Theia OSO (CESBIO) annual land-cover maps
@@ -56,8 +56,8 @@ OSO is a national raster at 10 m (some pages say 20 m), Etalab 2.0, with maps fo
 
 ### Open points
 - **Grassland accuracy.** No published F-score for the "prairies" class in 2018–2024 was found. The per-year validation reports (labo.obs-mip.fr/multitemp) need to be checked.
-- **2016–2017 and 2025.** I did not confirm whether 2016–2017 maps can still be downloaded, or whether a 2025 map exists.
-- **Account.** I did not confirm whether downloading from Theia requires an account (a Login link is shown).
+- **2016–2017 and 2025.** we did not confirm whether 2016–2017 maps can still be downloaded, or whether a 2025 map exists.
+- **Account.** we did not confirm whether downloading from Theia requires an account (a Login link is shown).
 
 ## 3. Copernicus HRL Grassland / Vegetated Land Cover Characteristics (VLCC), Croplands
 
@@ -142,7 +142,7 @@ The national OCS GE has two dimensions: cover (CS) and use (US). Grassland and a
 - **UNVERIFIED: CoSIA.** IGN, AI on aerial orthophotos, 0.2–1.5 m. Classes include "Pelouse", "Culture" and "Terre labourée", and are derived from orthophoto missions about every 3 years per département. A pelouse → culture / terre labourée change between two campaigns could in theory capture ploughing. However, a single photo date cannot separate temporary from permanent grassland, and a recently resown field confuses the classes.
 
 ### Open points
-- I did not verify whether the national OCS GE v2.0 US1.1 has official sub-classes in Normandy deliveries.
+- We did not verify whether the national OCS GE v2.0 US1.1 has official sub-classes in Normandy deliveries.
 - CoSIA's exact class list and the available millésimes for Calvados, Eure, Manche, Orne and Seine-Maritime were not checked.
 
 ## 6. Agreste Teruti / Teruti-Lucas, Recensement agricole, regional Normandy sources (DRAAF OSCom, BCAE 1 ratio)
@@ -176,10 +176,10 @@ The key regional source is **OSCom** (Observatoire des sols à l'échelle commun
   - Annex 1: Normandy reference ratio = **32.94 %**.
   - Source: [Telepac fiche BCAE 1 2026](https://www2.telepac.agriculture.gouv.fr/telepac/pdf/conditionnalite/2026/technique/Conditionnalite-2026_fiche-technique_BCAE1_maintien-prairies-permanentes.pdf); 2025 version: [Telepac BCAE 1 2025](https://www.telepac.agriculture.gouv.fr/telepac/pdf/conditionnalite/2025/technique/Conditionnalite-2025_fiche-technique_BCAE1_maintien-prairies-permanentes.pdf)
 - **Ratio history (secondary press).** The arrêté of 31 Oct 2023 showed Normandy at −6.45 %, the largest drop (Grand Est −3.42 %, Bretagne −4.60 %, Pays de la Loire −5.20 %). Regulation (EU) 2024/1235 allowed a one-time recalculation: Normandy's 2018 ratio went from 34.93 % to 32.94 %. Normandy, Pays de la Loire, Bretagne and Grand Est escaped the authorisation/interdiction regimes for 2025, retroactive to 1 Jan 2024 — [Réussir – PAC et prairie permanente](https://www.reussir.fr/chevre/pac-et-prairie-permanente-quelles-sont-les-regles-de-retournement); [Réussir Lait – 4 régions](https://www.reussir.fr/lait/prairies-permanentes-4-regions-en-regime-dautorisation-ou-dinterdiction)
-- **CSRPN Normandie.** Its motion of 12 Dec 2024 on grassland exists on the DREAL Normandie site. It returned 403, so it was not read — [motion CSRPN 2024-12-12](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/motion_csrpn_2024-12-12_prairies_vfsigne.pdf)
+- **CSRPN Normandie.** Its motion of 12 Dec 2024 on grassland exists on the DREAL Normandie site. It could not be opened — [motion CSRPN 2024-12-12](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/motion_csrpn_2024-12-12_prairies_vfsigne.pdf)
 
 ### Our reading
-- **The 82 % / 18 % split.** Our project notes' figure ("82 % to arable, 18 % to artificialisation") is not stated as such in Agreste n°6 text extracted here. That text gives −103,000 ha of grassland and +89,000 ha of arable land (≈86 % if it were all from grassland), with artificialisation as "the rest". The split may be in a box that was not extracted, so check the exact wording before quoting it.
+- **The 82 % / 18 % split.** Our project notes' figure ("82 % to arable, 18 % to artificialisation") is not stated as such in Agreste n°6 text extracted here. That text gives −103,000 ha of grassland and +89,000 ha of arable land (≈86 % if it were all from grassland), with artificialisation as "the rest". The split may be in a part of the document we did not read, so check the exact wording before quoting it.
 - **Teruti.** It is a statistical point survey, usable only as regional or national aggregates. It is not suitable for EPCI or commune maps.
 - **OSCom.** It is the closest existing "official" commune-level grassland stock series for Normandy (2008–2023). If its layers are published (on the DRAAF site or a GéoNormandie / CRAIG-type portal), it would let us validate an RPG-based EPCI indicator.
 - **Thresholds 2025 vs 2026.** One secondary summary said the 2025 fiche used 5 % as a threshold, but the 2026 fiche text read directly says 4 % and 10 %. Use the 2026 text.
