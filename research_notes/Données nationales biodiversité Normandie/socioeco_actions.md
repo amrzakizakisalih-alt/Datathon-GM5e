@@ -2,19 +2,19 @@
 
 Scope: datasets from NATIONAL producers (State, INSEE, OFB, Urssaf, Cerema, IGN, OFGL, EU), covering the 5 Normandy départements (14 Calvados, 50 Manche, 61 Orne, 27 Eure, 76 Seine-Maritime). Status checked 17 Oct 2026. Quick inventory: existence, access link and main metadata verified on the landing page; columns/content not deep-dived unless stated.
 
-## Q1. Restoration / nature actions and funding ("positive interactions" side)
+## 1. Restoration / nature actions and funding ("positive interactions" side)
 
-### Takeaway
+### In short
 The strongest national, project-level, geocodable source is the **Fonds vert project list** (CSV/XLSX, 2023–2025 vintages, commune code, Etalab 2.0, includes dedicated "Fonds vert Biodiversité" files), complemented by **Cartofriches** (brownfield sites with a Cerema "renaturation" mutability index), the **ABC (Atlas de la biodiversité communale)** list from OFB, and the **EU LIFE project database** (exportable). Several items on the wish list (Label bas-carbone registry, TEN, Agences de l'eau aid, Natura 2000 contracts, Conservatoire du littoral parcels) have NO clean national open-data file: they exist as web listings/maps or PDFs only.
 
-### Cited Findings
+### Sources
 
 **D1 — Fonds Vert – Liste des projets subventionnés** (producer: Ministère de la Transition écologique)
 - URL: https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes/ — [data.gouv.fr](https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes/)
 - Format CSV + XLSX, 10 files incl. "Fonds vert Biodiversité" files; dataset last updated 28 July 2026; vintages 2023, 2024, 2025 (a project is in vintage N when its grant was committed before 31 Dec N) — [data.gouv.fr](https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes/)
 - Unit: one row per project × beneficiary; location = "code commune" column, often empty for intercommunal/departmental/regional projects, and sometimes the sponsor's commune rather than the project site; no coordinates mentioned — [data.gouv.fr](https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes/)
 - Licence Licence Ouverte / Etalab 2.0 — [data.gouv.fr](https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes/)
-- Scale: 2023–2025 Fonds vert financed >25,000 projects, €4.5bn of grants, >13,000 beneficiaries; budget programme P380 — [data.gouv.fr search snippet of dataset description](https://www.data.gouv.fr/datasets/66a215a463a9da4fb801b8cf)
+- Scale: 2023–2025 Fonds vert financed >25,000 projects, €4.5bn of grants, >13,000 beneficiaries; budget programme P380 — [data.gouv.fr excerpt of the dataset description](https://www.data.gouv.fr/datasets/66a215a463a9da4fb801b8cf)
 - Normandy: national coverage, so Normandy included (filter by code commune / département).
 - Use: Problem 2 (map of public "positive" actions: renaturation, biodiversity, friches, adaptation, per commune; € per capita indicators); Problem 1 (where restoration is already funded vs. gaps).
 
@@ -22,9 +22,9 @@ The strongest national, project-level, geocodable source is the **Fonds vert pro
 - URL: https://www.data.gouv.fr/datasets/sites-references-dans-cartofriches/ — [data.gouv.fr](https://www.data.gouv.fr/datasets/sites-references-dans-cartofriches/)
 - Inventory is explicitly a SAMPLE of existing friches and heterogeneous across the territory; data dictionary (Nov 2021) in resources — [data.gouv.fr](https://www.data.gouv.fr/datasets/61892a26c94e39bde1dbf7ac/)
 - Includes Cerema-computed mutability indices P_PV, P_residentiel, P_equipement, P_tertiaire, P_industriel and **P_renaturation** — [data.gouv.fr discussion](https://www.data.gouv.fr/datasets/sites-references-dans-cartofriches/discussions)
-- One page indicates an update on 23 July 2026 (not confirmed) — [search result](https://www.data.gouv.fr/datasets/sites-references-dans-cartofriches/)
+- One page indicates an update on 23 July 2026 (not confirmed) — [data.gouv.fr page, excerpt](https://www.data.gouv.fr/datasets/sites-references-dans-cartofriches/)
 - Beware: a separate dataset titled just "Cartofriches" is a Loiret extract (last update Apr 2023), not the national file — [data.gouv.fr](https://www.data.gouv.fr/datasets/cartofriches)
-- Unit: site (point/polygon). Format and licence not verified this session.
+- Unit: site (point/polygon). Format and licence not verified.
 - Use: Problem 1 (renaturation opportunities on brownfields, feasibility via P_renaturation; fits ZAN and "territorial development" narrative).
 
 **D3 — Données des Atlas de la biodiversité communale (ABC) en France métropolitaine et outre-mer** (producer: OFB)
@@ -65,24 +65,24 @@ The strongest national, project-level, geocodable source is the **Fonds vert pro
 **Conservatoire du littoral**
 - data.gouv.fr organisation page shows 0 datasets — [data.gouv.fr](https://www.data.gouv.fr/organizations/conservatoire-du-littoral/datasets); a regional PACA "domaine protégé" layer exists (2024) — [DataSud](https://www.datasud.fr/geonetwork/srv/api/records/0f7421f8-fbc4-4110-bdc2-3d74292f58fd)
 
-### Inferences
+### Our reading
 - Fonds vert is the backbone for a "public positive actions" indicator: aggregate € and project counts per commune/EPCI, per measure (biodiversity, renaturation, friches), normalised by population (link D8). The missing-commune-code caveat means EPCI-level aggregation is safer.
 - Cartofriches × Fonds vert "friches" × consommation d'espaces gives a strong ZAN/territorial-development story for elected officials.
-- Conservatoire du littoral land (sites/parcels) is most likely obtainable through INPN's protected-area layers ("Terrains du Conservatoire du littoral") — NOT verified this session; check https://inpn.mnhn.fr (espaces protégés downloads).
+- Conservatoire du littoral land (sites/parcels) is most likely obtainable through INPN's protected-area layers ("Terrains du Conservatoire du littoral") — NOT verified; check https://inpn.mnhn.fr (espaces protégés downloads).
 
-### Gaps
+### Open points
 - France 2030 / France Relance "fonds friches" project lists: not searched due to time; a "Fonds friches lauréats" dataset may exist on data.gouv.fr (unverified).
 - Natura 2000 contracts/charters: no national open dataset found or searched in depth; contract data is typically held by DREAL/ASP, likely not open.
 - Obligations réelles environnementales (ORE): no national public registry found (ORE are notarial acts; no open list known).
 - Exact Fonds vert column names / measure labels not verified.
 - Agence de l'eau aid in machine-readable form: not found.
 
-## Q2. Public spending (collectivités budgets, environment function)
+## 2. Public spending (collectivités budgets, environment function)
 
-### Takeaway
+### In short
 **data.ofgl.fr** (OFGL, from DGFiP balances) is the national open source for local government finances by commune/EPCI/département/région, updated each summer (2024 definitive data available); a "Comptes des communes 2018-2025" dataset also exists on data.gouv.fr. Environment spending by function requires the account-detail module and the functional nomenclature (M57/M14) — not verified.
 
-### Cited Findings
+### Sources
 **D7 — OFGL data.ofgl.fr (comptes des collectivités / balances comptables DGFiP)**
 - Covers communes, GFP, ensembles intercommunaux, départements, régions, syndicats, EPL, SDIS; a module lets users drill into each account of DGFiP balances; updated every summer after DGFiP publication — [collectivites-locales.gouv.fr](https://www.collectivites-locales.gouv.fr/index.php/actualites/les-donnees-financieres-2024-sont-pretes-etre-analysees-sur-dataofglfr)
 - Definitive 2024 data available — [collectivites-locales.gouv.fr](https://www.collectivites-locales.gouv.fr/index.php/actualites/donnees-financieres-definitives-2024-disponibles-sur-dataofglfr)
@@ -90,19 +90,19 @@ The strongest national, project-level, geocodable source is the **Fonds vert pro
 - Unit: collectivity (SIREN / code commune). Normandy: national, included.
 - Use: Problem 2 (public effort indicator: environment/aménagement spending per inhabitant per commune/EPCI); Problem 1 (fiscal capacity as feasibility proxy).
 
-### Inferences
+### Our reading
 - Functional breakdown (fonction 7 "Environnement" in M57, fonction 8 in M14 for "aménagement et environnement") would need to be confirmed on data.ofgl.fr; small communes under M14 abridged may not report by function — treat as uncertain.
 
-### Gaps
+### Open points
 - Exact OFGL dataset name for functional presentation and its licence not verified (OFGL data are generally under Licence Ouverte — unverified).
 - DGCL datasets not searched.
 
-## Q3. Socio-economic context (population, income, economic activities, employment)
+## 3. Socio-economic context (population, income, economic activities, employment)
 
-### Takeaway
+### In short
 INSEE **Filosofi 2021 carroyé 200 m** (published Feb 2026) is the latest fine-grid socio-economic layer; **Urssaf commune × APE** gives private employment and establishments by detailed sector (updated 29 May 2026); **SIRENE** gives establishment-level NAF, but the Etalab geolocated version was retired in April 2026 in favour of INSEE's own geolocated product.
 
-### Cited Findings
+### Sources
 **D8 — Revenus, pauvreté et niveau de vie en 2021 – Données carroyées (Filosofi)** (producer: INSEE)
 - URL: https://www.insee.fr/fr/statistiques/8735243 (published 16 Feb 2026); 200 m file: https://www.insee.fr/fr/statistiques/8735162 — [INSEE](https://www.insee.fr/fr/statistiques/8735243); [INSEE 200m](https://www.insee.fr/fr/statistiques/8735162)
 - 200 m grid, 34 variables (age structure, households, housing, 2021 income); squares with <11 fiscal households are imputed (flag i_est_200) — [INSEE](https://www.insee.fr/fr/statistiques/8735162)
@@ -114,7 +114,7 @@ INSEE **Filosofi 2021 carroyé 200 m** (published Feb 2026) is the latest fine-g
 **D9 — Nombre d'établissements employeurs et effectifs salariés du secteur privé, par commune × APE (au 31/12 depuis 2006)** (producer: Urssaf)
 - URL: https://www.data.gouv.fr/datasets/nombre-detablissements-employeurs-et-effectifs-salaries-du-secteur-prive-par-commune-x-ape-au-31-12-depuis-2006 (also on open.urssaf.fr) — [data.gouv.fr](https://www.data.gouv.fr/datasets/nombre-detablissements-employeurs-et-effectifs-salaries-du-secteur-prive-par-commune-x-ape-au-31-12-depuis-2006)
 - Formats CSV + JSON; last update 29 May 2026; licence ODbL — [data.gouv.fr](https://www.data.gouv.fr/datasets/nombre-detablissements-employeurs-et-effectifs-salaries-du-secteur-prive-par-commune-x-ape-au-31-12-depuis-2006)
-- Updated ~150 days after year-end; private employers under general scheme (agriculture excluded, MSA scope); apprentices included since June 2023 release; DSN source since 2021 — [search snippet of dataset description](https://www.data.gouv.fr/datasets/5efd242c72595ba1a48628f2)
+- Updated ~150 days after year-end; private employers under general scheme (agriculture excluded, MSA scope); apprentices included since June 2023 release; DSN source since 2021 — [excerpt of the dataset description](https://www.data.gouv.fr/datasets/5efd242c72595ba1a48628f2)
 - Unit: commune × APE (732 codes), annual series. Normandy: included.
 - Use: "cross environment with economic/industrial activity" — employment in extraction, chemicals, tourism (hotels/restaurants), agri-food per commune; pressure indicators (Problem 2) and socio-economic stakes of restoration (Problem 1).
 
@@ -123,21 +123,21 @@ INSEE **Filosofi 2021 carroyé 200 m** (published Feb 2026) is the latest fine-g
 - Contains personal data for sole proprietors (CNIL rules; "diffusion partielle" records) — [data.gouv.fr](https://www.data.gouv.fr/datasets/62bc4b958cdb4ce3c2d86064)
 - Use: point-level mapping of activities by NAF (quarries 08.xx, campsites 55.30, ICPE-type industry) next to sensitive habitats. Aggregate before display to avoid personal data.
 
-### Inferences
+### Our reading
 - For a datathon, D9 (commune aggregates) is easier and personal-data-free; use D10 only for specific sectors aggregated to grid/commune.
 
-### Gaps (not verified this session; well-known national INSEE products worth adding)
+### Open points (not verified; well-known national INSEE products worth adding)
 - Populations légales communales (INSEE, annual, commune) — not checked.
 - BPE – Base permanente des équipements (INSEE, geolocated equipment incl. tourism/sport) — not checked.
 - INSEE tourism accommodation capacity by commune (hotels, campsites) — not checked.
 - INSEE Flores (employment incl. public sector by commune × sector) — not checked.
 
-## Q4. Territorial planning context (urbanism zoning, ZAN, programmes)
+## 4. Territorial planning context (urbanism zoning, ZAN, programmes)
 
-### Takeaway
+### In short
 PLU/PLUi/carte communale zoning is accessible nationally via the **API Carto – module GPU** (IGN, free, open, GeoJSON); "Petites villes de demain" lists exist mostly as regional/departmental extracts (incl. an Orne dataset), and the programme was designed to end March 2026 — flag as possibly outdated.
 
-### Cited Findings
+### Sources
 **D11 — API Carto – module Géoportail de l'Urbanisme (GPU)** (producer: IGN / DGALN)
 - URL: https://www.data.gouv.fr/dataservices/api-carto-module-geoportail-de-lurbanisme-gpu — REST, JSON/GeoJSON WGS84, query by point/polygon intersection and attributes; covers PLU, POS, carte communale, PSMV zoning, prescriptions, SUP; open licence, free — [data.gouv.fr](https://www.data.gouv.fr/dataservices/api-carto-module-geoportail-de-lurbanisme-gpu)
 - Bulk extracts exist as third-party regional datasets ("Zonages des documents d'urbanisme – GPU") — [data.gouv.fr](https://www.data.gouv.fr/datasets/zonages-des-documents-durbanisme-gpu/reuses_and_dataservices)
@@ -150,32 +150,32 @@ PLU/PLUi/carte communale zoning is accessible nationally via the **API Carto –
 - No single national data.gouv.fr dataset confirmed in this search.
 - Use: Problem 2/territorial development (target communes with existing revitalisation engineering for "renaturation de centre-bourg" actions).
 
-### Inferences
+### Our reading
 - ANCT also maintains national programme lists (PVD, Action cœur de ville) on its own open-data space; likely the source for a national file — unverified.
 
-### Gaps
-- ZAN data (Cerema "consommation d'espaces NAF" from fichiers fonciers, MonDiagnosticArtificialisation, OCS GE) not verified here — likely covered by another research thread on land use.
+### Open points
+- ZAN data (Cerema "consommation d'espaces NAF" from fichiers fonciers, MonDiagnosticArtificialisation, OCS GE) not verified here — covered in the human-pressure notes.
 - SCoT perimeters: GPU covers SCoT documents but not verified.
 - Action cœur de ville list not verified.
 - Post-March-2026 status of PVD not confirmed.
 
-## Q5. Citizen perception / participation
+## 5. Citizen perception / participation
 
-### Takeaway
+### In short
 No open microdata for a national biodiversity-perception barometer was found: OFB runs a barometer (BVA 2022, Harris Interactive 2024, ~2,000 respondents, national sample) published only as press releases/PDF reports, with no regional (Normandy) breakdown usable at local scale.
 
-### Cited Findings
+### Sources
 - OFB barometer 2022 (BVA, 2,000 people): >8 in 10 French feel concerned by biodiversity — [OFB press release](https://www.ofb.gouv.fr/sites/default/files/Fichiers/Presse/CP_Barometre-biodiversite.pdf)
 - 2024 wave by Harris Interactive for OFB: online survey 27 Mar–2 Apr 2024, n=2,058, 15+ y.o. — [Harris/Toluna report](https://tolunacorporate.com/wp-content/uploads/2025/05/Rapport-Harris-Les-Francais-et-la-biodiversite-OFB-vague-2-Rapport-principal-sans-responsables.pdf)
 - CREDOC survey for the future biodiversity agency dates from 2015 — [CREDOC](https://www.credoc.fr/download/pdf/Sou/Agence_Biodiversite_mai2015.pdf)
 
-### Inferences
-- For local participation indicators, participatory-science observation counts (e.g. Vigie-Nature / INPN data, out of this thread's scope) or ABC/TEN engagement flags (D3, D4) are better proxies than surveys.
+### Our reading
+- For local participation indicators, participatory-science observation counts (e.g. Vigie-Nature / INPN data, outside the scope of these notes) or ABC/TEN engagement flags (D3, D4) are better proxies than surveys.
 
-### Gaps
+### Open points
 - No open microdata; no wave after 2024 confirmed; national "Sentinelles"-type reporting datasets not searched.
 
-## Summary table (for the report writer)
+## Summary table
 
 | # | Dataset | Producer | Access | Format | Unit | Coverage / update | Licence | Normandy | Problem |
 |---|---|---|---|---|---|---|---|---|---|
