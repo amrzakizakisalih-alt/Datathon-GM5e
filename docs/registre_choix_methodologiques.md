@@ -1,7 +1,5 @@
 # Registre des choix méthodologiques
 
-Date : 01/11/2026, mis à jour le 10/11/2026 (chiffre principal en prairies anciennes, section 2 ; corrections des sections 4, 5, 8 et 9) et le 11/11/2026 (repère foncier national sans verdict, section 6). Ce registre liste chaque choix qui influe sur les chiffres de l'outil. Pour chacun, il donne l'alternative écartée, la justification et la preuve (mesure, test, source). Il sert à la page « méthode » et aux réponses au jury.
-
 ## Comment chaque choix est justifié
 
 1. **Définition officielle d'abord.** On reprend une définition réglementaire quand elle existe : artificialisation, prairie permanente, ZAN.
