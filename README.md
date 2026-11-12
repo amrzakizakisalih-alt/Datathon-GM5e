@@ -101,9 +101,3 @@ archives/        versions antérieures de l'interface
 ```
 
 Code sous licence MIT, données calculées sous Licence Ouverte 2.0 : voir `LICENCE`.
-
-## Règles
-
-- Ne jamais afficher de parcelle ni nommer d'exploitation : on affiche à l'EPCI.
-- Ne livrer que des agrégats : jamais la table des parcelles.
-- Citer les sources : « RPG Explorer, INRAE / AgroParisTech (Girault & Martin), d'après le RPG IGN-ASP, Licence Etalab 2.0 » et « OCS GE Artificialisation, IGN ».
