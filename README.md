@@ -4,7 +4,7 @@ Projet du Datathon Normandie 2026 (thème : biodiversité × activités humaines
 
 Le chiffre principal porte sur les prairies anciennes, déclarées permanentes sans interruption depuis 2015. Compter toutes les prairies permanentes donne la borne haute, qui inclut des prairies semées dans une rotation.
 
-Le descriptif du projet est dans `livrables/`, les choix de méthode dans `docs/registre_choix_methodologiques.md`, et les comptes rendus détaillés dans `tests/`.
+Le descriptif du projet est dans `livrables/`, les choix de méthode dans `docs/registre_choix_methodologiques.md`, les comptes rendus détaillés dans `tests/` et le projet déployé à l'adresse : https://amrzakizakisalih-alt.github.io/Datathon-GM5e/
 
 ## Installation
 
