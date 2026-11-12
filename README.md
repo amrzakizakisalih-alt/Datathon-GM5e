@@ -4,7 +4,7 @@ Projet du Datathon Normandie 2026 (thème : biodiversité × activités humaines
 
 Le chiffre principal porte sur les prairies anciennes, déclarées permanentes sans interruption depuis 2015. Compter toutes les prairies permanentes donne la borne haute, qui inclut des prairies semées dans une rotation.
 
-Le descriptif du projet est dans `livrables/descriptif_projet.md`, les choix de méthode dans `docs/registre_choix_methodologiques.md`, et les comptes rendus détaillés dans `tests/`.
+Le descriptif du projet est dans `livrables/`, les choix de méthode dans `docs/registre_choix_methodologiques.md`, et les comptes rendus détaillés dans `tests/`.
 
 ## Installation
 
@@ -87,8 +87,7 @@ L'interface tient en un écran : six modules dans la barre de gauche (synthèse,
 
 ```
 contexte/        documents des organisateurs
-reports/         rapports de recherche (données, méthodes)
-research_notes/  notes derrière ces rapports
+research_notes/  notes derrière les rapports
 tests/           comptes rendus datés des tests T1 à T10 (leurs chiffres sont ceux du jour du test)
 src/             code (DuckDB + extension spatiale)
 data/raw/        données brutes, non versionnées
