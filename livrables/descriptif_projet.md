@@ -51,9 +51,3 @@ Limites assumées : l'outil décrit et compare, il ne prescrit pas. Le repérage
 | Séries historiques du recensement (logements, population) | INSEE | https://www.insee.fr/fr/statistiques/8582555 |
 
 Toutes ces données sont ouvertes. Les adresses exactes des fichiers téléchargés sont dans `src/telecharger_donnees.py`.
-
-## Le lien vers la solution / des captures d'écran
-
-- Site : [adresse publique à renseigner après la mise en ligne]
-- Code, données calculées et documentation : archive jointe (`beton_charrue_datathon_2026.zip`).
-- Captures d'écran : [à joindre : la synthèse régionale, la fiche d'une intercommunalité, le module « Friches à rendre »].
