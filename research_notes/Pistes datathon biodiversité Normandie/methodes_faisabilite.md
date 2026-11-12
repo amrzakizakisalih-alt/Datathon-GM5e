@@ -1,13 +1,13 @@
 # Pistes datathon biodiversité Normandie: methods, tooling, pitfalls and feasibility (pistes A–N), plus a sober web architecture
 
-Scope: Datathon Normandie 2026 (deliverables due 12 Nov 2026 at noon, teams of 2–5, open data only). Notes are current as of 17 Oct 2026. Data availability was taken as already established by the team and was not re-checked. Sections 1–7 cover the cross-cutting key questions. Section 8 holds the per-piste cards (method and tooling, risks, MVP, effort, feasibility hint). "pd" means person-days.
+Scope: Datathon Normandie 2026 (deliverables due 12 Nov 2026 at noon, teams of 2–5, open data only). Notes are current as of 17 Oct 2026. Data availability comes from our own data inventory and was not re-checked. Sections 1–7 cover the cross-cutting key questions. Section 8 holds the per-piste cards (method and tooling, risks, MVP, effort, feasibility). "pd" means person-days.
 
-## 1. Multi-criteria prioritisation: weighted overlay/MCDA (AHP, normalisation) vs spatial conservation planning tools (Zonation, Marxan, prioritizr) vs simple transparent indices; exposing adjustable weights in a web UI
+## 1. Multi-criteria prioritisation: transparent index, MCDA or Zonation/prioritizr, and adjustable weights
 
-### Takeaway
+### In short
 For a 3.5-week MVP scored on feasibility and sobriety, the best trade-off is a transparent index built on percentile-normalised criteria: a weighted sum, or stakes × degradation × opportunity. Give it presets and sliders, and recompute the colours entirely in the browser with MapLibre expressions. Zonation 5 and prioritizr are credible "bonus" layers (complementarity, budget portfolios), but they are harder to explain and to validate. Whichever method is chosen, the composite-indicator discipline from the OECD/JRC handbook is what protects credibility: check correlations, justify the normalisation, state what the weights mean, and run a sensitivity analysis.
 
-### Cited Findings
+### Sources
 - The OECD/JRC *Handbook on Constructing Composite Indicators* is the reference guide for building composites. It sets out the steps: multivariate analysis before aggregation, treatment of missing data, normalisation of heterogeneous indicators to a common unit, alternative weighting and aggregation methods, and robustness testing by uncertainty and sensitivity analysis — [OECD handbook page](https://www.oecd.org/en/publications/handbook-on-constructing-composite-indicators-methodology-and-user-guide_9789264043466-en.html); [JRC handbook PDF](https://knowledge4policy.ec.europa.eu/sites/default/files/jrc47008_handbook_final.pdf); [JRC working paper EUR 21834](https://publications.jrc.ec.europa.eu/repository/bitstream/JRC32434/EUR%2021834%20EN.pdf)
 - Weighting methods fall into two families. Statistical methods include principal components and Benefit-of-the-Doubt. Participatory methods include budget allocation and AHP — [secondary summary of the Handbook](https://ictlogy.net/bibliography/reports/projects.php?idp=2308)
 - Munda & Nardo (JRC) argue there is a theoretical inconsistency between what weights mean in composite construction and the meaning standard practice gives them — [JRC31473](https://publications.jrc.ec.europa.eu/repository/handle/JRC31473)
@@ -19,7 +19,7 @@ For a 3.5-week MVP scored on feasibility and sobriety, the best trade-off is a t
 - French public-sector precedent for a transparent overlay: Cerema built a geomatic method that ranks artificialised urban spaces for renaturation. It crosses an "Enjeux" component (heat islands, biodiversity, lack of green space, flooding) with a second component — [Cerema](https://www.cerema.fr/fr/print/pdf/node/15052)
 - MapLibre style-spec expressions include the math operators `+`, `*`, `-`, `/`, `%`, `^`, `min`, `max`, `round`, `abs` and others, which can take inputs from `get`. Data expressions are allowed in filters and "for most paint and layout properties". `feature-state` expressions are allowed only on paint properties. If a property value has the wrong type, the property's default value is used — [MapLibre style spec, expressions](https://maplibre.org/maplibre-style-spec/expressions/)
 
-### Inferences
+### Our reading
 - **Recommended default model ("explainable first"):**
   - Use three sub-indices: Enjeux/Stakes (biodiversity value), Dégradation/Pressure, and Opportunité/Feasibility. Each is the mean of 2–4 criteria.
   - Normalise each criterion to a 0–100 percentile rank. Ranks are robust to outliers such as land-take hotspots and are easy to explain.
@@ -48,17 +48,17 @@ For a 3.5-week MVP scored on feasibility and sobriety, the best trade-off is a t
   - For the ranking table, compute in JS from a compact JSON/Parquet table: 30k rows × 10 small ints is roughly 1–2 MB uncompressed and much less gzipped (estimate).
 - **Pitch line:** "transparent > optimal". This fits the RGESN requirement to justify any algorithmic choice (§7).
 
-### Gaps
+### Open points
 - No runtime benchmark was found for prioritizr with CBC or HiGHS on ~30k planning units; test before promising it.
 - Marxan was not researched. Zonation 5 install and licensing on Windows were not checked.
 - No source compares weighted-overlay outputs with complementarity-based outputs in a French regional TVB context.
 
-## 2. Connectivity and fragmentation: Graphab, Circuitscape/Omniscape, effective mesh size (meff), hedgerow network metrics; regional computational cost; feasibility of ~2.7 M hedge segments on a laptop; standard simplifications
+## 2. Connectivity and fragmentation: tools, hedge network metrics and computing cost
 
-### Takeaway
+### In short
 Wall-to-wall density and length metrics on a 1 km grid are cheap, and they follow the official DSB (Dispositif national de suivi des bocages) logic. They are feasible for 2.7 M segments with DuckDB spatial (v1.3 or later) or GeoPandas on a laptop. Graph and least-cost connectivity (Graphab) and circuit theory (Omniscape) should be limited to pilot landscapes or coarse rasters. meff is the standard fragmentation indicator for barrier-type fragmentation (roads, urban areas), not a hedgerow metric as such. The standard simplifications are gridding at 1 km, sampling (survey circles or stratified 1 km² cells), pilot areas, coarser rasters, and block-based solving.
 
-### Cited Findings
+### Sources
 - **Graphab, what it is:**
   - Open source (GPL), developed at ThéMA (Univ. Franche-Comté/CNRS) by G. Vuidel and J.-C. Foltête.
   - Graphs link patches by Euclidean distance or least-cost paths.
@@ -90,7 +90,7 @@ Wall-to-wall density and length metrics on a 1 km grid are cheap, and they follo
   - Benchmark: 58,033,724 points × 310 polygons took 1,799.6 s (nested loop), 107.6 s (piecewise merge) and 28.7 s (spatial join) on an M3 Pro laptop with 36 GB RAM.
   - Limits: the right side is buffered in memory, and the join condition can only be a single spatial predicate — [DuckDB blog, spatial joins](https://duckdb.org/2025/08/08/spatial-joins)
 
-### Inferences
+### Our reading
 - **2.7 M hedges on a laptop is feasible for density metrics:**
   - Join the hedge segments to ~30k 1-km cells; each segment touches 1–2 cells. Clip with `ST_Intersection` + `ST_Length` (DuckDB ≥1.3), or use GeoPandas/shapely 2 vectorised overlay. Process by department, in Lambert-93 (EPSG:2154), with GeoParquet as the intermediate format.
   - Expected runtime is minutes to tens of minutes on 16 GB RAM. This is an estimate extrapolated from the point-in-polygon benchmark; test on one department first.
@@ -109,18 +109,18 @@ Wall-to-wall density and length metrics on a 1 km grid are cheap, and they follo
 - **meff use:** use it for "fragmentation by transport and urban areas" per commune or EPCI (with the CBC variant) as a negative-interaction indicator for P2. It needs a roads layer (not in the established inventory) and OCS GE artificial classes.
 - **Communication:** a mapped line is not a functional hedge (height, gaps and management are unknown). That is why DSB phase 3 runs field surveys. Say this explicitly.
 
-### Gaps
+### Open points
 - No published memory or performance limits were found for Graphab 3.0 on large regions. No regional-scale Omniscape benchmark was found.
 - No benchmark was found for line–polygon overlay of millions of lines in DuckDB or GeoPandas (only point-in-polygon).
 - The exact formula of the DSB "coherence index" was not retrieved.
 - The 2024 Normandy hedge-linear study PDF (DREAL/ANBDD, `lineaireshaies-normandie-2024_anbdd.pdf`) returned HTTP 403 and could not be read.
 
-## 3. Barrier-removal prioritisation: dendritic connectivity index, OptiPass-like optimisation, simple proxies
+## 3. Prioritising barrier removal
 
-### Takeaway
+### In short
 The realistic MVP is a simple, explainable proxy: the river length reconnected if an obstacle is removed (leave-one-out ΔDCI). Weight it by drop-height class (as a passability proxy), relevance for migratory fish and water-body status. The R package riverconn computes DCI and ΔDCI directly. Full OptiPass-style budget optimisation needs passability and cost data that are largely missing. French practice indicators (taux d'étagement, taux de fractionnement) are easy to compute where drop heights are known, and they speak the regulators' language. The EU Nature Restoration Regulation's target of 25,000 km of free-flowing rivers is the policy hook.
 
-### Cited Findings
+### Sources
 - **riverconn:**
   - Provides DCI, PCI, RFI, PC and IIC.
   - Its dCCI measures how much the network index changes when a barrier is removed or its passability changes. Leave-one-out is the default and "add-one" is the alternative, via `d_index_calculation()`.
@@ -138,9 +138,9 @@ The realistic MVP is a simple, explainable proxy: the river length reconnected i
   - Draft National Restoration Plans were due by 1 Sept 2026, after which the Commission has six months to comment.
   - Plans run to 2050 and must include financing needs and how they interact with the CAP strategic plans — [Garrigues legal summary](https://www.garrigues.com/en_GB/new/eu-bolsters-nature-restoration-here-new-legislative-framework-2030-and-2050); [European Commission NRR page](https://environment.ec.europa.eu/topics/nature-and-biodiversity/nature-restoration-regulation_en); [Dam Removal Europe](https://damremoval.eu/call-to-action-get-your-barrier-removal-projects-into-national-restoration-plans/)
 
-### Inferences
+### Our reading
 - **MVP algorithm (Python + igraph, or R + riverconn):**
-  1. Get a topologically correct hydrographic network. **Dependency:** none is listed in the team's established inventory. BD TOPAGE or Carthage would be needed.
+  1. Get a topologically correct hydrographic network. **Dependency:** none is listed in our data inventory. BD TOPAGE or Carthage would be needed.
   2. Snap ROE points to the nearest reach within ~25–50 m and split the reaches.
   3. For each obstacle, compute the functional river length between it and the next obstacles upstream, plus the downstream path to the sea for diadromous species. This gives "km reconnected if removed", a ΔDCI proxy.
   4. Weight by: height class (a proxy for passability when ICE is absent), distance to the sea and migratory-fish presence (Hub'Eau fish), WFD status of the water body, and regulatory listing (if available).
@@ -149,17 +149,17 @@ The realistic MVP is a simple, explainable proxy: the river length reconnected i
 - **Framing:** removing obstacles touches heritage, water rights and social acceptability (e.g. mills). ROE statuses (existing, removed, in project) may be outdated. Present the output as a "dialogue list", not a demolition list.
 - **Why not OptiPass:** without cost data and species-specific passability, a budget optimisation would be fake precision. Say so and show the proxy ranking instead.
 
-### Gaps
+### Open points
 - The share of Normandy ROE obstacles with known drop heights or ICE scores was not checked (data profiling was out of scope).
 - No French OptiPass-like tool and no open obstacle-removal cost data were identified.
 - Whether France submitted its draft National Restoration Plan by 1 Sept 2026, and what it contains, was not found.
 
-## 4. Wetland restorability and protected-area gap analysis: overlay logic, representativeness metrics
+## 4. Restorable wetlands and protection gaps
 
-### Takeaway
+### In short
 Both questions are overlay problems. (Potential wetlands) ∩ (crops or artificial land) gives restoration candidates. (Habitat or species layers) ∩ (protected areas), compared with a representation target, gives the protection gaps. The main risk is not computation. It is over-interpreting probabilistic layers (the potential-wetland model at 1:100,000; CarHab is predictive) and observer-biased species data.
 
-### Cited Findings
+### Sources
 - **MPH (INRA/Agrocampus Ouest, 2014):**
   - Models envelopes that, on geomorphological and climatic criteria, are likely to contain wetlands as defined by the arrêté of 24 June 2008. Scale 1:100,000, three probability classes (assez forte, forte, très forte).
   - It does **not** account for drainage or infilling, land use (crops, urbanisation), or local soil and hydrological processes — [Notice MPH](https://geosas.fr/metadata/pdf/Notice_MPH_France-1.pdf); [Pôle-relais lagunes](https://pole-lagunes.org/les-milieux-potentiellement-humides-de-france-modelises)
@@ -176,9 +176,9 @@ Both questions are overlay problems. (Potential wetlands) ∩ (crops or artifici
   - A national predictive habitat map at 1:25,000, combining machine learning with expert review by the botanical conservatories (CBN).
   - Three stages: a biotope map, a vegetation-physiognomy map, and a habitat map made by crossing the two. EUNIS and Habitat-Directive correspondences are set by expert judgement.
   - About 91% of mainland France and Corsica is mapped, across 88 departments, per the 2026 programme page — [CarHab programme page](https://www.ecologie.gouv.fr/politiques-publiques/carhab-programme-cartographie-nationale-predictive-habitats-naturels); [CarHab methodology](https://www.ecologie.gouv.fr/sites/default/files/documents/Me%CC%81thodologie_CarHab.pdf); [CBN Brest CarHab sheet](https://www.cbnbrest.fr:/geonetwork/srv/api/records/b4ab7106-5626-4a2c-b1ac-e3653eec479f/attachments/Fiche_carhab.pdf); [AMI CarHab](https://www.ecologie.gouv.fr/sites/default/files/AMI-utilisation_donnees_CarHab.pdf)
-  - This national figure contrasts with the team's established 3-of-5-department availability for Normandy. If Eure or Orne are published before 12 Nov, pistes H and B gain coverage.
+  - This national figure contrasts with the 3-of-5-department availability in our data inventory for Normandy. If Eure or Orne are published before 12 Nov, pistes H and B gain coverage.
 
-### Inferences
+### Our reading
 - **Piste G overlay:**
   - Candidate = MPH (forte/très forte) ∩ (RPG arable crop codes, i.e. not permanent or temporary grassland) ∪ (MPH ∩ OCS GE artificial classes).
   - Restorability score = probability class + current use (temporary grassland > arable > artificial unsealed > sealed, which is very low) + adjacency to existing protected or inventoried sites + flood-zone overlap + parcel or cluster size.
@@ -194,16 +194,16 @@ Both questions are overlay problems. (Potential wetlands) ∩ (crops or artifici
 - **CarHab pre-processing:** do it once. Use pyogrio/ogr2ogr to write GeoParquet with only the HIC code, probability and geometry. This should cut the 3.4 GB Manche archive drastically; budget 1–2 days for the three departments.
 - **Optional:** use prioritizr to propose the smallest set of additional cells that reaches the targets (§1).
 
-### Gaps
+### Open points
 - No published CarHab accuracy metrics and no quantified MPH over-estimation were found.
 - Whether a newer national wetland pre-localisation has been released (2023–2026) was not verified (dataset searching was out of scope).
 
-## 5. Indicator frameworks for human–nature interactions (P2): DPSIR / pressure–state–response, ONB design rules, EFESE, normalisation, composite pitfalls
+## 5. Indicator frameworks for human–nature interactions (P2)
 
-### Takeaway
+### In short
 Tag every indicator with DPSIR/PSR so it is explicitly a driver or pressure (negative interaction), a state, or a response (positive interaction or good practice). Document each indicator ONB-style: definition, source, scale, update frequency and limits. Normalise by the denominator that matches the mechanism: utilised agricultural area (UAA) for farm pressures, area for land take, km of river for obstacles, inhabitants for public spending. Prefer trends and distance-to-target over raw levels to "value good practices". Do not rely on one opaque composite.
 
-### Cited Findings
+### Sources
 - DPSIR (Drivers–Pressures–State–Impact–Response) was developed by the EEA in 1999 from the OECD's Pressure–State–Response model. It provides a structure for presenting indicators that feed back to policy-makers — [EEA, Environmental indicators: typology and overview (TEC25)](https://www.eea.europa.eu/publications/TEC25/download); [DPSIR overview](https://en.wikipedia.org/wiki/DPSIR)
 - **ONB (Observatoire national de la biodiversité):**
   - Coordinated by OFB with the SDES. It reports on the state and trends of biodiversity, the pressures and the responses.
@@ -215,10 +215,10 @@ Tag every indicator with DPSIR/PSR so it is explicitly a driver or pressure (neg
 - **COP régionales (ecological planning):**
   - Launched in September 2023 to produce regional action plans. The SGPE and CGDD are consolidating a national monitoring dashboard — [Banque des Territoires](https://www.banquedesterritoires.fr/planification-ecologique-une-circulaire-organise-le-deploiement-territorial); [COP Normandie document](https://www.prefectures-regions.gouv.fr/normandie/normandie/normandie/irecontenu/telechargement/112182/840566/file/2023%2012%2015_COP-regionales_Normandie_valide-1.pdf)
   - Biodiversity was mostly treated in a siloed "natural resources" group rather than as a cross-cutting issue — [Iddri 2024](https://iddri.org/sites/default/files/PDF/Publications/Catalogue%20Iddri/Propositions/202412-PB0624-planification%20ecologique.pdf)
-  - The 2025 COP season was refocused on climate adaptation (PNACC), per a Prime Minister's instruction of April 2025 as summarised in search results. The exact source page was not opened; likely [Banque des Territoires, "acte 2 des COP régionales"](https://www.banquedesterritoires.fr/territorialisation-de-la-planification-ecologique-les-modalites-de-lacte-2-des-cop-regionales-sont)
+  - The 2025 COP season was refocused on climate adaptation (PNACC), per a Prime Minister's instruction of April 2025 as reported in press summaries. The exact source page was not opened; likely [Banque des Territoires, "acte 2 des COP régionales"](https://www.banquedesterritoires.fr/territorialisation-de-la-planification-ecologique-les-modalites-de-lacte-2-des-cop-regionales-sont)
 - Composite-index pitfalls (normalisation, the meaning of weights, robustness): see §1 — [OECD/JRC Handbook](https://www.oecd.org/en/publications/handbook-on-constructing-composite-indicators-methodology-and-user-guide_9789264043466-en.html); [Munda & Nardo](https://publications.jrc.ec.europa.eu/repository/handle/JRC31473)
 
-### Inferences
+### Our reading
 - **Proposed P2 indicator grid (each tagged with DPSIR, unit, normalisation and scale):**
   - *Negative interactions (pressures):*
     - NAF consumption (Cerema; ha/yr per 1,000 ha)
@@ -253,14 +253,14 @@ Tag every indicator with DPSIR/PSR so it is explicitly a driver or pressure (neg
   - Per km of river for continuity.
   - Ratios of sums (not means of ratios) when aggregating communes to EPCI.
 
-### Gaps
+### Open points
 - The exact ONB indicator selection-criteria text was not retrieved.
 - The Région's list of 68 COP indicators and its EPCI-level availability were not retrieved (out of scope here). This is critical for piste D.
 - No EFESE indicator list was retrieved.
 
-## 6. Data-quality pitfalls: occurrence sampling bias, MAUP / ecological fallacy, vintage mismatch, predictive habitat maps, statistical secrecy, postcode→commune mapping, commune vs EPCI
+## 6. Data-quality pitfalls
 
-### Takeaway
+### In short
 The biggest credibility risks are:
 1. Mapping observer effort instead of biodiversity (GBIF/OpenObs).
 2. Mixing vintages and definitions (OCS GE vintage offsets; NAF consumption vs artificialisation).
@@ -270,7 +270,7 @@ The biggest credibility risks are:
 
 Each has a cheap, explainable mitigation, and showing those mitigations is itself a jury argument.
 
-### Cited Findings
+### Sources
 - **Occurrence sampling bias:**
   - Records cluster near roads, cities, protected sites and research institutions — [Conservation (MDPI) 2026](https://www.mdpi.com/2673-7159/6/2/40)
   - Bias correction often requires filtering that reduces record numbers — [Ecological Indicators 2022 (HAL INRAE)](https://hal.inrae.fr/hal-03833433/document)
@@ -294,7 +294,7 @@ Each has a cheap, explainable mitigation, and showing those mitigations is itsel
   - A resolution proposing to put it on the AN agenda was filed on 29 Jan 2026. A competing cross-party bill to keep the ZAN course was filed in May 2025.
   - No AN vote or promulgation was found — [Banque des Territoires](https://www.banquedesterritoires.fr/trajectoire-de-reduction-de-lartificialisation-feu-vert-du-senat-pour-un-nouveau-round); [Acteurs publics](https://acteurspublics.fr/articles/le-senat-adopte-le-remplacement-du-zan-par-une-trajectoire-de-reduction-de-lartificialisation-le-senat-adopte-lassouplissement-du-zero-artificialisation-nette/); [AN resolution l17b2411](https://www.assemblee-nationale.fr/dyn/17/textes/l17b2411_proposition-resolution.pdf); [Banque des Territoires, competing bill](https://www.banquedesterritoires.fr/zero-artificialisation-nette-une-proposition-de-loi-lassemblee-en-contre-pied-du-texte-vote-au)
 
-### Inferences
+### Our reading
 - **GBIF/OpenObs:**
   1. Never map raw species richness. Publish "records per cell" as an explicit effort layer.
   2. Compute ignorance scores per taxonomic group, and restrict hotspot claims to cells with G < 0.5.
@@ -316,17 +316,17 @@ Each has a cheap, explainable mitigation, and showing those mitigations is itsel
 - **Predictive maps:** show probability classes, run results at two thresholds, and label CarHab-dependent outputs "pilote 3 départements".
 - **ZAN:** present the Climat & Résilience −50% reference trajectory with a visible note that TRACE could modify it. Do not present EPCI "compliance" verdicts.
 
-### Gaps
+### Open points
 - A possible RPG structural change around 2015 (îlots vs parcelles) was not verified here. Check it before any 2010–2025 grassland trend.
 - The degree of GBIF/OpenObs duplication was not verified.
 - No primary source was retrieved for the "target-group background" bias-correction method; only a patent text surfaced.
 
-## 7. Sober web stack and RGESN: static site, MapLibre GL + PMTiles, tippecanoe, DuckDB-WASM, Parquet/GeoParquet, H3 or 1 km pre-aggregation, typical sizes; demonstrating sobriety to the jury
+## 7. A sober web stack, and how to show it to the jury (RGESN)
 
-### Takeaway
+### In short
 The recommended stack is fully static: HTML/JS + MapLibre GL JS + PMTiles vector tiles (built offline with tippecanoe) + small precomputed JSON/Parquet tables on static hosting. It is serverless, transfers little data, needs little maintenance, and works for every piste. DuckDB-WASM is optional and should load only on an "explorer" page. Demonstrate sobriety with an RGESN 2024 self-declaration (official template) plus measured EcoIndex, page weight and request counts, and a documented data-transfer budget per session.
 
-### Cited Findings
+### Sources
 - **PMTiles:**
   - A single-file tile archive. Readers use HTTP range requests to fetch only the tiles they need, with no tile server ("serverless").
   - It is read-only: updating means rewriting the file. The spec is at v3.
@@ -352,7 +352,7 @@ The recommended stack is fully static: HTML/JS + MapLibre GL JS + PMTiles vector
   - Reference implementation: [GreenIT-Analysis ecoIndex.js](https://github.com/cnumr/GreenIT-Analysis/blob/master/script/ecoIndex.js). The Lighthouse "Green IT" plugin adds a flat +10 points — [plugin README](https://unpkg.com/lighthouse-plugin-green-it@2.0.1/README.md)
 - MapLibre math expressions make client-side reweighting possible (§1) — [MapLibre style spec](https://maplibre.org/maplibre-style-spec/expressions/)
 
-### Inferences
+### Our reading
 - **Reference architecture, common to all pistes:**
   1. *Offline pipeline (laptop, run once):*
      - Python (pyogrio, GeoPandas, shapely 2) + DuckDB spatial ≥1.3, plus optional R for riverconn, prioritizr and graph4lg.
@@ -386,18 +386,18 @@ The recommended stack is fully static: HTML/JS + MapLibre GL JS + PMTiles vector
   6. Test on an old phone or low bandwidth (RGESN objective 1, device lifespan).
   7. Open code and data so a public body can re-run it.
 
-### Gaps
+### Open points
 - The current DuckDB-WASM bundle size (with spatial) was not verified. An unverified secondary page quoted ~2.5 MB brotli WASM for an older synchronous build. Measure in devtools.
 - GitHub Pages support for byte-range requests was not confirmed by a primary source; test with the pmtiles viewer.
 - MapLibre GL JS bundle size was not checked.
 - Which 1 km grid (INSPIRE LAEA or a Lambert-93 national grid) the Cerema land-take series uses was not verified.
 
-## 8. Which pistes are realistic in 3.5 weeks, and what is the minimal convincing demo for each?
+## 8. Feasibility in 3.5 weeks and minimal demo per piste
 
-### Takeaway
+### In short
 The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) and I (what concrete ate)**. Each rests on single-overlay or single-table logic, has a strong policy hook (ZAN, the Nature Restoration Regulation, SNAP) and produces a small web payload. **K** is technically easy but should be a citizen front-end on top of another piste. **Medium:** B, C (scoped), D (15–20-indicator subset), F (if a river network is available), H (3-department pilot), E, J (as an add-on), L (arithmetic scenarios only). **Low:** M and N. Every MVP should follow the demo script "question → map → explain this score → actionable list/export → sobriety page".
 
-### Cited Findings
+### Sources
 - **Policy hooks that strengthen a "decision-support" pitch:**
   - Draft National Restoration Plans were due 1 Sept 2026, with the 25,000 km free-flowing rivers target — [Garrigues](https://www.garrigues.com/en_GB/new/eu-bolsters-nature-restoration-here-new-legislative-framework-2030-and-2050)
   - Pacte haie: +50,000 km net by 2030 — [Banque des Territoires](https://www.banquedesterritoires.fr/le-gouvernement-presente-un-pacte-pour-planter-50000-km-de-nouvelles-haies-dici-2030)
@@ -410,7 +410,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - Cerema's method for ranking artificialised spaces for renaturation — [Cerema](https://www.cerema.fr/fr/print/pdf/node/15052)
 - **Method and data facts used in the cards below:** see §1–§7. Key ones are the DuckDB spatial-join performance ([DuckDB](https://duckdb.org/2025/08/08/spatial-joins)), the MPH 1:100,000 limits ([Notice MPH](https://geosas.fr/metadata/pdf/Notice_MPH_France-1.pdf)), Cerema grid totals being lower than commune totals ([Cerema](https://doc-datafoncier.cerema.fr/doc/export/505)), the BNV-D limits ([SDES](https://www.statistiques.developpement-durable.gouv.fr/media/9573/download?inline)), the ROE "Indéterminée" heights ([ROE manual](https://www.eaufrance.fr/sites/default/files/2019-04/roe-referentiel-des-obstacles-a-l-ecoulement-manuel-d-utilsation.pdf)) and the Omniscape and Graphab cost levers ([Omniscape](https://docs.circuitscape.org/Omniscape.jl/latest/usage/); [Graphab](https://thema.umlp.fr/productions/software/graphab/en/home.html)).
 
-### Inferences
+### Our reading
 
 #### Planning assumptions (all pistes)
 - **Calendar:** 17 Oct → 12 Nov 2026 at noon is about 26 days. 11 Nov is a public holiday in France. Plan a code and data freeze on 9–10 Nov and keep 11 Nov for packaging.
@@ -448,7 +448,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - 3 fact-sheets for top sites.
   - A methods page with a sensitivity chart.
 - **Effort:** ~10–13 pd.
-- **Feasibility hint: HIGH.** Main risk: EPF attribute completeness and the credibility of the weights (mitigate with visible contributions and sensitivity analysis).
+- **Feasibility: HIGH.** Main risk: EPF attribute completeness and the credibility of the weights (mitigate with visible contributions and sensitivity analysis).
 
 #### B. Multi-criteria restoration priority map per 1 km cell or commune (stakes × degradation × opportunity)
 - **Method and tooling:**
@@ -470,7 +470,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - "Explain this cell" popup and an EPCI summary.
   - Robustness map.
 - **Effort:** ~15–20 pd, plus 3–5 pd for the prioritizr bonus.
-- **Feasibility hint: MEDIUM.** Main risk: heterogeneous coverage and vintages plus indicator redundancy undermining credibility (cap at ≤9 well-documented criteria).
+- **Feasibility: MEDIUM.** Main risk: heterogeneous coverage and vintages plus indicator redundancy undermining credibility (cap at ≤9 well-documented criteria).
 
 #### C. Normandy bocage over 70 years: loss, fragmentation/connectivity, resilient communes, planting targeting
 - **Method and tooling:**
@@ -493,7 +493,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - A Pacte haie gauge (km needed to reach a target density).
   - One Graphab case study, optional.
 - **Effort:** ~15–22 pd, or ~12–16 pd without the Graphab pilot.
-- **Feasibility hint: MEDIUM.** Main risk: multi-source temporal comparability and topology cleaning (keep the 70-year story sample-based).
+- **Feasibility: MEDIUM.** Main risk: multi-source temporal comparability and topology cleaning (keep the 70-year story sample-based).
 
 #### D. Biodiversity bulletin per EPCI built on the Région's 68 COP ecological-planning indicators (+ others)
 - **Method and tooling:**
@@ -512,7 +512,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - A regional overview map.
   - A methodology appendix that maps the 68 COP indicators to their status.
 - **Effort:** ~13–18 pd.
-- **Feasibility hint: MEDIUM** (HIGH for a 15–20-indicator subset; LOW for all 68). Main risk: EPCI-level availability of the COP indicators.
+- **Feasibility: MEDIUM** (HIGH for a 15–20-indicator subset; LOW for all 68). Main risk: EPCI-level availability of the COP indicators.
 
 #### E. Water × agriculture pressure–impact by river basin
 - **Method and tooling:**
@@ -532,7 +532,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - Station drill-down with the latest indices.
   - A caveat panel.
 - **Effort:** ~14–18 pd.
-- **Feasibility hint: MEDIUM-LOW.** Main risk: spurious pressure–impact relations driven by spatial and temporal mismatches.
+- **Feasibility: MEDIUM-LOW.** Main risk: spurious pressure–impact relations driven by spatial and temporal mismatches.
 
 #### F. River continuity: prioritise obstacle removal
 - **Method and tooling:** use the "km reconnected if removed" ΔDCI proxy weighted by height class, migratory-fish relevance and WFD status (riverconn in R, or igraph in Python). Add taux d'étagement and taux de fractionnement where heights are known, and a greedy "remove top N" scenario (§3).
@@ -549,7 +549,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - "Top N" scenario.
   - Framing against the NRR 25,000 km target.
 - **Effort:** ~13–17 pd, of which 5–8 pd for the network.
-- **Feasibility hint: MEDIUM.** Main risk: building a clean river network and the incompleteness of ROE heights and passability.
+- **Feasibility: MEDIUM.** Main risk: building a clean river network and the incompleteness of ROE heights and passability.
 
 #### G. Restorable wetlands: potential wetlands now under crops or artificial land
 - **Method and tooling:**
@@ -568,7 +568,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - Top-20 low-regret clusters with fact-sheets.
   - "Non-regulatory pre-localisation" disclaimer.
 - **Effort:** ~8–11 pd.
-- **Feasibility hint: HIGH.** Main risk: over-interpretation of the MPH model at parcel scale and social acceptability.
+- **Feasibility: HIGH.** Main risk: over-interpretation of the MPH model at parcel scale and social acceptability.
 
 #### H. Blind spots of protection: gap analysis of probable HIC habitats and protected-species hotspots outside protected areas
 - **Method and tooling:**
@@ -587,7 +587,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - Map of unprotected hotspots in well-sampled cells.
   - Uncertainty toggles.
 - **Effort:** ~13–16 pd, including 3–5 pd for CarHab pre-processing.
-- **Feasibility hint: MEDIUM.** Main risk: partial CarHab coverage and predictive uncertainty, compounded by sampling bias.
+- **Feasibility: MEDIUM.** Main risk: partial CarHab coverage and predictive uncertainty, compounded by sampling bias.
 
 #### I. "What concrete ate": recent artificialisation over hedges, grasslands, ZNIEFF, wetlands; losses per EPCI vs the ZAN trajectory
 - **Method and tooling:**
@@ -605,7 +605,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - Change map and methods page.
   - Optional link to A: "brownfield hectares available vs hectares consumed".
 - **Effort:** ~11–13 pd.
-- **Feasibility hint: HIGH.** Main risk: vintage and definition mismatches, plus ZAN legal uncertainty (present it as a "reference trajectory").
+- **Feasibility: HIGH.** Main risk: vintage and definition mismatches, plus ZAN legal uncertainty (present it as a "reference trajectory").
 
 #### J. Coherence of public action: needs × efforts matrix per EPCI
 - **Method and tooling:**
@@ -621,7 +621,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - Interactive needs-vs-efforts scatter and quadrant map.
   - EPCI drill-down with explicit coverage caveats.
 - **Effort:** ~7–10 pd if B or D exists; otherwise add 10–15 pd.
-- **Feasibility hint: MEDIUM-LOW (standalone) / MEDIUM (as an add-on to B or D).** Main risk: incomplete effort data producing misleading judgements.
+- **Feasibility: MEDIUM-LOW (standalone) / MEDIUM (as an add-on to B or D).** Main risk: incomplete effort data producing misleading judgements.
 
 #### K. Citizen interface "Ma commune et sa nature"
 - **Method and tooling:**
@@ -634,7 +634,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - Scope creep.
 - **MVP:** commune search → a page with 8–10 indicators, a mini-map and a "compare with similar communes" panel.
 - **Effort:** ~6–10 pd on top of an indicator piste.
-- **Feasibility hint: HIGH technically / LOW as a standalone entry.** Main risk: limited decision value and misinterpretation, so pair it with A, C, D, G or I.
+- **Feasibility: HIGH technically / LOW as a standalone entry.** Main risk: limited decision value and misinterpretation, so pair it with A, C, D, G or I.
 
 #### L. Scenario simulator ("what if" hedges planted / brownfields renatured → connectivity and land-take indicators)
 - **Method and tooling:**
@@ -650,7 +650,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - UI complexity.
 - **MVP:** two sliders ("ha renatured", "km planted") with instant indicator changes per EPCI or commune, plus one pilot connectivity case.
 - **Effort:** ~6–8 pd (arithmetic only) or ~12–18 pd with the connectivity pilot, on top of A or C.
-- **Feasibility hint: MEDIUM (arithmetic) / LOW (connectivity).** Main risk: non-additive connectivity metrics and their compute cost.
+- **Feasibility: MEDIUM (arithmetic) / LOW (connectivity).** Main risk: non-additive connectivity metrics and their compute cost.
 
 #### M. Coast & Seine estuary pressures
 - **Method and tooling:**
@@ -663,7 +663,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - Wide scope.
 - **MVP:** coastal-strip dashboard of 6–8 indicators plus a habitat-loss map for the 3 departments.
 - **Effort:** ~12–18 pd.
-- **Feasibility hint: LOW.** Main risk: missing coastal and marine pressure data within the established inventory.
+- **Feasibility: LOW.** Main risk: missing coastal and marine pressure data within the established inventory.
 
 #### N. Horses & grasslands (equine sector as a driver of grassland/bocage maintenance)
 - **Method and tooling:** correlate equine density (only if open data exist) with permanent-grassland share and trends (RPG 2010–2025) and hedge density per commune or canton, and build a typology of grassland systems.
@@ -674,7 +674,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
   - Possible RPG structural break around 2015 (to verify, §6).
 - **MVP:** commune-level permanent-grassland map and trend (feasible regardless), with the equine overlay only if data are found.
 - **Effort:** ~6–10 pd, plus the data risk.
-- **Feasibility hint: LOW.** Main risk: equine data availability and causal attribution. Better folded into C or I as a "grassland" sub-story.
+- **Feasibility: LOW.** Main risk: equine data availability and causal attribution. Better folded into C or I as a "grassland" sub-story.
 
 #### Suggested combinations for a 2–5 person team
 - **"Renaturer sans artificialiser"** = I + A + L (arithmetic), with an optional K front-end. It answers P1 (where to renature: brownfields) and P2 (negative interaction: land take; positive: renaturation) and shares one stack. ≈ 30–40 pd including the shared base. This is the best feasibility-to-impact ratio.
@@ -682,7 +682,7 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
 - **"Bocage"** = C (scoped) + L (hedge arithmetic) + K. ≈ 30–40 pd.
 - **"Intégrateur"** = B with presets + J as a quadrant add-on. ≈ 30–35 pd; higher credibility risk.
 
-### Gaps
+### Open points
 - Feasibility depends on attributes not profiled here: EPF field completeness, the share of ROE heights known, availability of a hydrographic network and catchment polygons, equine data, and EPCI-level availability of the 68 COP indicators.
-- No information was found on the jury's detailed scoring grid beyond the brief (sobriety and feasibility explicitly scored).
+- No information was found on the jury's detailed scoring grid beyond the organisers' published brief (sobriety and feasibility explicitly scored).
 - The effort estimates are expert inferences, not benchmarks. Validate them against a one-day spike on the riskiest step of the chosen piste: the hedge overlay for C, CarHab pre-processing for H, the river network for F.

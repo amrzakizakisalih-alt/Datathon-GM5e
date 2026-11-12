@@ -1,6 +1,6 @@
 # Pressions humaines sur la biodiversité : jeux de données nationaux et européens utilisables en Normandie
 
-Périmètre : jeux de données ouverts produits par des organismes nationaux (IGN, Cerema, MTE/Géorisques/BRGM/INERIS, RTE/ODRÉ, INSEE, Météo-France) ou européens (EEA, Copernicus). Les jeux déjà connus de l'équipe sont exclus (CORINE Land Cover, RPG, haies IGN, friches et consommation foncière EPF Normandie, Phytatmo). Vérifications faites le 17/10/2026, via l'API data.gouv.fr, le flux de téléchargement IGN (data.geopf.fr) et des appels directs à l'API Géorisques.
+Périmètre : jeux de données ouverts produits par des organismes nationaux (IGN, Cerema, MTE/Géorisques/BRGM/INERIS, RTE/ODRÉ, INSEE, Météo-France) ou européens (EEA, Copernicus). Les jeux que nous utilisons déjà sont exclus (CORINE Land Cover, RPG, haies IGN, friches et consommation foncière EPF Normandie, Phytatmo). Vérifications faites le 17/10/2026, via l'API data.gouv.fr, le flux de téléchargement IGN (data.geopf.fr) et des appels directs à l'API Géorisques.
 
 ## Tableau de synthèse (13 jeux retenus et vérifiés, plus 2 signalés)
 
@@ -24,10 +24,10 @@ Périmètre : jeux de données ouverts produits par des organismes nationaux (IG
 
 ## 1. Artificialisation et consommation d'espace
 
-### Takeaway
+### À retenir
 En octobre 2026, la Normandie est entièrement couverte par OCS GE v2.0 (2 millésimes et une couche de changements par département) et par CoSIA (3 millésimes, sauf l'Orne qui en a 2). La série Cerema CONSOENAF fournit des flux annuels de consommation d'ENAF à la commune et au carreau de 1 km, de 2011 à 2025. Ces trois jeux forment le socle quantitatif de la pression d'artificialisation. Copernicus HRL Imperviousness 2024 (10 m) apporte une vision comparable au reste de l'Europe.
 
-### Cited Findings
+### Sources
 - Le flux de téléchargement IGN (paramètre `zone=`) liste, pour **OCS GE v2.0** : Calvados D014 millésimes 2020 et 2023, plus DIFF-2020-2023 (publiée le 17/04/2025) ; Eure D027 2019 et 2022, plus DIFF-2019-2022 (12/06/2025) ; Manche D050 2019 et 2022, plus DIFF (10/03/2025) ; Orne D061 2020 et 2023, plus DIFF (12/03/2025) ; Seine-Maritime D076 2019 et 2022, plus DIFF (12/06/2025). Tous en GPKG Lambert-93 — [data.geopf.fr OCSGE](https://data.geopf.fr/telechargement/resource/OCSGE?zone=D014)
 - Le même flux liste, pour **CoSIA v1.0** : D014 2020, 2023 et 2026 ; D027 2019, 2022 et 2025 ; D050 2019, 2022 et 2025 ; D061 2020 et 2023 seulement ; D076 2019, 2022 et 2025. Tous en GPKG Lambert-93 — [data.geopf.fr COSIA](https://data.geopf.fr/telechargement/resource/COSIA?zone=D050)
 - OCS GE est décrite comme un « référentiel national » d'occupation du sol à 2 dimensions (couverture et usage), utilisé pour piloter l'artificialisation au sens de la loi Climat et Résilience (art. L.101-2-1 du code de l'urbanisme) ; licence Ouverte 2.0 ; fiche mise à jour le 15/10/2026. Des services WMS/WMTS existent pour les couches ARTIF 2016-2017 à 2024-2026, ainsi que des couches « ARTIFICIALISATION-EXEMPTIONS » — [data.gouv OCS GE Artificialisation](https://www.data.gouv.fr/datasets/ocs-ge-artificialisation) ; [data.gouv OCS GE](https://www.data.gouv.fr/datasets/ocs-ge)
@@ -37,24 +37,24 @@ En octobre 2026, la Normandie est entièrement couverte par OCS GE v2.0 (2 mill�
 - BD TOPO v3.5 : description vectorielle 3D de précision métrique (thèmes bâti, transport, hydrographie, occupation du sol, services et activités, zones réglementées) ; mise à jour trimestrielle ; dernière MAJ 07/10/2026 ; licence Ouverte 2.0 ; téléchargement par département ou par région (SHP, GPKG, SQL) — [data.gouv BD TOPO](https://www.data.gouv.fr/datasets/bd-topo-r)
 - Copernicus HRL Imperviousness : les produits suivants sont catalogués sur l'API CLMS : Imperviousness Density 2024 (10 m et 100 m), Impervious Built-Up 2024, Imperviousness Change 2021-2024 (20 m et 100 m) et Imperviousness Change Classified 2021-2024 — [CLMS Imperviousness Density 2024](https://land.copernicus.eu/api/en/products/high-resolution-layer-imperviousness/imperviousness-density-2024). Le millésime 2021 a introduit une méthode U-Net et une couche de changement du bâti 2018-2021 — [CLMS news HRL IMD 2021](https://land.copernicus.eu/en/news/product-update-high-resolution-layer-imperviousness-2021)
 
-### Inferences
+### Notre lecture
 - Pour le problème 1 (restauration), la couche OCS GE DIFF donne directement les polygones artificialisés entre deux millésimes, environ 3 ans d'écart, à grande échelle. CONSOENAF donne une série longue et homogène (2011-2025) à la commune ou au carreau de 1 km, adaptée à un indicateur de politique publique (problème 2).
 - Les millésimes ne sont pas synchronisés : Eure, Manche et Seine-Maritime sont en 2019/2022, Calvados et Orne en 2020/2023. Une comparaison régionale doit tenir compte de ce décalage d'un an.
 - BD TOPO (tronçons de route et de voie ferrée, bâti) permet de calculer des indicateurs de fragmentation, comme la taille effective de maille (effective mesh size) ou la densité de routes par maille.
 - CoSIA sert d'indicateur complémentaire de densité de surfaces imperméables et de serres, au 20 cm d'origine. C'est une prédiction IA, avec des erreurs à prendre en compte.
 
-### Gaps
+### Points ouverts
 - Urban Atlas (Copernicus) non vérifié. Il ne couvre de toute façon que les aires urbaines fonctionnelles (Caen, Rouen, Le Havre, Cherbourg…), pas toute la région.
 - Volumes des GPKG OCS GE et CoSIA par département non mesurés.
-- La nécessité d'un compte EU Login pour télécharger les HRL Copernicus n'a pas été vérifiée lors de cette session (c'était le cas jusqu'ici d'après les connaissances antérieures).
+- La nécessité d'un compte EU Login pour télécharger les HRL Copernicus n'a pas été vérifiée (c'était le cas jusqu'ici, à confirmer).
 - Le portail artificialisation.developpement-durable.gouv.fr n'a pas été consulté directement. Les données Cerema passent par data.gouv.fr.
 
 ## 2. Industrie et pollution
 
-### Takeaway
+### À retenir
 Géorisques expose en open data, sans clé (testé le 17/10/2026), les ICPE soumises à autorisation ou enregistrement, les sites et sols pollués (CASIAS, SSP/ex-BASOL, SIS), le registre IREP et l'éolien terrestre. Tout est accessible par téléchargement CSV, par WFS ou par une API REST interrogeable par code INSEE. L'équivalent européen est la base Industrial Reporting de l'EEA (IED et E-PRTR, 2007-2024). Pour les stations d'épuration, aucun jeu national unique à jour n'a été trouvé.
 
-### Cited Findings
+### Sources
 - La page « Bases de données » de Géorisques liste 18 bases, dont : CASIAS (CSV) ; Éolien terrestre (parcs et éoliennes, avec le cycle de vie du parc) ; Installations industrielles (ICPE soumises à autorisation ou enregistrement, en fonctionnement ou en cessation) ; Installations industrielles rejetant des polluants (IREP) ; SIS (MAJ quotidienne, CSV) ; Sites et sols pollués (ex-BASOL). Des services WMS/WFS sont proposés sur https://georisques.gouv.fr/services. Un bandeau signale : « Dans un contexte d'attaque informatiques, des restrictions d'accès pour certaines localisations géographiques sont appliquées » — [Géorisques bases de données](https://www.georisques.gouv.fr/donnees/bases-de-donnees)
 - IREP : « mis à jour 2 fois par an » ; données par année, à l'échelle nationale, dans un zip de 8 fichiers (émissions, établissements, prélèvements, rejets, production et traitement de déchets dangereux et non dangereux) ; source INERIS ; couverture métropole, Corse et DROM ; « Date de dernière mise à jour décembre 2024 » — [Géorisques IREP](https://www.georisques.gouv.fr/donnees/bases-de-donnees/installations-industrielles-rejetant-des-polluants)
 - Test de l'API `https://georisques.gouv.fr/api/v1/installations_classees?code_insee=14118` (Caen), sans clé : 47 résultats. Champs renvoyés : raisonSociale, codeNaf, longitude/latitude, bovins/porcs/volailles/carriere/eolienne/industrie (booléens), statutSeveso, ied, regime, serviceAIOT (« DREAL Normandie »), siret — [API Géorisques](https://georisques.gouv.fr/api/v1/installations_classees?code_insee=14118)
@@ -65,101 +65,101 @@ Géorisques expose en open data, sans clé (testé le 17/10/2026), les ICPE soum
 - EEA « Industrial Reporting under the IED 2010/75/EU and E-PRTR Regulation (EC) No 166/2006 » : la version la plus récente couvre 2007-01-01 à 2024-12-31 (métadonnées datées du 25/09/2026). Contenu : localisation et données administratives des grands complexes industriels, rejets et transferts de polluants, transferts de déchets, données des grandes installations de combustion (LCP) — [EEA SDI record](https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/9405f714-8015-4b5b-a63c-280b82861b3d) ; [EEA Industrial emissions portal](https://industry.eea.europa.eu/industrial-emissions/dataset)
 - Stations d'épuration : le jeu data.gouv « Assainissement » est en réalité un jeu de la DDTM de l'Eure (STEU et zones de traitement), moissonné et daté du 15/11/2024. La couche STEU de l'Eure intègre la conformité 2024 au titre de 2023. Ces données proviennent du portail d'information sur l'assainissement communal (référentiel ERU) — [data.gouv Assainissement](https://www.data.gouv.fr/datasets/assainissement) ; [STEU de l'Eure](https://data.gouv.fr/en/datasets/les-stations-de-traitement-des-eaux-usees-de-leure)
 
-### Inferences
+### Notre lecture
 - Pour une pression industrielle par maille, on peut combiner la densité d'ICPE (API, avec filtres Seveso, IED et élevages) et les tonnages IREP par milieu (air et eau). L'E-PRTR de l'EEA permet de comparer avec d'autres régions européennes. Le chevauchement entre IREP et E-PRTR est important : il faut dédoublonner.
 - Le champ booléen `carriere` de l'API ICPE permet d'extraire les carrières autorisées en Normandie, ce qui répond en partie au besoin « extraction ».
 - Les élevages ICPE (bovins, porcs, volailles) peuvent servir de proxy de la pression agricole intensive, ponctuelle.
 - Les restrictions géographiques d'accès à Géorisques peuvent gêner des participants situés hors de France ou derrière certains VPN.
 
-### Gaps
+### Points ouverts
 - Le portail national de l'assainissement communal (ROSEAU / « assainissement.developpement-durable.gouv.fr ») n'a pas pu être consulté : la page testée renvoie une 404. Pas de lien vérifié vers un export national des STEU avec leur conformité ERU.
 - Le volume de la base IREP et le millésime de données le plus récent (2023 ou 2024) ne sont pas confirmés. La fiche indique « décembre 2024 » comme dernière mise à jour, ce qui est peut-être obsolète par rapport à une MAJ semestrielle.
 - La licence exacte des fichiers EEA Industrial Reporting n'a pas été extraite.
 
 ## 3. Extraction et énergie
 
-### Takeaway
+### À retenir
 Les installations de production d'électricité (éolien, photovoltaïque au sol, hydraulique…) sont couvertes par le registre national ODRÉ/RTE (au 31/08/2026), localisé à la commune, et par la base Éolien terrestre de Géorisques. Pour les carrières, aucun jeu national dédié n'a été trouvé : les données sont soit régionales (DREAL), soit à extraire de l'ICPE Géorisques (champ `carriere`).
 
-### Cited Findings
+### Sources
 - « Registre national des installations de production et de stockage d'électricité (au 31/08/2026) », organisation Open Data Réseaux Énergies, licence Ouverte 2.0, mis à jour le 13/10/2026. Exports CSV et JSON par l'API Opendatasoft — [data.gouv registre ODRÉ](https://www.data.gouv.fr/datasets/5bfcc5a006e3e744e304ccf0)
 - RTE produit ce registre (art. L142-9-1 du code de l'énergie) à partir des données transmises par les gestionnaires de distribution. Millésimes précédents : 31/12/2023, 31/12/2024, 31/12/2025 et 30/06/2026. Un CSV d'environ 42 Mo est signalé — [data.gouv registre 30/06/2026](https://www.data.gouv.fr/datasets/registre-national-des-installations-de-production-et-de-stockage-delectricite-au-30-06-2026) ; [registre 31/12/2025](https://www.data.gouv.fr/datasets/69c4af4e5c9f9567df414fc6)
 - Géorisques diffuse une base « Eolien terrestre » : parcs éoliens avec leur cycle de vie, et éoliennes composant chaque parc — [Géorisques bases de données](https://www.georisques.gouv.fr/donnees/bases-de-donnees)
 - Les recherches data.gouv sur « carrières » ne renvoient que des jeux régionaux ou locaux (Bretagne, Bourgogne-Franche-Comté, Île-de-France, Hauts-de-France, Cantal…), pas de jeu national — [data.gouv recherche « carrières »](https://www.data.gouv.fr/datasets/carrieres-actives-definies-par-le-schema-regional-des-carrieres-de-bretagne)
 
-### Inferences
+### Notre lecture
 - Le registre ODRÉ est localisé à la commune, pas au point. Pour localiser précisément les parcs éoliens, mieux vaut utiliser Géorisques (éoliennes en points). Pour les parcs solaires au sol, il faut croiser avec OCS GE ou CoSIA, ou avec la BD TOPO (thème « services et activités »).
 - Pour les carrières, l'option nationale reste l'API ICPE (`carriere=true`). Les couches DREAL Normandie (schéma régional des carrières) sont hors périmètre « national » mais complémentaires.
 
-### Gaps
-- Pas de jeu national open data dédié aux carrières (BRGM, schémas régionaux) vérifié dans cette session.
+### Points ouverts
+- Pas de jeu national open data dédié aux carrières (BRGM, schémas régionaux) vérifié.
 - Pas de jeu national vérifié qui donne l'emprise surfacique des parcs photovoltaïques au sol.
 
 ## 4. Pollution lumineuse
 
-### Takeaway
+### À retenir
 Aucun jeu national français de pollution lumineuse en open data couvrant la Normandie n'a été trouvé. Sur data.gouv, les produits existants sont locaux ou régionaux (Métropole du Grand Paris, Occitanie, Bretagne, Aix-Marseille). Les sources satellitaires globales exigent un compte (NASA Black Marble) ou sont sous licence non commerciale avec formulaire de demande (World Atlas, Falchi et al., 2016).
 
-### Cited Findings
+### Sources
 - Les recherches « pollution lumineuse » et « trame noire » sur data.gouv ne renvoient que des jeux locaux ou régionaux : Métropole du Grand Paris (radiance, indice NSB), modélisation de la pollution lumineuse en Occitanie, trame noire en Bretagne, Aix-Marseille-Provence — [data.gouv modélisation pollution lumineuse Occitanie](https://www.data.gouv.fr/datasets/modelisation-de-la-pollution-lumineuse-en-occitanie) ; [Trame noire en Bretagne](https://www.data.gouv.fr/datasets/trame-noire-en-bretagne-atlas-cartographiques)
 - NASA Black Marble (VNP46, VJ146) : composites de lumière nocturne quotidiens, mensuels et annuels, au format HDF5, archivés sur LAADS DAAC. Le téléchargement automatisé (blackmarblepy) nécessite un jeton LAADS (compte Earthdata) — [NASA Earthdata Black Marble](https://www.earthdata.nasa.gov/data/projects/black-marble) ; [blackmarblepy PyPI](https://pypi.org/project/blackmarblepy)
 - New World Atlas of Artificial Night Sky Brightness : GeoTIFF d'environ 2,9 Go à 30 secondes d'arc. Licence CC BY-NC 4.0 depuis novembre 2019. Accès FTP sur formulaire de demande — [B2FIND record](https://b2find.eudat.eu/dataset/df8cd562-df6a-51bf-ad64-7421cf8c8623) ; [GFZ press](https://www.gfz.de/en/press/news/details/new-atlas-of-light-pollution)
 
-### Inferences
+### Notre lecture
 - Pour la Normandie, la voie la plus réaliste est d'utiliser les composites annuels VIIRS (Black Marble VNP46A4, ou EOG VNL). Les comptes nécessaires sont gratuits mais obligatoires : c'est à signaler comme « pas totalement open ». Le World Atlas peut servir à des fins non commerciales, ce qui est acceptable pour un datathon, sous réserve de la licence NC.
 
-### Gaps
+### Points ouverts
 - Les produits de La Nuit est Belle, AVEX et Cerema (trame noire nationale) n'ont pas été vérifiés. Aucun jeu national ouvert n'a été trouvé sur data.gouv.
 - Les conditions d'accès d'EOG (Colorado School of Mines, VIIRS Nighttime Lights) n'ont pas été vérifiées. Une inscription est probablement requise.
 
 ## 5. Pression liée aux transports
 
-### Takeaway
+### À retenir
 Les TMJA du réseau routier national non concédé sont ouverts (SHP et CSV, millésimes 2019, 2022, 2023 et 2024). Ils ne couvrent ni les autoroutes concédées ni les routes départementales. Pour la densité de réseau, la BD TOPO (thème transport) est la référence. Aucun jeu national ouvert de collisions faune-véhicules n'a été trouvé.
 
-### Cited Findings
+### Sources
 - TMJA : moyenne annuelle du nombre de véhicules par jour, tous sens confondus, généralement accompagnée d'un pourcentage de poids lourds, par section (nom de route, longueur, coordonnées de début et de fin). Ressources : TMJA_RRNc_2024 (SHP 2,2 Mo, CSV 0,2 Mo), 2023, 2022 et 2019. Licence Ouverte ; MAJ 18/08/2025 — [data.gouv TMJA](https://www.data.gouv.fr/datasets/trafic-moyen-journalier-annuel-sur-le-reseau-routier-national)
 - La DIR Nord-Ouest publie un bilan des trafics 2024 sur son réseau national (environ 1 000 km, 11 départements, environ 150 capteurs) — [DIRNO bilan trafic 2024](https://www.dir.nord-ouest.developpement-durable.gouv.fr/IMG/pdf/20251106_bilan_trafic_2024_dirno.pdf)
 - Une recherche « collisions faune » sur data.gouv ne donne aucun résultat (0 jeu) — [data.gouv](https://www.data.gouv.fr/datasets/?q=collisions%20faune)
 
-### Inferences
+### Notre lecture
 - Pour une pression routière régionale complète, on peut pondérer la densité de tronçons BD TOPO par importance (attribut nature et importance) et utiliser le TMJA seulement là où il existe. Le suffixe « RRNc » des fichiers indique le réseau non concédé : les grandes autoroutes normandes concédées (A13, A28, A29, A84 partiellement) n'ont pas de TMJA dans ce jeu.
 
-### Gaps
+### Points ouverts
 - Pas de données ouvertes de trafic sur les autoroutes concédées (SANEF, ALIS, etc.) ni sur le réseau départemental national vérifiées.
 - Pas de données nationales ouvertes sur les collisions avec la faune (l'OFB et les réseaux de naturalistes ont des données, mais elles ne sont pas ouvertes au niveau national d'après cette recherche).
 
 ## 6. Pression touristique et récréative
 
-### Takeaway
+### À retenir
 L'INSEE publie en open data (Licence Ouverte 2.0) les capacités d'hébergement touristique à la commune (millésime 2026) et la fréquentation des hébergements. C'est un proxy simple de la pression touristique, notamment sur le littoral normand.
 
-### Cited Findings
+### Sources
 - « Capacités d'hébergements touristiques » (INSEE) : nombre d'établissements, de chambres, de lits et d'emplacements de camping, par type (hôtels, campings, autres) et par nombre d'étoiles ; niveaux géographiques de la commune à la région ; annuel ; couverture 2026 ; MAJ 09/10/2026 ; CSV via l'API Melodi — [data.gouv INSEE capacités](https://www.data.gouv.fr/datasets/capacites-dhebergements-touristiques)
 - « Fréquentation des hébergements touristiques » (INSEE), MAJ 04/10/2026, Licence Ouverte 2.0 — [data.gouv INSEE fréquentation](https://www.data.gouv.fr/datasets/frequentation-des-hebergements-touristiques)
 
-### Inferences
+### Notre lecture
 - Un ratio lits touristiques / habitants ou lits par km² à la commune est un indicateur direct de pression saisonnière, utile pour le problème 2. La fréquentation n'est probablement pas disponible à la commune (secret statistique), ce qui n'a pas été vérifié.
 
-### Gaps
+### Points ouverts
 - Granularité spatiale de la fréquentation non vérifiée.
 - Pas de jeu national ouvert de fréquentation des espaces naturels trouvé.
 
 ## 7. Changement climatique et exposition côtière
 
-### Takeaway
+### À retenir
 L'indicateur national de l'érosion côtière du Cerema couvre tout le littoral normand mais date de 2018. DRIAS fournit les projections climatiques régionalisées, avec un accès probablement soumis à inscription.
 
-### Cited Findings
+### Sources
 - Indicateur national de l'érosion côtière (Cerema) : évolution de la position du trait de côte sur au moins 50 ans, en métropole et dans 5 DROM. Fiche datée du 28/06/2018 ; licence « non précisée » sur data.gouv ; téléchargement SHP sur Géolittoral — [data.gouv indicateur érosion](https://www.data.gouv.fr/datasets/indicateur-national-de-lerosion-cotiere-1)
 - L'indicateur est produit au 1/100 000 à partir de traits de côte relevés sur photos aériennes. Les traits récents viennent de photos de 2005-2014, les anciens de photos de 1920-1957 — [Cerema, spécifications techniques](https://www.geolittoral.developpement-durable.gouv.fr/IMG/pdf/specif-tech-carto-indicateur-erosion.pdf) ; [data.gouv durée analysée](https://www.data.gouv.fr/datasets/duree-analysee-pour-levolution-du-trait-de-cote-1)
 - DRIAS met à disposition des projections climatiques régionalisées (IPSL, CERFACS, CNRM-GAME). Fiche data.gouv sous Licence Ouverte (fr-lo), mise à jour le 29/04/2024 — [data.gouv DRIAS](https://www.data.gouv.fr/datasets/drias-projections-climatiques-pour-ladaptation-de-nos-societes)
 
-### Inferences
+### Notre lecture
 - Pour le problème 1, l'érosion côtière peut pondérer la priorité de restauration des habitats littoraux (dunes, marais arrière-littoraux), mais les données sont anciennes : les traits de côte ont plus de 10 ans.
 - Les couches Géorisques « Retrait-gonflement des argiles 2026 » et « Zonages inondation 2026 » ne sont pas des pressions sur la biodiversité au sens strict, mais elles existent et sont récentes.
 
-### Gaps
-- Les modalités d'accès DRIAS (compte, format NetCDF, grille 8 km) n'ont pas été vérifiées dans cette session.
+### Points ouverts
+- Les modalités d'accès DRIAS (compte, format NetCDF, grille 8 km) n'ont pas été vérifiées.
 - Les données Météo-France ouvertes (meteo.data.gouv.fr) n'ont pas été vérifiées.
 - L'existence d'une mise à jour de l'indicateur national d'érosion postérieure à 2018 n'a pas été vérifiée.
