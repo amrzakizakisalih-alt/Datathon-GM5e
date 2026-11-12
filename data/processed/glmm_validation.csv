@@ -1,0 +1,68 @@
+theme;test;mesure;valeur;lecture
+Convergence;origine 2019, GLMM;R-hat maximal / acceptation de η;1.011 / 88 %;R-hat < 1,05 attendu
+A posteriori;origine 2019, GLMM;médianes σ_u / σ_v / σ_ε (5e-95e);0.53 (0.43-0.64) / 0.72 (0.37-1.57) / 0.19 (0.11-0.27);
+Convergence;origine 2019, GLMM, a priori σ_v plus serré;R-hat maximal / acceptation de η;1.012 / 88 %;R-hat < 1,05 attendu
+A posteriori;origine 2019, GLMM, a priori σ_v plus serré;médianes σ_u / σ_v / σ_ε (5e-95e);0.53 (0.43-0.64) / 0.57 (0.33-1.03) / 0.19 (0.11-0.27);
+Convergence;origine 2020, GLMM;R-hat maximal / acceptation de η;1.016 / 88 %;R-hat < 1,05 attendu
+A posteriori;origine 2020, GLMM;médianes σ_u / σ_v / σ_ε (5e-95e);0.52 (0.42-0.64) / 0.61 (0.33-1.28) / 0.18 (0.12-0.24);
+Convergence;origine 2020, GLMM, a priori σ_v plus serré;R-hat maximal / acceptation de η;1.016 / 88 %;R-hat < 1,05 attendu
+A posteriori;origine 2020, GLMM, a priori σ_v plus serré;médianes σ_u / σ_v / σ_ε (5e-95e);0.52 (0.42-0.64) / 0.51 (0.31-0.91) / 0.18 (0.12-0.24);
+Convergence;origine 2021, GLMM;R-hat maximal / acceptation de η;1.022 / 88 %;R-hat < 1,05 attendu
+A posteriori;origine 2021, GLMM;médianes σ_u / σ_v / σ_ε (5e-95e);0.51 (0.42-0.61) / 0.52 (0.3-1.05) / 0.18 (0.12-0.23);
+Convergence;origine 2021, GLMM, a priori σ_v plus serré;R-hat maximal / acceptation de η;1.022 / 88 %;R-hat < 1,05 attendu
+A posteriori;origine 2021, GLMM, a priori σ_v plus serré;médianes σ_u / σ_v / σ_ε (5e-95e);0.51 (0.42-0.61) / 0.47 (0.29-0.82) / 0.18 (0.12-0.23);
+Facteur K;bootstrap, évaluation sur l'origine 2019;K appris sur les deux autres;1.33;
+Facteur K;bootstrap, évaluation sur l'origine 2020;K appris sur les deux autres;1.26;
+Facteur K;bootstrap, évaluation sur l'origine 2021;K appris sur les deux autres;1.31;
+Facteur K;GLMM, évaluation sur l'origine 2019;K appris sur les deux autres;0.68;
+Facteur K;GLMM, évaluation sur l'origine 2020;K appris sur les deux autres;0.69;
+Facteur K;GLMM, évaluation sur l'origine 2021;K appris sur les deux autres;0.73;
+Facteur K;GLMM, a priori σ_v plus serré, évaluation sur l'origine 2019;K appris sur les deux autres;0.67;
+Facteur K;GLMM, a priori σ_v plus serré, évaluation sur l'origine 2020;K appris sur les deux autres;0.69;
+Facteur K;GLMM, a priori σ_v plus serré, évaluation sur l'origine 2021;K appris sur les deux autres;0.69;
+Épreuve;origine 2019 : bootstrap;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;+2.3 % / 22 % / 25 % / 85 % / 1.11 / 1.31 / 15.9;
+Épreuve région;origine 2019 : bootstrap;observé / fourchette / dedans / CRPS;22,529 / 11,765 à 35,848 / oui / 8.0;
+Épreuve;origine 2020 : bootstrap;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;-4.1 % / 20 % / 23 % / 83 % / 1.03 / 1.35 / 15.1;
+Épreuve région;origine 2020 : bootstrap;observé / fourchette / dedans / CRPS;18,330 / 10,930 à 25,852 / oui / 6.4;
+Épreuve;origine 2021 : bootstrap;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;-10.2 % / 23 % / 25 % / 83 % / 1.19 / 1.37 / 15.8;
+Épreuve région;origine 2021 : bootstrap;observé / fourchette / dedans / CRPS;14,111 / 8,538 à 18,652 / oui / 7.0;
+Épreuve;origine 2019 : GLMM;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;+16.9 % / 25 % / 27 % / 100 % / 3.21 / 3.61 / 24.7;
+Épreuve région;origine 2019 : GLMM;observé / fourchette / dedans / CRPS;22,529 / 11,162 à 88,636 / oui / 18.7;
+Épreuve;origine 2020 : GLMM;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;+5.3 % / 23 % / 26 % / 100 % / 2.55 / 2.62 / 19.6;
+Épreuve région;origine 2020 : GLMM;observé / fourchette / dedans / CRPS;18,330 / 9,636 à 53,151 / oui / 12.7;
+Épreuve;origine 2021 : GLMM;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;-3.2 % / 23 % / 25 % / 100 % / 2.16 / 1.99 / 17.3;
+Épreuve région;origine 2021 : GLMM;observé / fourchette / dedans / CRPS;14,111 / 6,906 à 32,020 / oui / 9.5;
+Épreuve;origine 2019 : GLMM, a priori σ_v plus serré;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;+9.1 % / 23 % / 26 % / 100 % / 2.07 / 2.14 / 19.1;
+Épreuve région;origine 2019 : GLMM, a priori σ_v plus serré;observé / fourchette / dedans / CRPS;22,529 / 12,265 à 55,197 / oui / 11.9;
+Épreuve;origine 2020 : GLMM, a priori σ_v plus serré;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;+1.0 % / 22 % / 22 % / 100 % / 1.86 / 1.80 / 16.9;
+Épreuve région;origine 2020 : GLMM, a priori σ_v plus serré;observé / fourchette / dedans / CRPS;18,330 / 10,057 à 38,056 / oui / 9.1;
+Épreuve;origine 2021 : GLMM, a priori σ_v plus serré;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;-3.7 % / 23 % / 25 % / 100 % / 1.77 / 1.59 / 16.5;
+Épreuve région;origine 2021 : GLMM, a priori σ_v plus serré;observé / fourchette / dedans / CRPS;14,111 / 7,596 à 25,964 / oui / 8.1;
+Épreuve;origine 2019 : bootstrap, élargi;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;+1.4 % / 22 % / 25 % / 93 % / 1.45 / 1.51 / 17.1;
+Épreuve région;origine 2019 : bootstrap, élargi;observé / fourchette / dedans / CRPS;22,529 / 8,161 à 39,820 / oui / 10.4;
+Épreuve;origine 2020 : bootstrap, élargi;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;-4.1 % / 20 % / 23 % / 87 % / 1.29 / 1.44 / 15.7;
+Épreuve région;origine 2020 : bootstrap, élargi;observé / fourchette / dedans / CRPS;18,330 / 9,246 à 27,988 / oui / 7.8;
+Épreuve;origine 2021 : bootstrap, élargi;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;-10.4 % / 23 % / 25 % / 90 % / 1.56 / 1.47 / 16.4;
+Épreuve région;origine 2021 : bootstrap, élargi;observé / fourchette / dedans / CRPS;14,111 / 7,265 à 20,460 / oui / 8.1;
+Épreuve;origine 2019 : GLMM, élargi;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;+16.8 % / 25 % / 27 % / 82 % / 2.17 / 2.57 / 21.6;
+Épreuve région;origine 2019 : GLMM, élargi;observé / fourchette / dedans / CRPS;22,529 / 16,065 à 68,415 / oui / 14.5;
+Épreuve;origine 2020 : GLMM, élargi;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;+5.2 % / 23 % / 26 % / 87 % / 1.76 / 1.92 / 17.3;
+Épreuve région;origine 2020 : GLMM, élargi;observé / fourchette / dedans / CRPS;18,330 / 12,626 à 42,603 / oui / 8.9;
+Épreuve;origine 2021 : GLMM, élargi;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;-3.5 % / 23 % / 25 % / 97 % / 1.58 / 1.47 / 15.9;
+Épreuve région;origine 2021 : GLMM, élargi;observé / fourchette / dedans / CRPS;14,111 / 8,675 à 27,020 / oui / 7.0;
+Épreuve;origine 2019 : GLMM, a priori σ_v plus serré, élargi;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;+8.6 % / 23 % / 26 % / 86 % / 1.39 / 1.56 / 17.3;
+Épreuve région;origine 2019 : GLMM, a priori σ_v plus serré, élargi;observé / fourchette / dedans / CRPS;22,529 / 16,195 à 45,009 / oui / 8.5;
+Épreuve;origine 2020 : GLMM, a priori σ_v plus serré, élargi;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;+0.4 % / 22 % / 22 % / 90 % / 1.28 / 1.33 / 15.5;
+Épreuve région;origine 2020 : GLMM, a priori σ_v plus serré, élargi;observé / fourchette / dedans / CRPS;18,330 / 12,568 à 31,904 / oui / 6.3;
+Épreuve;origine 2021 : GLMM, a priori σ_v plus serré, élargi;biais région / WAPE / MdAPE / couverture 90 % / largeur relative / score d'intervalle / CRPS;-4.2 % / 23 % / 25 % / 93 % / 1.23 / 1.13 / 15.5;
+Épreuve région;origine 2021 : GLMM, a priori σ_v plus serré, élargi;observé / fourchette / dedans / CRPS;14,111 / 9,355 à 22,104 / oui / 5.8;
+Décision;GLMM contre bootstrap, élargi;épreuves gagnées (score d'intervalle et CRPS) / écart moyen de couverture à 90 % / score d'intervalle moyen / CRPS moyen;0 sur 3 / 10.0 contre 1.9 / 2.74 contre 1.47 / 20.5 contre 16.4;remplacement si 2 sur 3 au moins, sans couverture plus éloignée
+Décision;GLMM, élargi contre bootstrap, élargi;épreuves gagnées (score d'intervalle et CRPS) / écart moyen de couverture à 90 % / score d'intervalle moyen / CRPS moyen;0 sur 3 / 6.1 contre 1.9 / 1.99 contre 1.47 / 18.3 contre 16.4;remplacement si 2 sur 3 au moins, sans couverture plus éloignée
+Décision;GLMM, a priori σ_v plus serré contre bootstrap, élargi;épreuves gagnées (score d'intervalle et CRPS) / écart moyen de couverture à 90 % / score d'intervalle moyen / CRPS moyen;0 sur 3 / 10.0 contre 1.9 / 1.84 contre 1.47 / 17.5 contre 16.4;remplacement si 2 sur 3 au moins, sans couverture plus éloignée
+Décision;GLMM, a priori σ_v plus serré, élargi contre bootstrap, élargi;épreuves gagnées (score d'intervalle et CRPS) / écart moyen de couverture à 90 % / score d'intervalle moyen / CRPS moyen;2 sur 3 / 2.4 contre 1.9 / 1.34 contre 1.47 / 16.1 contre 16.4;remplacement si 2 sur 3 au moins, sans couverture plus éloignée
+Convergence;calibration 2017-2024, GLMM;R-hat maximal / acceptation de η;1.019 / 88 %;
+A posteriori;calibration 2017-2024;médianes σ_u / σ_v / σ_ε (5e-95e);0.47 (0.39-0.57) / 0.51 (0.34-0.87) / 0.17 (0.13-0.22);
+Projection 2035;labour cumulé en Normandie;GLMM / méthode actuelle;42,412 (28,730 à 66,782) / 40,262 (28,738 à 51,253);
+Projection 2035;médianes des EPCI, GLMM contre méthode actuelle;Spearman / rapport médian / plus grand écart relatif;0.995 / 1.05 / 23.84;
+Projection 2035;écart relatif des médianes EPCI;plus grand, tous EPCI / plus grand et médian, hors EPCI fragiles;23.84 (CC Coeur Côte Fleurie) / 1.30 et 0.04;
+Projection 2035;largeur relative des fourchettes EPCI;médiane GLMM brut / médiane actuelle / EPCI sous 1 pour le GLMM / pour l'actuelle;1.13 / 1.10 / 11 / 30;

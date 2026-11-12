@@ -1,0 +1,174 @@
+/* Maquette D : identité « atlas territorial ». Bleu pétrole structurant, fond minéral, terre cuite en accent.
+   Cette feuille ne change que l'apparence : la grille, les dimensions et les positions sont celles de la version
+   précédente (sauvegardée dans web/maquettes_avant_refonte_2026-11-11). Chargée après commun.css. */
+:root {
+  color-scheme: light;
+  --petrole: #243B50; --nuit: #192B39; --mineral: #F4F3EE; --casse: #FCFBF7; --terre: #B66B43; --ocre: #D9B96C;
+  --foret: #34473C; --pierre: #D8D7D0; --gris: #555A5C;
+  --titre: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --texte: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --chiffre: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  /* Rôles hérités de commun.css */
+  --plan: var(--mineral); --surface: var(--casse); --encre: #16242F; --encre2: var(--gris); --muet: #7C8183;
+  --grille: #E4E3DC; --axe: var(--pierre); --bord: var(--pierre); --survol: rgba(36, 59, 80, .06);
+  /* Données : terre cuite = mise en culture, bleu pétrole = construit, ocre et vert pour les scénarios */
+  --s1: #B66B43; --s1b: #E3C2AD; --s2: #243B50; --s2b: #A9B5BF; --s3: #34473C; --s4: #B8923A; --s5: #7A3F22;
+  --neutre: #B4B6B3; --hors: #DAD9D2;
+  --seq1: #F5E1D3; --seq2: #E6B798; --seq3: #D08B62; --seq4: #B66B43; --seq5: #743A1E; --mod: #B66B43;
+}
+body[data-c=beton] { --seq1: #E9ECEC; --seq2: #BFC8CD; --seq3: #8D9AA5; --seq4: #56687A; --seq5: #243B50; --mod: #56687A; }
+body[data-c=ocre] { --seq1: #F7EDCB; --seq2: #EAD292; --seq3: #D9B96C; --seq4: #A98838; --seq5: #6A5314; --mod: #B8923A; }
+body[data-c=vert] { --seq1: #E4EADF; --seq2: #BACBB7; --seq3: #87A48A; --seq4: #557A60; --seq5: #34473C; --mod: #557A60; }
+body[data-c=encre] { --mod: #243B50; }
+
+/* Grille inchangée */
+body.d { --gauche: clamp(400px, 31vw, 540px); display: grid; grid-template-columns: 96px var(--gauche) minmax(0, 1fr) 0; height: 100vh; overflow: hidden;
+  font: 400 15px/1.45 var(--texte); color: var(--encre); background: var(--mineral); }
+body.d.ouvert { grid-template-columns: 96px var(--gauche) minmax(0, 1fr) clamp(370px, 26vw, 460px); }
+
+/* ---------- typographie ---------- */
+.d h2 { font: 600 23px/1.15 var(--titre); letter-spacing: -.015em; color: var(--petrole); }
+.d h3 { display: flex; align-items: center; gap: 8px; font: 600 11.5px/1.3 var(--titre); letter-spacing: .09em; text-transform: uppercase; color: var(--gris); }
+.d h3::before { content: ""; flex: none; width: 7px; height: 7px; background: var(--mod); }
+.d .note { font-size: 13.5px; line-height: 1.45; color: var(--gris); }
+.d .note b { font-weight: 600; color: var(--encre); }
+.chapo { margin: 0; font-size: 16.5px; line-height: 1.42; color: var(--encre); }
+.chapo b { font: 500 .94em var(--chiffre); color: var(--petrole); white-space: nowrap; }
+.d button, .d select, .d input { font-family: var(--titre); }
+.d :focus-visible { outline: 2px solid var(--terre); outline-offset: 1px; }
+
+/* ---------- rail des six modules ---------- */
+.rail { display: flex; flex-direction: column; gap: 2px; padding: 10px 6px; background: var(--nuit); color: #E8E9E4; overflow: auto; }
+.rail .logo { padding: 6px 4px 14px; margin-bottom: 4px; border-bottom: 1px solid rgba(255, 255, 255, .14); font: 600 12.5px/1.25 var(--titre); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; color: #FCFBF7; text-align: center; }
+.rail .logo em { font-style: normal; color: var(--ocre); }
+.d .rail button { display: grid; justify-items: center; gap: 7px; padding: 11px 2px 10px; border: 0; border-left: 3px solid transparent; border-radius: 0; background: none; color: #AEB8BF; font: 500 11.5px/1.2 var(--titre); letter-spacing: .01em; text-align: center; }
+.d .rail button i { width: 18px; height: 18px; border-radius: 0; background: var(--c); box-shadow: none; outline: 1px solid rgba(255, 255, 255, .35); outline-offset: 2px; }
+.d .rail button:hover { background: rgba(255, 255, 255, .06); color: #FCFBF7; }
+.d .rail button[aria-selected=true] { background: var(--petrole); border-left-color: var(--terre); color: #FCFBF7; font-weight: 600; }
+.rail .bas { margin-top: auto; padding: 8px 2px 2px; font: 400 11px/1.3 var(--titre); text-align: center; }
+.rail .bas a { color: #AEB8BF; }
+
+/* ---------- panneaux ---------- */
+.panneau { overflow: auto; padding: 18px 18px 30px; background: var(--casse); border-right: 1px solid var(--pierre); display: grid; gap: 14px; align-content: start; }
+.panneau.detail { border-right: 0; border-left: 1px solid var(--pierre); box-shadow: -1px 0 0 rgba(36, 59, 80, .05), -8px 0 20px rgba(25, 43, 57, .07); padding-top: 12px; }
+body.d:not(.ouvert) .panneau.detail { display: none; }
+.panneau { overflow-x: hidden; }
+.panneau > * { min-width: 0; }
+.panneau section > select { width: 100%; }
+.bandeau { height: 5px; margin: -18px -18px 0; background: var(--petrole); box-shadow: inset 96px 0 0 var(--mod); }
+.detail .bandeau { margin-top: -12px; }
+.panneau section { padding-top: 12px; border-top: 1px solid var(--pierre); }
+.panneau section > h3 { margin-bottom: 10px; }
+.tete-detail { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: start; }
+.tete-detail button { border-radius: 2px; width: 30px; height: 30px; padding: 0; font-size: 17px; line-height: 1; }
+.raccourcis { display: flex; flex-wrap: wrap; gap: 6px; }
+.raccourcis button { border-radius: 2px; padding: 4px 11px; font-size: 12.5px; }
+.d .panneau button, .d .plan button { border: 1px solid var(--pierre); border-radius: 2px; background: var(--casse); color: var(--petrole); font-weight: 500; }
+.d .panneau button:hover, .d .plan button:hover { border-color: var(--petrole); }
+.d .panneau button[aria-pressed=true] { background: var(--petrole); border-color: var(--petrole); color: #FCFBF7; }
+.d select, .d input[type=search] { border: 1px solid var(--pierre); border-radius: 2px; background: var(--casse); color: var(--encre); font-size: 13.5px; }
+.d select:hover, .d select:focus { border-color: var(--petrole); }
+.d input[type=checkbox], .d input[type=radio] { accent-color: var(--petrole); }
+.panneau fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 0; }
+.panneau legend { padding: 0; margin-bottom: 6px; font: 600 11.5px/1.3 var(--titre); letter-spacing: .09em; text-transform: uppercase; color: var(--gris); }
+.panneau fieldset label { display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; gap: 7px; align-items: center; padding: 6px 6px; border-radius: 0; border-bottom: 1px solid var(--grille); cursor: pointer; font-family: var(--titre); font-size: 13.5px; }
+.panneau fieldset label:hover { background: var(--survol); }
+.panneau fieldset label em { font: 500 13px var(--chiffre); font-style: normal; color: var(--petrole); font-variant-numeric: tabular-nums; }
+.champs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.champs label { display: grid; gap: 3px; font: 500 12px var(--titre); color: var(--gris); }
+.total { margin: 0; padding: 10px 12px; border-radius: 0; border-left: 3px solid var(--mod); background: var(--mineral); font-size: 15px; }
+.total b { font: 500 .95em var(--chiffre); color: var(--petrole); }
+details > summary { cursor: pointer; color: var(--gris); font-family: var(--titre); font-size: 13px; }
+
+/* ---------- chiffres clés ---------- */
+/* Filets fins communs entre les tuiles, sans cadre décoratif autour de chacune */
+.d .tuiles { gap: 1px; padding: 1px; }
+.d .tuile { padding: 11px 12px 10px; border: 0; border-radius: 0; background: var(--casse); box-shadow: 0 0 0 1px var(--pierre); }
+.d .tuile .t-lab { font: 500 12px/1.3 var(--titre); color: var(--gris); }
+.d .tuile b { margin: 3px 0 2px; font: 500 19px/1.25 var(--chiffre); letter-spacing: -.03em; color: var(--petrole); font-variant-numeric: tabular-nums; }
+.d .tuile .t-sous { font-size: 12.5px; line-height: 1.35; color: var(--muet); }
+
+/* ---------- barres, graphiques, tableaux ---------- */
+.d .ligne-b { grid-template-columns: 190px minmax(40px, 1fr) 96px; font-family: var(--titre); font-size: 13px; }
+.d .ligne-b i { height: 12px; background: var(--grille); }
+.d .ligne-b u { border-radius: 0; }
+.d .ligne-b em { font: 500 12.5px var(--chiffre); color: var(--petrole); font-variant-numeric: tabular-nums; }
+.d .graphe .axe { font: 400 12px var(--chiffre); fill: var(--gris); }
+.d .graphe .etiq { font: 500 13.5px var(--chiffre); fill: var(--petrole); }
+.d .graphe .grille { stroke: var(--grille); }
+.d .graphe .ligne { stroke-width: 3; }
+.d .graphe .bande { opacity: .13; }
+.d .graphe .bout { stroke: var(--casse); }
+.d .graphe rect.f1b { rx: 0; }
+.d .leg { font: 400 12.5px/1.6 var(--titre); color: var(--gris); }
+.d .leg i, .d .legende i { border-radius: 0; }
+.d table.t { font-size: 13.5px; }
+.d table.t th, .d table.t td { border-bottom: 1px solid var(--grille); padding: 6px 8px; }
+.d table.t thead th { background: var(--casse); border-bottom: 1px solid var(--petrole); font: 600 11px/1.3 var(--titre); letter-spacing: .06em; text-transform: uppercase; color: var(--gris); }
+.d .panneau table.t th { white-space: normal; }
+.d .panneau table.t { table-layout: auto; overflow-wrap: anywhere; }
+.d table.t td:not(:first-child) { font: 400 13px var(--chiffre); color: var(--petrole); font-variant-numeric: tabular-nums; }
+.glossaire { margin: 0; display: grid; gap: 0; }
+.glossaire > div { padding: 8px 0; border-bottom: 1px solid var(--grille); }
+.glossaire dt { font: 600 13.5px var(--titre); color: var(--petrole); }
+.glossaire dd { margin: 2px 0 0; color: var(--gris); }
+
+/* ---------- carte : fond minéral, carroyage discret, contours nets ---------- */
+.plan { position: relative; min-width: 0; min-height: 0; background-color: var(--mineral);
+  background-image: linear-gradient(rgba(36, 59, 80, .055) 1px, transparent 1px), linear-gradient(90deg, rgba(36, 59, 80, .055) 1px, transparent 1px); background-size: 96px 96px; }
+.plan .carte-svg { position: absolute; inset: 58px 14px 56px; width: calc(100% - 28px); height: calc(100% - 114px); }
+.zone { stroke: rgba(25, 43, 57, .8); stroke-width: 1; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.zone:hover { stroke: var(--nuit); stroke-width: 2.6; }
+.zone.plat { fill: #FCFBF7; stroke: rgba(25, 43, 57, .55); }
+.zone.plat:hover { fill: #ECEBE4; }
+.contour-sel { stroke: var(--nuit); stroke-width: 3.2; vector-effect: non-scaling-stroke; }
+.flottant { position: absolute; padding: 7px 10px; background: var(--casse); border: 1px solid var(--pierre); border-radius: 2px; box-shadow: 0 1px 3px rgba(25, 43, 57, .12); }
+.recherche { top: 12px; left: 14px; display: flex; gap: 6px; align-items: center; width: min(360px, calc(100% - 28px)); border-left: 3px solid var(--petrole); }
+.d .recherche input { flex: 1; border: 0; background: none; font-size: 14px; padding: 3px 2px; }
+.recherche input:focus { outline: none; }
+.plan .legende { left: 14px; bottom: 12px; right: auto; max-width: calc(100% - 28px); font: 400 12px/1.5 var(--titre); color: var(--gris); font-variant-numeric: tabular-nums; }
+.plan .legende b { font-weight: 600; color: var(--petrole); }
+.d button.retour { top: 12px; right: 14px; }
+.retour[hidden] { display: none; }
+body.d .tip { border-radius: 2px; background: var(--nuit); color: #FCFBF7; font: 400 12.5px/1.4 var(--titre); padding: 7px 10px; }
+body.d .tip b { font-weight: 600; }
+body.d .tip span { font-family: var(--chiffre); font-size: 12px; color: #D6DBDD; }
+
+/* Villes repères : discrètes, lisibles sur toutes les teintes grâce au liseré clair */
+.reperes { pointer-events: none; }
+.reperes circle { fill: var(--casse); stroke: var(--nuit); }
+.reperes text { font-family: var(--titre); font-weight: 500; fill: var(--nuit); stroke: rgba(252, 251, 247, .85); paint-order: stroke; stroke-linejoin: round; }
+.sans-impression { margin: 0; }
+
+/* Impression : la fiche du territoire seule, sur une page */
+@media print {
+  body.d, body.d.ouvert { display: block; height: auto; overflow: visible; background: #fff; }
+  .rail, #module, .plan, .raccourcis, #fermer, .sans-impression, .tip { display: none !important; }
+  .panneau.detail { display: grid !important; border: 0; box-shadow: none; overflow: visible; padding: 0; background: #fff; }
+  .panneau section { break-inside: avoid; }
+}
+
+/* ---------- friches : forme et couleur par statut, jamais la couleur seule ---------- */
+.pt { stroke: #FCFBF7; stroke-width: 1; vector-effect: non-scaling-stroke; cursor: pointer; }
+.st-gr { fill: #3E6A4E; background: #3E6A4E; }
+.st-fc { fill: #B66B43; background: #B66B43; }
+.st-pm { fill: #D9B96C; background: #D9B96C; stroke: #8C7430; }
+.st-pe { fill: #FCFBF7; stroke: #555A5C; stroke-width: 1.6; background: #FCFBF7; outline: 2px solid #555A5C; outline-offset: -2px; }
+.pt.vu { stroke: var(--nuit); stroke-width: 3; }
+.puce { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; }
+.puce.carre { border-radius: 0; }
+.friche { padding: 10px 12px; border: 0; border-left: 3px solid var(--c, var(--mod)); border-bottom: 1px solid var(--pierre); border-radius: 0; background: var(--casse); }
+.friche:hover, .friche.vu { background: var(--mineral); }
+.friche h4 { margin: 0 0 3px; font: 600 14.5px/1.3 var(--titre); color: var(--petrole); }
+.friche .meta { display: flex; flex-wrap: wrap; gap: 2px 12px; color: var(--gris); font: 400 12.5px var(--titre); }
+.friche ul { margin: 6px 0 0; padding-left: 16px; font-size: 14px; }
+.friche .veille { margin: 6px 0 0; font-size: 13px; color: #8A4A2A; }
+.liste-friches { display: grid; gap: 0; border-top: 1px solid var(--pierre); }
+.zone-traj .f2 { fill: var(--s4); background: var(--s4); } .zone-traj .graphe .l2 { stroke: var(--s4); }
+
+@media (max-width: 980px) {
+  body.d, body.d.ouvert { display: block; height: auto; overflow: auto; }
+  .rail { flex-direction: row; flex-wrap: wrap; justify-content: center; } .rail .logo, .rail .bas { display: none; }
+  .rail button { grid-auto-flow: column; padding: 6px 9px; border-left: 0; } .rail button i { width: 12px; height: 12px; }
+  .plan { height: 70vh; }
+}

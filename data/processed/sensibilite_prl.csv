@@ -1,0 +1,33 @@
+theme;test;mesure;valeur;lecture
+Contrôle;total charrue toutes PP, écart au pipeline;ha;0.7;doit valoir environ 0
+Contrôle;total charrue anciennes, écart au pipeline;ha;-0.5;doit valoir environ 0
+Par année;2015 -> 2016;charrue / dont depuis PRL / part PRL;6045 / 1048 / 17.3 %;stock PRL 42870 ha, PPH 560892 ha
+Par année;2016 -> 2017;charrue / dont depuis PRL / part PRL;5707 / 886 / 15.5 %;stock PRL 39531 ha, PPH 560491 ha
+Par année;2017 -> 2018;charrue / dont depuis PRL / part PRL;2866 / 478 / 16.7 %;stock PRL 41376 ha, PPH 554264 ha
+Par année;2018 -> 2019;charrue / dont depuis PRL / part PRL;15951 / 1429 / 9.0 %;stock PRL 53233 ha, PPH 622919 ha
+Par année;2019 -> 2020;charrue / dont depuis PRL / part PRL;7960 / 1425 / 17.9 %;stock PRL 61331 ha, PPH 601766 ha
+Par année;2020 -> 2021;charrue / dont depuis PRL / part PRL;8193 / 1626 / 19.9 %;stock PRL 61655 ha, PPH 596642 ha
+Par année;2021 -> 2022;charrue / dont depuis PRL / part PRL;10644 / 1984 / 18.6 %;stock PRL 62304 ha, PPH 591812 ha
+Par année;2022 -> 2023;charrue / dont depuis PRL / part PRL;11898 / 2258 / 19.0 %;stock PRL 61387 ha, PPH 585116 ha
+Par année;2023 -> 2024;charrue / dont depuis PRL / part PRL;4087 / 0 / 0.0 %;stock PRL 0 ha, PPH 617876 ha
+Région;référence (moyenne 2015->2024);charrue toutes / anciennes, ha/an;8150 / 4920;
+Région;sans PRL (toutes années);charrue toutes, ha/an (écart);6913 (-15.2 %);
+Région;sans PRL (toutes années);charrue anciennes, ha/an (écart);4355 (-11.5 %);
+Région;sans PRL en 2023;charrue toutes, ha/an (écart);7899 (-3.1 %);
+Région;sans PRL en 2023;charrue anciennes, ha/an (écart);4854 (-1.3 %);
+Région;PPH seule chaque année depuis 2015;charrue anciennes, ha/an (écart);4063 (-17.4 %);
+Devenir;PRL de 2021, déclaré en 2022;répartition;PRL 91.6 %, PPH 3.9 %, culture 3.2 %, non déclaré 0.8 %, fourrage 0.3 %, autre 0.1 %, PT 0.1 %, gel 0.0 %;62304 ha
+Devenir;PPH de 2021, déclaré en 2022;répartition;PPH 96.5 %, culture 1.5 %, non déclaré 1.5 %, PRL 0.4 %, fourrage 0.1 %, autre 0.1 %, gel 0.0 %, PT 0.0 %;591812 ha
+Devenir;PRL de 2022, déclaré en 2023;répartition;PPH 94.0 %, culture 3.7 %, non déclaré 1.9 %, fourrage 0.3 %, autre 0.1 %, PT 0.0 %, gel 0.0 %;61387 ha
+Devenir;PPH de 2022, déclaré en 2023;répartition;PPH 93.0 %, non déclaré 5.0 %, culture 1.6 %, fourrage 0.2 %, autre 0.2 %, gel 0.0 %, PT 0.0 %;585116 ha
+Devenir;PPH de 2023, déclaré en 2024;répartition;PPH 97.3 %, non déclaré 1.9 %, culture 0.7 %, autre 0.1 %, fourrage 0.1 %, gel 0.0 %, PT 0.0 %;617876 ha
+Devenir;codes déclarés en 2023 sur les PRL de 2022;principaux;PPH 94.0 %, MIS 3.2 %, non déclaré 1.9 %, BTH 0.2 %, TRE 0.1 %, CPL 0.1 %, ORP 0.1 %, SNE 0.0 %;61387 ha
+Classement EPCI;toutes PP : référence vs sans PRL;Spearman / top 10 commun;0.983 / 9;69 EPCI
+Classement EPCI;toutes PP : référence vs sans PRL en 2023;Spearman / top 10 commun;0.998 / 10;
+Classement EPCI;anciennes : référence vs sans PRL;Spearman / top 10 commun;0.987 / 9;
+EPCI;part de la charrue venant de PRL;médiane / max;10.3 % / 31.9 %;CC du Pays Fertois et du Bocage Carrougien
+EPCI;part PRL la plus forte : CC du Pays Fertois et du Bocage Carrougien;part / charrue moyenne;31.9 % / 81 ha/an;
+EPCI;part PRL la plus forte : CC Côte Ouest Centre Manche;part / charrue moyenne;30.2 % / 230 ha/an;
+EPCI;part PRL la plus forte : CA Evreux Portes de Normandie;part / charrue moyenne;28.7 % / 13 ha/an;
+EPCI;part PRL la plus forte : CC Andaine - Passais;part / charrue moyenne;27.5 % / 236 ha/an;
+EPCI;part PRL la plus forte : CC de Villedieu Intercom;part / charrue moyenne;27.1 % / 177 ha/an;

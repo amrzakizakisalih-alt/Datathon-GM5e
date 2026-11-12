@@ -1,29 +1,32 @@
-"""Outils communs aux scripts : rattachement des objets aux communes et EPCI."""
-from pathlib import Path
+"""Outils communs aux scripts : rattachement des objets aux communes et EPCI, part d'un polygone en milieu humide."""
+import json
 
 
-def charger_communes(con, dossier):
-    """Crée la table `communes` avec les communes de tous les fichiers communes_XX.geojson.
+def part_mph(raster, geojson, x, y):
+    """Part des pixels d'un polygone en milieu potentiellement humide (classes 1 à 3), entre 0 et 1.
 
-    Tous les départements sont chargés : un objet d'un fichier départemental peut se trouver
-    dans une commune d'un autre département (limite de département, commune ayant changé de
-    département).
+    `raster` est le fichier MPH ouvert avec rasterio, `geojson` la géométrie en texte, (x, y) son point intérieur.
+    Dans ce raster, 0 veut dire « hors de l'enveloppe humide » et sert aussi de valeur « sans donnée ». On lit donc les
+    valeurs brutes : avec un tableau masqué, les pixels à 0 sortiraient du dénominateur et tout polygone touchant un
+    pixel humide vaudrait 100 %. Si aucun centre de pixel ne tombe dans le polygone, le pixel du point intérieur décide.
     """
-    fichiers = sorted(Path(dossier).glob("communes_*.geojson"))
-    if not fichiers:
-        raise FileNotFoundError(f"aucun fichier communes_*.geojson dans {dossier}")
-    requetes = " UNION ALL ".join(f"""
-        SELECT code AS insee, nom, codeEpci AS epci_code, json_extract_string(epci, '$.nom') AS epci_nom,
-               ST_Transform(geom, 'EPSG:4326', 'EPSG:2154', always_xy := true) AS geom
-        FROM ST_Read('{f.as_posix()}')""" for f in fichiers)
-    con.execute(f"CREATE TABLE communes AS {requetes}")
+    import rasterio.mask  # import local : les scripts sans raster n'ont pas besoin de rasterio
+
+    try:
+        dehors, _, fenetre = rasterio.mask.raster_geometry_mask(raster, [json.loads(geojson)], crop=True)
+        v = raster.read(1, window=fenetre)[~dehors]
+    except ValueError:  # polygone hors de l'emprise du raster
+        v = []
+    if len(v) == 0:
+        v = [next(raster.sample([(x, y)]))[0]]
+    return sum(1 for p in v if 1 <= p <= 3) / len(v)
 
 
 def rattacher_plus_proche(con, table, cle, point):
     """Rattache à la commune la plus proche les lignes de `table` sans commune.
 
     Ce sont les objets dont le point intérieur tombe hors des contours communaux simplifiés
-    de geo.api.gouv.fr : littoral, estrans, limite de la région. La table doit avoir les
+    de geo.api.gouv.fr : littoral, estrans, limites départementales. La table doit avoir les
     colonnes insee, epci_code et epci_nom. `point` est l'expression SQL du point de l'objet
     (alias t), et la table `communes` doit exister.
     """

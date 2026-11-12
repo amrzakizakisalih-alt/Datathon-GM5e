@@ -1,2 +1,13 @@
-__pycache__/
+.venv/
 data/raw/
+__pycache__/
+*.part
+data/validation/*
+!data/validation/LISEZ-MOI.md
+!data/validation/lecture.html
+# Documents des organisateurs, anciennes versions du site, archive reconstruisible
+contexte/
+archives/
+livrables/*.zip
+# Réglages locaux de l'éditeur
+.claude/

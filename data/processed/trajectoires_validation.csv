@@ -1,0 +1,38 @@
+theme;test;mesure;valeur;lecture
+Épreuve;apprend 2017-2019, prédit 2020-2024 : taux propre de l'EPCI;écart région / erreur absolue pondérée / erreur médiane EPCI;+4.3 % / 25 % / 31 %;
+Épreuve;apprend 2017-2019, prédit 2020-2024 : taux du profil;écart région / erreur absolue pondérée / erreur médiane EPCI;+5.3 % / 32 % / 32 %;
+Épreuve;apprend 2017-2019, prédit 2020-2024 : taux régional;écart région / erreur absolue pondérée / erreur médiane EPCI;+5.3 % / 30 % / 28 %;
+Épreuve;apprend 2017-2019, prédit 2020-2024 : taux rétréci vers le profil;écart région / erreur absolue pondérée / erreur médiane EPCI;-2.6 % / 21 % / 22 %;
+Épreuve;apprend 2017-2019, prédit 2020-2024 : taux rétréci, total régional conservé;écart région / erreur absolue pondérée / erreur médiane EPCI;+4.7 % / 21 % / 25 %;
+Épreuve;apprend 2017-2019, prédit 2020-2024 : fourchette à 90 % avant élargissement;EPCI dans la fourchette / région dedans;85 % / oui;observé 22,529 ha, fourchette 11,765 à 35,848
+Épreuve;apprend 2017-2020, prédit 2021-2024 : taux propre de l'EPCI;écart région / erreur absolue pondérée / erreur médiane EPCI;-1.9 % / 24 % / 28 %;
+Épreuve;apprend 2017-2020, prédit 2021-2024 : taux du profil;écart région / erreur absolue pondérée / erreur médiane EPCI;-1.2 % / 33 % / 27 %;
+Épreuve;apprend 2017-2020, prédit 2021-2024 : taux régional;écart région / erreur absolue pondérée / erreur médiane EPCI;-1.2 % / 31 % / 30 %;
+Épreuve;apprend 2017-2020, prédit 2021-2024 : taux rétréci vers le profil;écart région / erreur absolue pondérée / erreur médiane EPCI;-7.3 % / 21 % / 19 %;
+Épreuve;apprend 2017-2020, prédit 2021-2024 : taux rétréci, total régional conservé;écart région / erreur absolue pondérée / erreur médiane EPCI;-1.7 % / 20 % / 21 %;
+Épreuve;apprend 2017-2020, prédit 2021-2024 : fourchette à 90 % avant élargissement;EPCI dans la fourchette / région dedans;83 % / oui;observé 18,330 ha, fourchette 10,956 à 25,891
+Épreuve;apprend 2017-2021, prédit 2022-2024 : taux propre de l'EPCI;écart région / erreur absolue pondérée / erreur médiane EPCI;-6.9 % / 25 % / 31 %;
+Épreuve;apprend 2017-2021, prédit 2022-2024 : taux du profil;écart région / erreur absolue pondérée / erreur médiane EPCI;-6.3 % / 33 % / 31 %;
+Épreuve;apprend 2017-2021, prédit 2022-2024 : taux régional;écart région / erreur absolue pondérée / erreur médiane EPCI;-6.3 % / 33 % / 30 %;
+Épreuve;apprend 2017-2021, prédit 2022-2024 : taux rétréci vers le profil;écart région / erreur absolue pondérée / erreur médiane EPCI;-11.1 % / 23 % / 24 %;
+Épreuve;apprend 2017-2021, prédit 2022-2024 : taux rétréci, total régional conservé;écart région / erreur absolue pondérée / erreur médiane EPCI;-6.8 % / 22 % / 23 %;
+Épreuve;apprend 2017-2021, prédit 2022-2024 : fourchette à 90 % avant élargissement;EPCI dans la fourchette / région dedans;83 % / oui;observé 14,111 ha, fourchette 8,538 à 18,652
+Fourchettes;facteur d'élargissement des fourchettes EPCI;K;1.31;1 = aucune correction
+Fourchettes;facteur appris sans l'épreuve 1, vérifié sur elle;EPCI dans la fourchette élargie;93 %;objectif 90 %
+Fourchettes;facteur appris sans l'épreuve 2, vérifié sur elle;EPCI dans la fourchette élargie;87 %;objectif 90 %
+Fourchettes;facteur appris sans l'épreuve 3, vérifié sur elle;EPCI dans la fourchette élargie;90 %;objectif 90 %
+Contrôle;flux annuels 2021-2024 contre conso_2021_2025_ha;écart, ha;0.3;doit valoir environ 0
+Hypothèses;rythme de labour de la cohorte, 2017-2024;pente (points de % par an);-0.003;proche de 0 : pas de tendance nette, le rythme constant est défendable
+Sensibilité T1;calibration 2019-2024;labour cumulé 2035, ha (écart);43,627 (+8.4 %);
+Sensibilité T1;calibration 2017-2023, sans 2024, année basse;labour cumulé 2035, ha (écart);43,027 (+6.9 %);
+Sensibilité T1;sans les autres sorties;labour cumulé 2035, ha (écart);43,183 (+7.3 %);
+Sensibilité T1;labours de PRL exclus;labour cumulé 2035, ha (écart);36,136 (-10.2 %);
+Zones fragiles;zones reconnues : zones humides inventoriées, Natura 2000, ZNIEFF 1;part du labour / part du stock / rythme dedans / rythme dehors;7.4 % / 27.0 % / 0.24 % / 1.14 %;
+Zones fragiles;T2 avec zones reconnues : zones humides inventoriées, Natura 2000, ZNIEFF 1;labour cumulé 2035, ha (écart à T1);37,305 (-7.3 %);
+Zones fragiles;zones reconnues + milieux potentiellement humides;part du labour / part du stock / rythme dedans / rythme dehors;21.3 % / 42.4 % / 0.45 % / 1.22 %;
+Zones fragiles;T2 avec zones reconnues + milieux potentiellement humides;labour cumulé 2035, ha (écart à T1);31,838 (-20.9 %);
+Fiabilité EPCI;largeur relative de la fourchette T1 2035;médiane / min / max;1.10 / 0.44 / 6.26;
+Fiabilité EPCI;répartition;exploitable / indicative / fragile;30 / 31 / 10;
+T3;objectif : au plus 5 % de la cohorte labourés d'ici 2035;EPCI à effort nul / avec effort;5 / 66;
+F;EPCI ayant déjà dépassé l'enveloppe au 1/1/2025;nombre;15;
+F;EPCI atteignant l'enveloppe avant 2031 au rythme actuel;nombre;70;

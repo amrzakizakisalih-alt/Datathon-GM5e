@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ce que le béton et la charrue ont pris</title>
+<meta name="description" content="Pour les 71 intercommunalités normandes : les prairies anciennes qui disparaissent, sous la charrue et sous le béton, et les friches à rendre à la nature. Données ouvertes.">
+<!-- Polices de l'identité, hébergées avec le site (aucun service extérieur) : IBM Plex Sans (titres, interface),
+     Source Sans 3 (texte), IBM Plex Mono (chiffres). -->
+<link rel="stylesheet" href="polices/polices.css">
+<link rel="stylesheet" href="commun.css">
+<link rel="stylesheet" href="d.css">
+</head>
+<body class="d" data-c="terre">
+
+<nav class="rail" id="rail" aria-label="Modules"></nav>
+
+<aside class="panneau" id="module" aria-live="polite"></aside>
+
+<main class="plan">
+  <svg id="carte"></svg>
+  <div class="flottant recherche">
+    <input id="cherche" type="search" list="noms" placeholder="Chercher une intercommunalité" aria-label="Chercher une intercommunalité">
+    <datalist id="noms"></datalist>
+  </div>
+  <button class="flottant retour" id="retour" hidden>← Toute la Normandie</button>
+  <div class="flottant legende" id="legende"></div>
+</main>
+
+<aside class="panneau detail" id="detail" aria-live="polite"></aside>
+
+<script type="module">
+import { $, esc, fmt, charger, perimetre, frichesDe, pointsFriches, INDICATEURS, lire, ecrire, surChangement, carte, infobulles,
+  tuile, barres, tuilesCles, barresBilan, serieSvg, tableMilieux, blocFoncier, blocTrajectoires } from "./commun.js";
+
+infobulles();
+const D = await charger();
+// Repères : centre des principales villes (contours communaux de geo.api.gouv.fr), pour se situer sans fond de carte
+const REPERES = (await fetch("reperes.json").then(r => r.json()).catch(() => [])).map(v => { const [X, Y] = D.proj.p([v.lon, v.lat]); return { ...v, X, Y }; });
+const I = k => INDICATEURS.find(x => x.k === k);
+const MODULES = {
+  synthese: { n: "Synthèse", c: "terre", coul: "#B66B43", couches: ["perte_anciennes_pct_stock_an"] },
+  prairies: { n: "Prairies et charrue", c: "terre", coul: "#D08B62", couches: ["charrue_anciennes_ha_an", "perte_anciennes_pct_stock_an", "perte_pct_stock_an"] },
+  foncier: { n: "Béton et foncier", c: "beton", coul: "#8D9AA5", couches: ["beton_total_ha_an", "enveloppe_consommee_pct"] },
+  trajectoires: { n: "Trajectoires 2035", c: "ocre", coul: "#D9B96C", couches: ["t1_2035_pct_stock"] },
+  friches: { n: "Friches à rendre", c: "vert", coul: "#87A48A", couches: [] },
+  methode: { n: "Méthode et limites", c: "encre", coul: "#D8D7D0", couches: ["perte_anciennes_pct_stock_an"] },
+};
+// Friches : un statut = une couleur ET une forme
+const STATUTS = {
+  gain_rapide: { n: "À restaurer en priorité", cl: "st-gr", forme: "rond", d: "fort intérêt pour la nature et projet réalisable" },
+  fort_potentiel_contraintes: { n: "Intéressante mais difficile", cl: "st-fc", forme: "carre", d: "fort intérêt pour la nature, mais projet plus compliqué à mener" },
+  potentiel_modere: { n: "Intérêt écologique limité", cl: "st-pm", forme: "rond", d: "les autres friches sans projet" },
+  projet_engage: { n: "Déjà en projet", cl: "st-pe", forme: "rond", d: "une reconversion est en cours ou terminée" },
+};
+// Les mots de l'outil, expliqués pour qui n'a pas suivi le projet
+const GLOSSAIRE = [
+  ["Prairie ancienne", "Une prairie restée en herbe sans interruption depuis au moins 2015. C'est elle qui compte le plus pour la nature, l'eau et le carbone."],
+  ["Prairie récente", "Une prairie semée il y a quelques années, souvent en alternance avec des cultures. La remettre en culture est une pratique agricole courante."],
+  ["Mise en culture (la « charrue »)", "L'agriculteur déclare une culture (maïs, blé…) là où il déclarait une prairie l'année précédente."],
+  ["Construit (le « béton »)", "Un terrain devenu bâti, goudronné ou aménagé, d'après les photos aériennes de l'IGN."],
+  ["Terres urbanisées", "Les terres agricoles, naturelles ou forestières passées à l'urbanisation, d'après le cadastre. C'est la mesure utilisée par la loi « zéro artificialisation nette »."],
+  ["Repère national", "Urbaniser moitié moins de terres en 2021-2030 qu'en 2011-2020. La Région fixe à chaque territoire son propre objectif, qui peut être différent."],
+  ["Friche", "Un terrain bâti ou aménagé laissé à l'abandon, recensé par l'Établissement public foncier de Normandie."],
+  ["Note écologique", "De 0 à 100 : proximité d'un site naturel, présence d'eau, prairies autour, surface. Plus elle est haute, plus rendre la friche à la nature serait utile."],
+];
+const PRIORITES = { bio: ["Biodiversité", "score_biodiversite"], eau: ["Eau", "score_eau"], ville: ["Nature en ville", "score_ville"] };
+const SURFACES = [0, 0.1, 0.5, 1, 2, 5];  // 0 = toutes les friches cartographiées
+const puce = k => `<i class="puce ${STATUTS[k].cl}${STATUTS[k].forme === "carre" ? " carre" : ""}"></i>`;
+
+$("#rail").innerHTML = `<a class="logo" href="./">Béton <em>&amp;</em> Charrue</a>`
+  + Object.entries(MODULES).map(([k, m]) => `<button role="tab" data-m="${k}" style="--c:${m.coul}"><i></i>${m.n}</button>`).join("");
+$("#rail").onclick = e => { const b = e.target.closest("button"); if (b) ecrire({ m: b.dataset.m, i: "" }); };
+$("#noms").innerHTML = D.index.map(e => `<option value="${esc(e.nom)}">`).join("");
+$("#cherche").onchange = e => { const t = D.index.find(x => x.nom === e.target.value); if (t) { ecrire({ t: t.code }); e.target.value = ""; } };
+$("#retour").onclick = () => ecrire({ t: "", fr: "" });
+// Tout champ portant data-etat écrit sa valeur dans l'adresse ; les cases de statut s'écrivent ensemble
+$("#module").onchange = e => {
+  if (e.target.name === "statut") {
+    const on = [...document.querySelectorAll("#module input[name=statut]:checked")].map(x => x.value);
+    ecrire({ fs: on.length === Object.keys(STATUTS).length ? "" : on.join(",") || "aucun", fr: "" });
+  } else if (e.target.dataset.etat) ecrire({ [e.target.dataset.etat]: e.target.value });
+};
+$("#detail").onchange = e => { if (e.target.dataset.etat) ecrire({ [e.target.dataset.etat]: e.target.value }); };
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-aller]"); if (b) ecrire({ m: b.dataset.aller, i: "" });
+  if (e.target.closest("#fermer")) ecrire({ t: "", fr: "", c: "" });
+  if (e.target.closest("#imprimer")) print();
+});
+// Empreinte de la visite : octets réellement transférés par le navigateur
+function poids() {
+  const el = $("#poids"); if (!el) return;
+  const t = performance.getEntriesByType("navigation").concat(performance.getEntriesByType("resource")).reduce((a, x) => a + Math.max(x.transferSize || 0, x.encodedBodySize || 0), 0);
+  el.textContent = `${fmt(t / 1024, 0)} Ko`;
+}
+
+const filtreFriches = s => ({
+  st: new Set(s.fs == null ? Object.keys(STATUTS) : s.fs.split(",").filter(k => STATUTS[k])),
+  min: SURFACES.includes(+s.fm) ? +s.fm : 0, cle: PRIORITES[s.fp] ? s.fp : "bio",
+});
+// Phrase de conclusion : ce qu'il faut retenir avant tout chiffre
+function conclusion(d) {
+  const b = d.bilan, lieu = d.region ? "En Normandie" : "Ici";
+  if (!b.prairies_anciennes_perdues_ha_an) return `${lieu}, presque aucune prairie ancienne n'a disparu sur la période.`;
+  return b.part_beton_anciennes_haute_pct < 50
+    ? `${lieu}, <b>${fmt(b.prairies_anciennes_perdues_ha_an, 0)} hectares</b> de prairies anciennes disparaissent chaque année. Presque toutes sont remises en culture par l'agriculture : les constructions n'en expliquent que <b>${fmt(b.part_beton_anciennes_pct, 1)} à ${fmt(b.part_beton_anciennes_haute_pct, 1)} %</b>.`
+    : `${lieu}, <b>${fmt(b.prairies_anciennes_perdues_ha_an, 0)} hectares</b> de prairies anciennes disparaissent chaque année, et les constructions peuvent en expliquer jusqu'à <b>${fmt(b.part_beton_anciennes_haute_pct, 0)} %</b>.`;
+}
+const couches = (M, i) => M.couches.length > 1 ? `<fieldset><legend>Ce que montre la carte</legend>${M.couches.map((k, j) => `<label style="grid-template-columns:auto minmax(0,1fr)"><input type="radio" name="couche" data-etat="i" value="${j}"${j === i ? " checked" : ""}><span>${esc(I(k).n)}</span></label>`).join("")}</fieldset>` : "";
+const liste = a => `<ul style="margin:0;padding-left:18px;display:grid;gap:5px">${a.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
+
+/* ---------- panneau de gauche : le module, à l'échelle de la région ---------- */
+function panneauModule(m, M, R, s, i, friches) {
+  const tete = `<div class="bandeau"></div><h2>${M.n}</h2>`;
+  const def = `<p class="note"><b>Prairie ancienne</b> : restée en herbe sans interruption depuis au moins 2015. Tous les mots sont expliqués dans « Méthode et limites ».</p>`;
+  if (m === "synthese") return `${tete}<p class="chapo">${conclusion(R)}</p>${def}${tuilesCles(R)}
+    <section><h3>Ce qui fait disparaître les prairies</h3>${barresBilan(R)}</section>
+    <p class="note">Cliquer une intercommunalité sur la carte ouvre sa fiche à droite. Plus la couleur est foncée, plus le territoire perd vite ses prairies anciennes.</p>`;
+  if (m === "prairies") return `${tete}<p class="chapo">Chaque jour en Normandie, au moins <b>${fmt(R.charrue.charrue_anciennes_fenetre_ha_an / 365, 0)} hectares</b> de prairies anciennes sont remis en culture, et jusqu'à ${fmt(R.charrue.charrue_fenetre_ha_an / 365, 0)} en comptant les prairies plus récentes.</p>${def}
+    ${couches(M, i)}<section><h3>Année après année, en Normandie</h3>${serieSvg(R.serie, { l: 440, h: 230 })}</section>
+    <div class="tuiles">${tuile("Prairies anciennes mises en culture", `${fmt(R.charrue.charrue_anciennes_ha_an, 0)} ha par an`, "moyenne de 2015 à 2024")}${tuile("Sans les prairies en rotation", `${fmt(R.charrue.charrue_anciennes_sans_prl_ha_an, 0)} ha par an`, "estimation basse")}</div>`;
+  if (m === "foncier") return `${tete}<p class="chapo">Chaque année en Normandie, <b>${fmt(R.beton.beton_total_ha_an, 0)} hectares</b> de terrains sont construits ou aménagés, dont ${fmt(R.beton.beton_sur_pp_anciennes_ha_an, 0)} sur des prairies anciennes.</p>
+    ${couches(M, i)}<section><h3>Urbanisation : où en est-on ?</h3>${blocFoncier(R)}</section>`;
+  if (m === "trajectoires") return `${tete}<p class="chapo">Si rien ne change, <b>${fmt(R.trajectoires.prairies.on_laisse_faire.median.at(-1), 0)} hectares</b> de prairies anciennes de plus seront remis en culture en Normandie d'ici 2035.</p>
+    <section class="zone-traj"><h3>Trois scénarios pour la Normandie</h3>${blocTrajectoires(R, D.rg.trajectoires.hypotheses, { l: 440, h: 300 })}</section>
+    <p class="note">Sur la carte : la part des prairies anciennes qui serait remise en culture d'ici 2035 si rien ne change. En gris, les territoires où les données sont insuffisantes.</p>`;
+  if (m === "methode") return `${tete}<section><h3>Les mots de l'outil</h3><dl class="glossaire">${GLOSSAIRE.map(([t, d]) => `<div><dt>${t}</dt><dd>${d}</dd></div>`).join("")}</dl></section>
+    <section><h3>Ce que ces chiffres ne disent pas</h3>${liste(D.rg.avertissements)}</section>
+    <section><h3>Sources</h3>${liste(D.rg.sources)}</section><p class="note">Calculs du ${esc(D.rg.genere_le)}. Aucune parcelle agricole n'est affichée. Les prairies mises en culture sont repérées dans les déclarations des agriculteurs : ce repérage n'a pas encore été vérifié sur photographies aériennes.</p>
+    <section><h3>Empreinte de votre visite</h3><p class="total"><b id="poids">…</b> transférés depuis l'ouverture de la page, contre environ 2 500 Ko pour une page web médiane.</p>
+      <p class="note">Aucune image, aucun fond de carte téléchargé, aucun traceur, aucun service extérieur : les polices sont hébergées avec le site. Les fiches et les friches ne se chargent qu'à la demande.</p></section>`;
+  // Friches : l'outil de sélection
+  const { f, pts, portee, parTerr } = friches;
+  const nb = k => portee.filter(x => x.classe === k && x.ha >= f.min).length;
+  return `${tete}<p class="chapo">Où rendre des terrains à la nature ? Les friches recensées en Normandie, classées selon leur intérêt pour la nature et la facilité du projet.</p>
+    <fieldset><legend>Afficher les friches</legend>${Object.entries(STATUTS).map(([k, v]) => `<label data-tip="${esc(v.n)}|${esc(v.d)}"><input type="checkbox" name="statut" value="${k}"${f.st.has(k) ? " checked" : ""}>${puce(k)}<span>${v.n}</span><em>${fmt(nb(k), 0)}</em></label>`).join("")}</fieldset>
+    <div class="champs">
+      <label>Surface minimale<select data-etat="fm">${SURFACES.map(v => `<option value="${v}"${v === f.min ? " selected" : ""}>${v ? `${fmt(v)} ha` : "Toutes"}</option>`).join("")}</select></label>
+      <label>Ce qu'on cherche à favoriser<select data-etat="fp">${Object.entries(PRIORITES).map(([k, v]) => `<option value="${k}"${k === f.cle ? " selected" : ""}>${v[0]}</option>`).join("")}</select></label>
+    </div>
+    <p class="total"><b>${fmt(pts.length, 0)} friches</b> affichées, soit <b>${fmt(pts.reduce((a, x) => a + x.ha, 0), 0)} ha</b>${s.t ? " dans ce territoire" : " en Normandie"}.</p>
+    <p class="note">Cliquer un point ou une intercommunalité ouvre la liste détaillée. Changer ce qu'on cherche à favoriser modifie la note et l'ordre de la liste, pas le classement en quatre catégories. C'est un premier repérage : toute friche se vérifie sur place.</p>
+    <details><summary>Répartition par intercommunalité (10 premières)</summary><table class="t" style="margin-top:6px"><tbody>${parTerr.map(([c, n, ha]) => `<tr data-aller-t="${c}"><td>${esc(D.parCode[c].nom)}</td><td>${n}</td><td>${fmt(ha, 0)} ha</td></tr>`).join("")}</tbody></table></details>`;
+}
+
+/* ---------- panneau de droite : le territoire choisi, vu par le module en cours ---------- */
+async function panneauDetail(m, M, d, f) {
+  const e = D.parCode[d.code], cp = d.comparaison;
+  const rang = d.exclu_comparaisons ? "Non comparé aux autres : l'essentiel de ce territoire est hors de Normandie."
+    : `${cp.rang_perte_profil}${cp.rang_perte_profil === 1 ? "er" : "e"} sur ${cp.n_profil} territoires comparables (${cp.profil}) : le 1er est celui qui perd le plus vite ses prairies anciennes.`;
+  const tete = `<div class="bandeau"></div><div class="tete-detail"><div><h2>${esc(d.nom)}</h2><p class="note">${esc(d.perimetre)} · ${esc(e.profil)} · ${fmt(d.territoire.population_2022, 0)} habitants</p></div><button id="fermer" aria-label="Fermer la fiche">×</button></div>
+    <div class="raccourcis">${Object.entries(MODULES).filter(([k]) => k !== "methode").map(([k, v]) => `<button data-aller="${k}" aria-pressed="${k === m}">${v.n}</button>`).join("")}</div>`;
+  const autre = D.parCode[lire().c], lignesComp = autre ? INDICATEURS.map(x => `<tr><td>${esc(x.n)}<br><small style="color:var(--muet)">${esc(x.u)}</small></td><td>${fmt(e[x.k], x.d)}</td><td>${fmt(autre[x.k], x.d)}</td></tr>`).join("") : "";
+  const comparer = `<section><h3>Comparer avec un autre territoire</h3><select data-etat="c" aria-label="Territoire à comparer"><option value="">Choisir un territoire…</option>${[...D.index].filter(x => x.code !== d.code).sort((a, c) => a.nom.localeCompare(c.nom, "fr")).map(x => `<option value="${x.code}"${autre?.code === x.code ? " selected" : ""}>${esc(x.nom)}</option>`).join("")}</select>
+    ${autre ? `<table class="t" style="margin-top:8px"><thead><tr><th scope="col">Indicateur</th><th scope="col">${esc(d.nom)}</th><th scope="col">${esc(autre.nom)}</th></tr></thead><tbody>${lignesComp}</tbody></table>` : ""}</section>`;
+  const corps = {
+    synthese: () => `<p class="chapo">${conclusion(d)}</p><p class="note">${esc(rang)}</p>${tuilesCles(d)}<section><h3>Ce qui fait disparaître les prairies</h3>${barresBilan(d)}</section>
+      ${comparer}
+      <p class="sans-impression"><button id="imprimer">Imprimer cette fiche</button></p>`,
+    prairies: () => `<p class="note">${esc(rang)}</p><div class="tuiles">${tuile("Prairies anciennes mises en culture", `${fmt(d.charrue.charrue_anciennes_ha_an, 0)} ha par an`, `moyenne 2015-2024 ; ${fmt(d.charrue.charrue_anciennes_sans_prl_ha_an, 0)} sans les prairies en rotation`)}${tuile("En comptant les prairies récentes", `${fmt(d.charrue.charrue_toutes_ha_an, 0)} ha par an`, "estimation haute")}</div>
+      <section><h3>Année après année</h3>${serieSvg(d.serie, { l: 400, h: 210 })}</section><section><h3>Dans les milieux naturels sensibles</h3>${tableMilieux(d)}</section>`,
+    foncier: () => `<div class="tuiles">${tuile("Terrains construits ou aménagés", `${fmt(d.beton.beton_total_ha_an)} ha par an`, "d'après les photos aériennes de l'IGN")}${tuile("dont sur des prairies anciennes", `${fmt(d.beton.beton_sur_pp_anciennes_ha_an)} ha par an`, `et ${fmt(d.beton.beton_herbe_hors_pac_ha_an)} sur des prés non déclarés par un agriculteur`)}</div>
+      <section><h3>Urbanisation : où en est-on ?</h3>${blocFoncier(d)}</section><section><h3>Dans les milieux naturels sensibles</h3>${tableMilieux(d)}</section>`,
+    trajectoires: () => `<section class="zone-traj"><h3>Trois scénarios d'ici 2035</h3>${blocTrajectoires(d, D.rg.trajectoires.hypotheses, { l: 400, h: 280 })}</section>`,
+    methode: () => `<p class="chapo">${conclusion(d)}</p><p class="note">${esc(rang)} Constructions observées sur la période ${esc(d.fenetre_ocsge === "mixte" ? "2019-2023" : d.fenetre_ocsge)}.</p>`,
+    friches: async () => {
+      const cle = PRIORITES[f.cle][1], l = (await frichesDe(d.code)).filter(x => f.st.has(x.classe) && x.surface_ha >= f.min).sort((a, b) => b[cle] - a[cle]);
+      return `<p class="total"><b>${l.length} friche${l.length > 1 ? "s" : ""}</b> pour ces critères, <b>${fmt(l.reduce((a, x) => a + x.surface_ha, 0), 0)} hectares</b>. Les plus utiles pour « ${PRIORITES[f.cle][0].toLowerCase()} » en premier.</p>
+        <div class="liste-friches">${l.slice(0, 40).map(x => `<article class="friche" data-id="${x.id}" style="--c:${{ gain_rapide: "#3E6A4E", fort_potentiel_contraintes: "#B66B43", potentiel_modere: "#D9B96C", projet_engage: "#555A5C" }[x.classe]}">
+          <h4>${esc(x.libelle)}</h4><div class="meta"><span>${puce(x.classe)} ${STATUTS[x.classe].n}</span><span>${fmt(x.surface_ha)} ha</span><span>note écologique ${fmt(x[cle], 0)}/100</span><span>facilité du projet ${fmt(x.faisabilite_epfn, 0)}/100</span></div>
+          <ul>${x.raisons.map(r => `<li>${esc(r)}</li>`).join("")}</ul>${x.vigilance.length ? `<p class="veille">À vérifier : ${esc(x.vigilance.join(" · "))}</p>` : ""}</article>`).join("") || `<p class="note">Aucune friche ne correspond. Cocher d'autres statuts ou baisser la surface minimale.</p>`}</div>
+        ${l.length > 40 ? `<p class="note">${l.length - 40} autres friches non listées.</p>` : ""}`;
+    },
+  };
+  return tete + await corps[m]();
+}
+
+/* ---------- carte des friches : points par statut, zoom sur le territoire choisi ---------- */
+// Cadre la carte sur le territoire choisi (marge = part de voisinage gardée autour), ou sur toute la région
+function cadrer(svg, sel, marge) {
+  let vb = [-6, -6, 1012, D.proj.H + 12];
+  if (sel) {
+    const n = D.chemins[sel].match(/-?\d+\.?\d*/g).map(Number); let a = 1e9, b = -1e9, c = 1e9, d = -1e9;
+    for (let i = 0; i < n.length; i += 2) { a = Math.min(a, n[i]); b = Math.max(b, n[i]); c = Math.min(c, n[i + 1]); d = Math.max(d, n[i + 1]); }
+    const ratio = vb[2] / vb[3], h = Math.min(vb[3], Math.max((d - c) * marge, (b - a) * marge / ratio)), w = h * ratio;
+    vb = [(a + b) / 2 - w / 2, (c + d) / 2 - h / 2, w, h];
+  }
+  svg.setAttribute("viewBox", vb.map(v => v.toFixed(1)).join(" "));
+  return vb;
+}
+// Villes repères : les principales à l'échelle régionale, toutes en vue rapprochée
+function dessinerReperes(svg, vb, sel) {
+  const u = vb[2] / 1012, vus = REPERES.filter(v => (sel || v.rang === 1) && v.X > vb[0] && v.X < vb[0] + vb[2] && v.Y > vb[1] && v.Y < vb[1] + vb[3]);
+  svg.insertAdjacentHTML("beforeend", `<g class="reperes" aria-hidden="true">${vus.map(v => `<circle cx="${v.X.toFixed(1)}" cy="${v.Y.toFixed(1)}" r="${(3.2 * u).toFixed(2)}" stroke-width="${(1.4 * u).toFixed(2)}"/><text x="${(v.X + 7 * u).toFixed(1)}" y="${(v.Y + 4 * u).toFixed(1)}" font-size="${(13 * u).toFixed(2)}" stroke-width="${(3.5 * u).toFixed(2)}">${esc(v.nom)}</text>`).join("")}</g>`);
+}
+function dessinerFriches(svg, pts, sel, s) {
+  const vb = cadrer(svg, sel, 1.25);
+  const r = vb[2] * (sel ? .0085 : .004), ordre = { projet_engage: 0, potentiel_modere: 1, fort_potentiel_contraintes: 2, gain_rapide: 3 };
+  svg.insertAdjacentHTML("beforeend", `<g>${[...pts].sort((a, b) => ordre[a.classe] - ordre[b.classe]).map(x => {
+    const v = STATUTS[x.classe], att = `class="pt ${v.cl}${String(x.id) === s.fr ? " vu" : ""}" data-code="${x.epci}" data-id="${x.id}" data-tip="${esc(v.n)}|${fmt(x.ha)} ha · note écologique ${x[filtreFriches(s).cle]}/100 ·${esc(D.parCode[x.epci]?.nom || "")}"`;
+    return v.forme === "carre" ? `<rect ${att} x="${(x.X - r).toFixed(1)}" y="${(x.Y - r).toFixed(1)}" width="${(2 * r).toFixed(1)}" height="${(2 * r).toFixed(1)}"/>` : `<circle ${att} cx="${x.X.toFixed(1)}" cy="${x.Y.toFixed(1)}" r="${r.toFixed(1)}"/>`;
+  }).join("")}</g>`);
+  return vb;
+}
+
+async function rendre() {
+  const s = lire(), m = MODULES[s.m] ? s.m : "synthese", M = MODULES[m], sel = D.parCode[s.t] ? s.t : "";
+  const i = M.couches[+s.i] ? +s.i : 0, ind = I(M.couches[i] || "perte_anciennes_pct_stock_an"), f = filtreFriches(s);
+  const R = await perimetre(D, ""), d = sel ? await perimetre(D, sel) : null;
+  const tous = m === "friches" ? await pointsFriches(D) : [];
+  const jeton = JSON.stringify(lire()); if (jeton !== JSON.stringify(s)) return; // un autre choix est arrivé entre-temps
+  document.body.dataset.c = M.c;
+  document.body.classList.toggle("ouvert", !!sel);
+  document.querySelectorAll("#rail button").forEach(b => b.setAttribute("aria-selected", b.dataset.m === m));
+  $("#retour").hidden = !sel;
+  const svg = $("#carte"), choisir = t => ecrire({ t, fr: "" });
+  let friches = null;
+  if (m === "friches") {
+    const portee = tous.filter(x => !sel || x.epci === sel), pts = portee.filter(x => f.st.has(x.classe) && x.ha >= f.min);
+    const agg = new Map(); tous.filter(x => f.st.has(x.classe) && x.ha >= f.min).forEach(x => { const a = agg.get(x.epci) || [x.epci, 0, 0]; a[1]++; a[2] += x.ha; agg.set(x.epci, a); });
+    friches = { f, pts, portee, parTerr: [...agg.values()].sort((a, b) => b[2] - a[2]).slice(0, 10) };
+    carte(svg, D, { ind, sel, plat: true, choisir });
+    dessinerReperes(svg, dessinerFriches(svg, sel ? pts : tous.filter(x => f.st.has(x.classe) && x.ha >= f.min), sel, s), sel);
+    svg.onclick = ev => { const t = ev.target.dataset; if (t?.id) ecrire({ t: t.code, fr: t.id }); else if (t?.code) choisir(t.code === sel ? "" : t.code); };
+    $("#legende").innerHTML = `<b>Friches</b> ` + Object.entries(STATUTS).map(([k, v]) => `<span>${puce(k)} ${v.n}</span>`).join("");
+  } else {
+    $("#legende").innerHTML = carte(svg, D, { ind, sel, actif: e => m !== "trajectoires" || e.trajectoire_fiabilite !== "fragile", choisir }).replace("hors filtre", "sans donnée");
+    // Zoom au clic : le territoire et ses voisins, pour garder la comparaison de couleurs
+    dessinerReperes(svg, cadrer(svg, sel, 2.6), sel);
+  }
+  $("#module").innerHTML = panneauModule(m, M, R, s, i, friches);
+  $("#detail").innerHTML = d ? await panneauDetail(m, M, d, f) : "";
+  poids(); setTimeout(poids, 600);
+  // Friches : la liste et la carte se répondent
+  const det = $("#detail");
+  det.onpointerover = ev => { const a = ev.target.closest(".friche"); document.querySelectorAll(".pt.vu").forEach(p => p.classList.remove("vu")); if (a) svg.querySelector(`.pt[data-id="${a.dataset.id}"]`)?.classList.add("vu"); };
+  if (s.fr) { const a = det.querySelector(`.friche[data-id="${s.fr}"]`); a?.classList.add("vu"); a?.scrollIntoView({ block: "center" }); }
+  $("#module").querySelectorAll("[data-aller-t]").forEach(tr => { tr.style.cursor = "pointer"; tr.onclick = () => ecrire({ t: tr.dataset.allerT }); });
+}
+surChangement(rendre);
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+theme;test;mesure;valeur;lecture
+Classement EPCI;perte de prairies anciennes : borne basse vs borne haute (avec prairies hors PAC);Spearman;0.849;
+Classement EPCI;perte de prairies : prairies anciennes (référence) vs toutes PP;Spearman;0.828;
+Classement EPCI;perte de prairies anciennes : fenêtre OCS GE vs moyenne 2015-2024;Spearman;0.845;
+Classement EPCI;part du béton dans les pertes de prairies anciennes : borne basse vs borne haute;Spearman;0.706;
+Profils;seuils urbain 300 / périurbain 100 hab/km², herbager 15 % (réf. 300 / 100 / 20);EPCI changeant de profil;8 / 71;
+Profils;seuils urbain 300 / périurbain 100 hab/km², herbager 25 % (réf. 300 / 100 / 20);EPCI changeant de profil;10 / 71;
+Profils;seuils urbain 300 / périurbain 100 hab/km², herbager 30 % (réf. 300 / 100 / 20);EPCI changeant de profil;15 / 71;
+Profils;seuils urbain 250 / périurbain 100 hab/km², herbager 20 % (réf. 300 / 100 / 20);EPCI changeant de profil;1 / 71;
+Profils;seuils urbain 400 / périurbain 100 hab/km², herbager 20 % (réf. 300 / 100 / 20);EPCI changeant de profil;2 / 71;
+Profils;seuils urbain 300 / périurbain 80 hab/km², herbager 20 % (réf. 300 / 100 / 20);EPCI changeant de profil;6 / 71;
+Profils;seuils urbain 300 / périurbain 150 hab/km², herbager 20 % (réf. 300 / 100 / 20);EPCI changeant de profil;11 / 71;
+Friches;recalcul de référence (contrôle);Jaccard avec friches.csv;1.0;doit valoir 1
+Friches;seuil de potentiel au 70e centile (réf. 75e);gains rapides / Jaccard;488 / 0.85;réf. 415
+Friches;seuil de potentiel au 80e centile (réf. 75e);gains rapides / Jaccard;338 / 0.814;réf. 415
+Friches;surface minimale 0.05 ha (réf. 0,1);gains rapides / Jaccard;528 / 0.786;
+Friches;surface minimale 0.5 ha (réf. 0,1);gains rapides / Jaccard;140 / 0.337;
+Friches;pondération poids égaux (réf. biodiversité);gains rapides / Jaccard;416 / 0.757;
+Friches;pondération préréglage eau (réf. biodiversité);gains rapides / Jaccard;376 / 0.473;
+Friches;rayon des prairies 300 m (réf. 500 m);gains rapides / Jaccard;424 / 0.8;
+Friches;rayon des prairies 1000 m (réf. 500 m);gains rapides / Jaccard;407 / 0.772;
+Friches;noyau stable : gain rapide dans toutes les variantes (seuil 70/75/80e, rayon 300/500/1 000 m, poids égaux);friches du noyau;283 / 415;457 ha sur 672 ha
+Zones humides;béton en milieu potentiellement humide, classe 1 (point intérieur);part du béton humide;37 %;"classes 1 à 3 retenues ; 3 = probabilité la plus forte"
+Zones humides;béton en milieu potentiellement humide, classe 2 (point intérieur);part du béton humide;39 %;"classes 1 à 3 retenues ; 3 = probabilité la plus forte"
+Zones humides;béton en milieu potentiellement humide, classe 3 (point intérieur);part du béton humide;23 %;"classes 1 à 3 retenues ; 3 = probabilité la plus forte"
