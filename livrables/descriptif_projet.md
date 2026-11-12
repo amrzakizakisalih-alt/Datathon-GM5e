@@ -1,7 +1,5 @@
 # Descriptif du projet — Datathon Normandie 2026
 
-Ce texte suit les rubriques du modèle des organisateurs (`contexte/Descriptif_projet_Datathon.docx`). Les passages entre crochets sont à compléter par l'équipe.
-
 ## Nom de la solution et membres qui portent le projet
 
 **Béton & Charrue** — « Ce que le béton et la charrue ont pris »
