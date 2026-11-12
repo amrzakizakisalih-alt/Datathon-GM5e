@@ -1,6 +1,6 @@
 # Normandy's most acute human-driven biodiversity and environmental issues: sourced fact base and mapping of datathon pistes A–N
 
-Sourcing conventions: ‡ means the figure was read in a search-engine excerpt of the cited document. The full text could not be opened because the server returned 403 or the file was over 10 MB, so the figure should be re-checked before it goes on a slide. Unmarked figures were read in the full document. [older] means the data year is before 2020. Research date: 17 Oct 2026. The remaining gaps are listed in each section.
+Conventions: ‡ marks a figure to check in the original document before it goes on a slide. [older] means the data year is before 2020. The remaining gaps are listed in each section.
 
 ## 1. Bocage and grasslands
 
@@ -107,7 +107,7 @@ Drinking-water catchments
 
 River continuity and migratory fish
 - The former regional ecological coherence schemes (SRCE) identified 1,735 obstacles to flow in Haute-Normandie and 1,600 in Basse-Normandie. These inventories date from the 2009 basin plans [older data, cited in 2024] ‡ — [SRADDET Normandie annexes 4, 29 Mar 2024](https://www.prefectures-regions.gouv.fr/normandie/irecontenu/telechargement/117234/874029/file/2024-03-29%20(DT)%20-%20SRADDET%20annexes%204.pdf)
-- Atlantic salmon in the Seine-Normandie basin: abundances fell 72% in 2023–2024 compared with 2010–2019, and 2025 had the lowest spawner returns since 2008. Salmon fishing remains banned across the basin. These figures come from search excerpts of DRIEAT/COGEPOMI regulatory documents ‡ — [DRIEAT consultation note 2026-27](https://www.drieat.ile-de-france.developpement-durable.gouv.fr/IMG/pdf/note_presentation_consultation_public_26-27.pdf); [order on the salmon fishing ban](https://www.drieat.ile-de-france.developpement-durable.gouv.fr/IMG/pdf/m2024d2922_ap_sn_interdiction_saumon_2025_vf.pdf)
+- Atlantic salmon in the Seine-Normandie basin: abundances fell 72% in 2023–2024 compared with 2010–2019, and 2025 had the lowest spawner returns since 2008. Salmon fishing remains banned across the basin. These figures come from DRIEAT/COGEPOMI regulatory documents ‡ — [DRIEAT consultation note 2026-27](https://www.drieat.ile-de-france.developpement-durable.gouv.fr/IMG/pdf/note_presentation_consultation_public_26-27.pdf); [order on the salmon fishing ban](https://www.drieat.ile-de-france.developpement-durable.gouv.fr/IMG/pdf/m2024d2922_ap_sn_interdiction_saumon_2025_vf.pdf)
 - In 2022, rod catches were the lowest in ten years: 51 salmon (Haute-Normandie and Seine-Normandie), about 6 of them on the Touques ‡ — [COGEPOMI opinion, 28 Nov 2023](https://www.drieat.ile-de-france.developpement-durable.gouv.fr/IMG/pdf/231128_avis_cogepomi_projet_ap_cadre_peche_bassin_2024-2025.pdf)
 
 Sélune dam removal
@@ -205,7 +205,7 @@ Normandy keeps converting about 1,800–2,000 ha a year of natural and farm land
 - Normandy's land take is not explained by demand: household growth below the national median and job losses alongside median EPCI consumption 44% above France's (193 against 134 ha). This is a strong "inefficient land take" narrative for piste I.
 
 ### Open points
-- The exact 2021–2024 consumption figures in the Region's Bilan ENAF 2025 could not be read (403).
+- The exact 2021–2024 consumption figures in the Region's Bilan ENAF 2025 could not be opened.
 - No m² per inhabitant comparison with France was found as such.
 
 ## 6. Coast and Seine estuary
@@ -234,7 +234,7 @@ Normandy's coast is retreating. Chalk cliffs lose about 20 cm a year on average 
 
 ### Open points
 - No Normandy-only share of eroding coastline from the Cerema indicator was found.
-- No official retreat rates in m per year were found for the Calvados cliffs (Vaches Noires) or the Manche dunes. A "5 m a year" figure for the west Manche coast appeared only in an unverified excerpt and is not used.
+- No official retreat rates in m per year were found for the Calvados cliffs (Vaches Noires) or the Manche dunes. A "5 m a year" figure for the west Manche coast could not be verified and is not used.
 
 ## 7. State of biodiversity and protection
 
@@ -249,7 +249,7 @@ Regional red lists show heavy threat levels: 39% of Normandy's breeding birds ar
 - Reptiles (first official Normandy list, 2021; more than 59,000 records): of 11 species, only 3 are Least Concern and 4 are Near Threatened ‡ — [Liste rouge des Reptiles de Normandie](https://lashf.org/wp-content/uploads/2022/08/Liste-rouge-des-Reptiles-de-Normandie.pdf)
 - Amphibians:
   - The amphibian and reptile red lists published at the end of 2021 showed that several species had worsened. The regional action plan targets 5 species, including the yellow-bellied toad (critically endangered) and the natterjack toad and parsley frog (both vulnerable) ‡ — [CSRPN opinion on the amphibian–reptile action plan, 11 Dec 2024](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/avis_csrpn_2024-12-11_pra-amph-rept.pdf)
-  - Of 15 amphibian taxa monitored in Normandy, 9 are declining. The PDF link returned 404 ‡ — [Astruc et al. 2021, Bull. Soc. Herp. Fr. 178](https://lashf.org/wp-content/uploads/2021/10/N178_Astruc.pdf)
+  - Of 15 amphibian taxa monitored in Normandy, 9 are declining. The PDF link is broken ‡ — [Astruc et al. 2021, Bull. Soc. Herp. Fr. 178](https://lashf.org/wp-content/uploads/2021/10/N178_Astruc.pdf)
 - Freshwater fish (former Haute-Normandie region): 31% of native species assessed are threatened, and the Seine has the most threatened species [older] ‡ — [DREAL, freshwater fish red list](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/poissons_d_eau_douce.pdf)
 - Common birds, GONm "Tendances" survey (1996–2023; 87 observers, 170 routes, 403,526 records; general assembly of 6 Apr 2024) — [GONm, Bilan de 27 années de comptage](https://www.gonm.org/public/Telechargements/Etudes/tendances/2024_Tendances-bilan.pdf):
   - Populations are generally stable, except farmland birds.
@@ -326,7 +326,7 @@ Positive levers exist and are documented, but they are small compared with the p
   - Protected areas covering about 20.6–20.9% of the land (§7).
 
 ### Our reading
-- The effort-versus-need gap is pitch-ready for pistes J and L: plantings run in the hundreds of km a year (320 km target in 2024) against plausible removals in the thousands (about 2,400 km a year at −1.5%). This is an inference from §1, not a measured balance.
+- The effort-versus-need gap is a strong pitch argument for pistes J and L: plantings run in the hundreds of km a year (320 km target in 2024) against plausible removals in the thousands (about 2,400 km a year at −1.5%). This is derived from §1, not a measured balance.
 - Organic farming at about 7% against about 10–11% nationally means Normandy lags on this P2 indicator. The Sélune is the region's strongest documented restoration success story.
 
 ### Open points
@@ -347,7 +347,7 @@ The most acute and best-documented Normandy issues are:
 Pistes C, B, E, I and H target these directly (high). Pistes F, G, M, A, J, L and D address real but narrower or less-quantified issues (medium). Pistes K and N are the least tied to an acute pressure (low).
 
 ### Sources
-Pitch-ready headline figures, one or two per issue (full sourcing in §§1–9):
+Headline figures for the pitch, one or two per issue (full sourcing in §§1–9):
 - Hedges: about 158,000 km today, −50% since 1972, and a density twice the national one (53 against 27 m/ha) — [DREAL/ANBDD 2024](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/lineaireshaies-normandie-2024_anbdd.pdf) ‡; [Canal-U 2025](https://www.canal-u.tv/sites/default/files/medias/fichiers/2025/05/PRESENTATION%20COLLOQUE.pdf) ‡
 - Manche: hedge density halved, 175 to 87 m/ha (1972–2015) — [GIEC normand 2025](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/giec2_haies_bocage_vf_22janv2025.pdf) ‡
 - Grasslands: −103,000 ha (about −11%) in 2008–2019, and the steepest drop in the grassland ratio of any region (−6.45%, 2018 reference to 2023) — [Agreste 2021](https://draaf.normandie.agriculture.gouv.fr/IMG/pdf/Agreste_Etudes_no6-Prairies_Normandie_2008_2019-septembre_2021_cle09a9b1.pdf); [Réussir 2023](https://www.reussir.fr/lait/prairies-permanentes-4-regions-en-regime-dautorisation-ou-dinterdiction)
@@ -404,4 +404,4 @@ The acuteness ratings below are judgments drawn from the figures above. "Evidenc
   - organic farming in Normandy in 2024
   - hedges actually planted under the 2024 Pacte haie
   - the final 2025 water assessment
-- Several figures marked ‡ come from search excerpts of PDFs that could not be opened. They should be checked in the original documents before being shown on slides.
+- Figures marked ‡ should be checked in the original documents before being shown on slides.

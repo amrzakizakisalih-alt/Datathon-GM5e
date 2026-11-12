@@ -1,6 +1,6 @@
 # National and European open datasets on agriculture practices, pesticides, water (quantity and ecological state) and soils for Normandy (Datathon Normandie 2026)
 
-Scope note: quick inventory (about 15 datasets), checked online on 17 Oct 2026. Excluded because we already have them: RPG and derived IGN layers, Naïades surface-water quality, Phytatmo, Agreste in general. All the national datasets below cover the whole of metropolitan France, so all 5 Normandy departments (14 Calvados, 27 Eure, 50 Manche, 61 Orne, 76 Seine-Maritime) are covered unless flagged. Fields marked "not verified" could not be confirmed.
+Scope: about 15 national and European open datasets. Excluded because we already have them: RPG and derived IGN layers, Naïades surface-water quality, Phytatmo, Agreste in general. All the national datasets below cover the whole of metropolitan France, so all 5 Normandy departments (14 Calvados, 27 Eure, 50 Manche, 61 Orne, 76 Seine-Maritime) are covered unless flagged. Fields marked "not verified" could not be confirmed.
 
 ## Pesticides (BNV-D sales and purchases, NODU/QSA, groundwater pesticides, Ecophyto)
 

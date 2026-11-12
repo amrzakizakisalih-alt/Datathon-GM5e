@@ -1,6 +1,6 @@
 # National & European open datasets on biodiversity, species, habitats and ecological continuity, usable for Normandy (Datathon Normandie 2026)
 
-Scope: quick inventory, as of 17 Oct 2026. Excludes datasets we already use (patrinat_* WFS ZNIEFF/N2000/protected areas, HAIES.BOCAGES, RPG, BCAE, CLC, BD Forêt, GBIF, Naïades/Hub'Eau, Phytatmo). "P1" = problem 1 (where to prioritise restoration); "P2" = problem 2 (human–nature interaction indicators).
+Scope: excludes datasets we already use (patrinat_* WFS ZNIEFF/N2000/protected areas, HAIES.BOCAGES, RPG, BCAE, CLC, BD Forêt, GBIF, Naïades/Hub'Eau, Phytatmo). "P1" = problem 1 (where to prioritise restoration); "P2" = problem 2 (human–nature interaction indicators).
 
 Verification legend: **[V]** existence/access checked; **[V-partial]** existence confirmed but some fields (licence, format, Normandy coverage) not confirmed; **[NV]** known candidate, NOT verified (listed under Open points only).
 
@@ -93,7 +93,7 @@ The ROE (OFB) is the key national river-continuity dataset (>104,000 obstacles i
 **9. ROE – Référentiel des Obstacles à l'Écoulement (OFB, with Sandre) [V]**
 - National participatory referential coordinated by OFB, continuously updated incl. overseas; attributes: location, name, type, state, low-water drop height class, fish-pass devices — [data.gouv.fr – Obstacles à l'écoulement Guadeloupe (OFB-ROE/Sandre)](https://www.data.gouv.fr/datasets/obstacles-a-lecoulement-guadeloupe)
 - >104,000 obstacles in mainland France (Dec 2020), census acknowledged incomplete — [OFB 2020 report](https://www.bourgogne-franche-comte.developpement-durable.gouv.fr/IMG/pdf/202012_ofb_valorisation_oe_indicateurs_final_cle541e85.pdf)
-- CSV and SHP downloads on data.ofb.fr catalogue; list also consultable on Sandre site — [data.gouv.fr OFB records, excerpt](https://www.data.gouv.fr/datasets/obstacles-a-lecoulement/informations)
+- CSV and SHP downloads on data.ofb.fr catalogue; list also consultable on Sandre site — [data.gouv.fr OFB records](https://www.data.gouv.fr/datasets/obstacles-a-lecoulement/informations)
 - data.gouv.fr "Obstacles à l'écoulement ROE" record: producer Agence de l'eau Seine-Normandie, Licence Ouverte 2.0, last update 18 June 2024, spatial coverage metropolitan France; no direct file URL on the page — [data.gouv.fr – Obstacles à l'écoulement ROE](https://www.data.gouv.fr/datasets/obstacles-a-lecoulement/informations)
 - Département extract exists for Orne (Sandre, validity May 2022) — [data.gouv.fr – ROE Orne 2022](https://www.data.gouv.fr/datasets/referentiel-des-obstacles-a-lecoulement-roe-pour-les-obstacles-situes-sur-les-cours-deau-du-departement-de-lorne-en-2022)
 - Use: P1 (obstacle density per river km / per BV; prioritising dam removal / fish passes for migratory fish – Normandy salmon/eel rivers); P2 (pressure indicator).
