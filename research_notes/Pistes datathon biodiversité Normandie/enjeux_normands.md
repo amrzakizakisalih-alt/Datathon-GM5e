@@ -1,13 +1,13 @@
 # Normandy's most acute human-driven biodiversity and environmental issues: sourced fact base and mapping of datathon pistes A–N
 
-Sourcing conventions: ‡ means the figure was read in a search-engine excerpt of the cited document. The full text could not be opened because the server returned 403 or the file was over 10 MB, so the figure should be re-checked before it goes on a slide. Unmarked figures were read in the full document. [older] means the data year is before 2020. Research date: 17 Oct 2026. The shared web-search budget ran out near the end, and the remaining gaps are listed in each section.
+Sourcing conventions: ‡ means the figure was read in a search-engine excerpt of the cited document. The full text could not be opened because the server returned 403 or the file was over 10 MB, so the figure should be re-checked before it goes on a slide. Unmarked figures were read in the full document. [older] means the data year is before 2020. Research date: 17 Oct 2026. The remaining gaps are listed in each section.
 
-## 1. Bocage & grasslands: hedgerow loss since the 1970s, recent trends, links with livestock decline and grassland ploughing
+## 1. Bocage and grasslands
 
-### Takeaway
+### In short
 Normandy is still France's third-densest hedgerow region, with about 158,000 km of hedges and about twice the national density. It has nevertheless lost about half its hedgerows since 1972. Between 2008 and 2019 it lost about 11% of its grasslands (103,000 ha), mostly ploughed for crops as dairy systems change. Its permanent-grassland ratio fell faster than in any other region (−6.45% between the 2018 reference and 2023), above the threshold for the strictest CAP regime.
 
-### Cited Findings
+### Sources
 Hedgerows
 - Normandy has 158,433 km of hedges, a density of 53 m/ha against 27 m/ha in metropolitan France. It is the 3rd densest region after Bretagne and Pays de la Loire, and the Manche is France's densest department at 96 m/ha. The data come from the Dispositif de suivi des bocages (2004–2022 imagery), in a document published in 2024 ‡ — [DREAL/ANBDD, Linéaires de haies Normandie 2024](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/lineaireshaies-normandie-2024_anbdd.pdf)
 - A 2025 colloquium presentation gives about 158,000 km in Normandy, −50% between 1972 and 2016, or about −1.5% per year. It quotes a density of 57 m/ha against 28 m/ha nationally, a slightly different reference from the DREAL/ANBDD document ‡ — [Colloquium presentation 2025, hosted on Canal-U](https://www.canal-u.tv/sites/default/files/medias/fichiers/2025/05/PRESENTATION%20COLLOQUE.pdf)
@@ -35,24 +35,24 @@ Grasslands and livestock
 - Normandy had more than 26,500 farms in 2020 (first results of the 2020 agricultural census) ‡ — [Agreste Études no. 9, Dec 2021](https://draaf.normandie.agriculture.gouv.fr/IMG/pdf/20211210_Agreste_Etudes_no9-Premiers_Resultats_RA_2020_Normandie.pdf)
 - The regional scientific council (CSRPN) adopted a motion on grasslands on 12 Dec 2024; its content was not read — [CSRPN motion](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/motion_csrpn_2024-12-12_prairies_vfsigne.pdf)
 
-### Inferences
+### Our reading
 - −1.5% a year is Normandy's 1972–2016 average (0.5^(1/44) ≈ −1.56% a year) and also the national 2017–2021 rate. On 158,000 km, that rate would mean about 2,400 km lost a year, roughly 7 times the 2024 Pacte haie planting target of 320 km (see §9). This is a computed order of magnitude, not a measured recent net balance for Normandy.
 - Normandy holds about 10% of France's hedges (158,000 of 1.55 million km), which fits its density of about twice the national average.
 - Grassland ploughing is the shared driver behind hedge removal when fields are enlarged, erosion and runoff (§4), nitrate and pesticide transfer (§3), the decline of farmland birds (§7) and land take (§5, where grasslands are the main land artificialised). Pistes C, B, L, N and E can all rest on this one causal chain.
 - −50% hedges since 1972, −11% grasslands in a decade and the worst grassland-ratio drop in France make "bocage and grasslands" the most Normandy-specific and best-documented issue.
 
-### Gaps
+### Open points
 - The exact DREAL index values for 1972, 1984, 1998, 2006, 2010 and 2012 (by department) were not retrieved because the PDFs are blocked. The 1972→2006 linear-index change therefore cannot be quoted.
 - No measured net hedge balance for Normandy after 2016 (plantings minus removals) was found.
 - No change in permanent-grassland area between the 2010 and 2020 censuses was retrieved for Normandy.
 - The departmental grassland and herd figures in the Region's livestock deliberation are unreadable (garbled fonts) and were not used.
 
-## 2. Wetlands: extent and losses (Marais du Cotentin et du Bessin, Seine estuary and valleys), peatlands, drained areas
+## 2. Wetlands
 
-### Takeaway
+### In short
 Normandy has nationally important wetlands: the 30,000 ha Marais du Cotentin et du Bessin (Ramsar site of about 38,900 ha, with peatlands) and the Seine estuary and valley. Published regional loss statistics are scarce. The best-quantified loss is the Seine estuary, whose water surface shrank from 340 km² in 1750 to 142 km² in 2005.
 
-### Cited Findings
+### Sources
 - The Parc naturel régional des Marais du Cotentin et du Bessin covers 146,650 ha, including a 30,000 ha wetland, the largest in Normandy ‡ — [DREAL regional park sheet FR8000021](https://www.donnees.normandie.developpement-durable.gouv.fr/pdf/PNR/FR8000021f.pdf)
 - Ramsar site no. 516 (Marais du Cotentin et du Bessin, Baie des Veys) has an official area of 38,891 ha (39,938 ha on the summary sheet). It contains about 2,000 ha of peaty grasslands and peat bogs, and 7,000–8,000 ha of outcropping peat ‡ — [Ramsar Information Sheet FR516](https://rsisd7.unepgrid.ch/RISapp/files/RISrep/FR516RIS_2307_fr.pdf)
 - A CGEDD (ministry inspectorate) report estimates the emblematic wet area of these marshes at 34,591 ha. The perimeters differ between sources ‡ — [CGEDD report, Marais du Cotentin et du Bessin](https://cgedd.documentation.developpement-durable.gouv.fr/documents/Affaires-0013429/014422-01P_rapport-publie-Marais%20du%20Contentin%20et%20du%20Bessin.pdf)
@@ -64,20 +64,20 @@ Normandy has nationally important wetlands: the 30,000 ha Marais du Cotentin et 
 - The regional wetland inventory is coordinated by the DREAL and combines photo-interpretation with field inventories. It comes with a model of land predisposed to wetlands (MPPZH: strongly or weakly predisposed). The dataset was updated on 15 Nov 2024 ‡ — [data.gouv.fr, Zones humides Normandie](https://www.data.gouv.fr/datasets/zones-humides-normandie)
 - Transitional (estuarine) waters were only 14.3% in good ecological status in 2015, and 28.6% were in bad status [older] — [INSEE 2020](https://www.insee.fr/fr/statistiques/4629011)
 
-### Inferences
+### Our reading
 - The estuary has lost about 58% of its water surface since 1750 ((340 − 142) / 340). This works as a single "human footprint" headline for pistes M and G.
 - Normandy's wetlands are concentrated in the Cotentin–Bessin marshes, the Seine valley and estuary, the Pays de Bray peat bogs and the coastal marshes. Piste G could cross the MPPZH predisposition layer with current land use (arable land, artificialised land), but the pitch would have no regional "x% lost" headline.
 
-### Gaps
-- No published regional figure was found for total wetland area as a share of the territory, historical loss rate, total peatland area or drained farmland area. The search budget ran out before the 2020 census drainage figure could be looked up.
+### Open points
+- No published regional figure was found for total wetland area as a share of the territory, historical loss rate, total peatland area or drained farmland area. We ran out of time before the 2020 census drainage figure could be looked up.
 - No quantified outcome of wetland-restoration programmes in Normandy (CEN Normandie, regional parks, water agency) was found.
 
-## 3. Rivers & water: ecological status, obstacles, migratory fish, Sélune dam removal, catchments, green tides and shellfish
+## 3. Rivers and water
 
-### Takeaway
+### In short
 Water is Normandy's most acute and best-quantified pollution issue. Groundwater is chemically degraded at 60% of monitoring points, against 31% nationally. Across the Seine-Normandie basin, only 18–23% of rivers would be in good ecological status in the provisional 2025 assessment. Ninety-eight drinking-water catchments are "priority" for diffuse agricultural pollution. Migratory salmon are collapsing (−72%), while the Sélune dam removals are a flagship recovery.
 
-### Cited Findings
+### Sources
 Ecological and chemical status
 - 2015 data from INSEE (published 2020) [older] — [INSEE Analyses Normandie no. 80](https://www.insee.fr/fr/statistiques/4629011):
   - 43% of Normandy's surface-water monitoring points were in good or very good ecological status, against 44.3% in metropolitan France.
@@ -128,24 +128,24 @@ Coastal waters, shellfish and algae
 - In winter 2019–2020, 23 shellfish zones were closed in 7 departments, including 2 in Calvados and 2 in Manche. The closures were linked to heavy rains combined with the winter gastroenteritis epidemic, which points to sewage [older] ‡ — [Ministère de l'Agriculture](https://agriculture.gouv.fr/telecharger/106685)
 - Normandy's algal strandings are mostly the "arrachage" type: seaweed torn from rocky platforms by storms and swell. Brittany's green tides, by contrast, grow in place [older] ‡ — [CGDD, Le Point sur no. 180](https://temis.documentation.developpement-durable.gouv.fr/docs/Temis/0079/Temis-0079790/Point_180.pdf)
 
-### Inferences
+### Our reading
 - The groundwater chemical-status contrast (60% of Normandy points not good against 31% nationally) is the strongest Normandy-versus-France contrast found in this research. It is a prime pitch figure for piste E.
 - The salmon decline affects the whole basin, including rivers without large dams. This suggests drivers beyond obstacles, such as marine survival or temperature, which were not covered by the sources found. Continuity work (piste F) is necessary but not sufficient. The Sélune is best used as proof of a positive practice (P2) rather than as the most acute pressure.
 - Shellfish closures in Normandy are mainly microbial (norovirus reaching the sea through sewage after rain). They link more to wastewater and urban pressure than to agriculture, which bears on the scope of pistes E and M.
 
-### Gaps
+### Open points
 - The final adopted figures of the 2025 assessment were not found, nor a breakdown for Normandy alone.
 - No current count or density of obstacles from the national obstacle register (ROE) was found for Normandy, nor a regional tally of obstacles removed or equipped.
 - No trend for eel or shad abundance in Normandy was found.
 - No Sélune counts for 2024–2025 were read. An "Observatoire des biocénoses aquatiques de la Sélune" 2025 activity report is listed in the GéoSAS catalogue but was not opened.
 - No recent quantified data on green tides or algal strandings (2020–2025) in Normandy was found.
 
-## 4. Soils: erosion and muddy floods (ruissellement, coulées boueuses) in the Pays de Caux and Eure
+## 4. Soils: erosion and muddy floods
 
-### Takeaway
+### In short
 The crusting silty soils of the Pays de Caux are among France's most erosion-prone. In high-risk zones, 1–10 t/ha of soil move each year (5–10 t/ha under potatoes), and 0.3–0.7 t/ha a year leaves fields for rivers and villages as mudflows and drinking-water turbidity. This links directly to the loss of grassland and hedges and to crop choice, but recent regional quantification is thin.
 
-### Cited Findings
+### Sources
 - Figures from the director of AREAS, the regional runoff and erosion association (Saint-Valery-en-Caux), in an article of 3 Dec 2018 [older] — [Réussir Grandes Cultures](https://www.reussir.fr/grandes-cultures/levee-de-microbarrages-entre-les-buttes):
   - In high-risk zones (Pays de Caux, Artois), 1–10 t/ha of soil move at least 1 m each year on average.
   - Under potatoes the figure is 5–10 t/ha a year.
@@ -155,19 +155,19 @@ The crusting silty soils of the Pays de Caux are among France's most erosion-pro
 - In the Pays de Caux, crusting silts ("limons battants") cause runoff and concentrated erosion in thalwegs. The results are mudflows, which also hit communes without rivers, and turbidity in drinking water. Three-quarters of the territory is affected by water erosion ‡ — [AFES, Étude et Gestion des Sols 14-3](https://afes.fr/wp-content/uploads/2023/04/EGS_14_3_EGS_14_3_Lheriteau.pdf)
 - After the floods and mudflows of June 2019, communes in Calvados, the Orne and Seine-Maritime were recognised as natural disasters (CatNat order of Oct 2019) ‡ — [Banque des Territoires](https://www.banquedesterritoires.fr/crues-et-inondations-etat-de-catastrophe-naturelle-reconnu-pour-une-trentaine-de-communes)
 
-### Inferences
+### Our reading
 - In the Caux plateau, erosion connects piste C (hedges and banks as runoff breaks), piste E (turbidity, pesticide transfer to catchments) and piste L (hedge-planting scenarios on thalwegs). It strengthens the bocage story with a "service" argument.
 
-### Gaps
+### Open points
 - No recent (2020–2026) regional count of CatNat "floods and mudflows" orders or damage costs was found.
 - No AREAS regional erosion map or recent tonnage figures were retrieved, and no figures for the Eure.
 
-## 5. Artificialisation & brownfields: land take, comparison with France, ZAN target, brownfields
+## 5. Land take and brownfields
 
-### Takeaway
+### In short
 Normandy keeps converting about 1,800–2,000 ha a year of natural and farm land: 17,700 ha in 2011–2021, mainly for housing (71%) and mostly grassland. It uses land less "efficiently" than France as a whole: jobs fell while land was consumed. Artificialisation sped up again in 2018–2023, and 2023 was the second-worst year since 2008. The Region's ZAN halving envelope is about 6,000 ha for 2021–2030, on the regional CCF baseline. EPF Normandie lists about 5,100 brownfields covering about 3,300 ha.
 
-### Cited Findings
+### Sources
 - Land take, efficiency and ZAN, from France Stratégie (Oct 2024; land files from Cerema, 2022 vintage) — [France Stratégie, regional ZAN focus on Normandy, Oct 2024](https://www.strategie-plan.gouv.fr/files/2024-10/fs-na_zan-focus_region_normandie_final.pdf):
   - Normandy consumed 17,700 ha of natural, agricultural and forest land in 2011–2021: 71% for housing, 18% for economic activity and 7% for infrastructure.
   - In 2011 alone it consumed 2,412 ha, 1,770 ha of it for housing.
@@ -198,22 +198,22 @@ Normandy keeps converting about 1,800–2,000 ha a year of natural and farm land
   - About 5,093 sites covering 3,322 ha, 3,761 of them without a project, more than 700 contributions in a year, and an update campaign planned for 2026–2027 (early-2026 presentation) ‡ — [EPF Normandie presentation](https://cdn.netboard.me/151942/files/684d8ffb563dd10dd0fe726ccacad56d.pdf)
   - About 5,100 sites and 3,319 ha, with about 270 sites updated since the start of 2026. Each site has a decision-aid sheet scoring possible uses, including renaturation ‡ — [Prefecture of region, COP planning document](https://www.prefectures-regions.gouv.fr/irecontenu/telechargement/141551/1029345/file/Info%20Cop)
 
-### Inferences
-- The brief's figure of 5,068 brownfields is an earlier extract of the same observatory, which now lists about 5,093–5,100 sites.
+### Our reading
+- Our project notes' figure of 5,068 brownfields is an earlier extract of the same observatory, which now lists about 5,093–5,100 sites.
 - The brownfield stock (about 3,300 ha, about 0.1% of the region) equals less than two years of artificialisation at about 2,000 ha a year. Renaturing brownfields (piste A) is symbolically strong and relevant to ZAN, but small compared with the yearly flow. France Stratégie's 5,700 ha uses a different inventory (Cartofriches).
 - Two official baselines coexist: 17,700 ha in 2011–2021 from land files, and about 12,000 ha in 2011–2020 from the regional CCF. A pitch must say which one it uses.
 - Normandy's land take is not explained by demand: household growth below the national median and job losses alongside median EPCI consumption 44% above France's (193 against 134 ha). This is a strong "inefficient land take" narrative for piste I.
 
-### Gaps
+### Open points
 - The exact 2021–2024 consumption figures in the Region's Bilan ENAF 2025 could not be read (403).
 - No m² per inhabitant comparison with France was found as such.
 
-## 6. Coast & Seine estuary: cliff retreat, dune erosion, sea-level-rise exposure, estuary habitats, port and industry pressure
+## 6. Coast and Seine estuary
 
-### Takeaway
+### In short
 Normandy's coast is retreating. Chalk cliffs lose about 20 cm a year on average and over 40 cm a year in places, and west-Cotentin dunes lose metres per stormy season. Two-thirds of the coastline is exposed to sea-level rise, which concerns about 122,000 inhabitants. The Seine estuary concentrates port and industrial pressure on intertidal habitats.
 
-### Cited Findings
+### Sources
 - Seine-Maritime chalk cliffs (Côte d'Albâtre) ‡ — [DDTM 76 public brochure](https://www.seine-maritime.gouv.fr/index.php/contenu/telechargement/38432/257237/file/Plaquette_GRAND_PUBLIC_vf.pdf); [DDTM 76 brochure for elected officials](https://www.seine-maritime.gouv.fr/index.php/contenu/telechargement/38431/257233/file/Plaquette_ELUS_vf.pdf):
   - The cliffs retreat about 20 cm a year on average, and more than 40 cm a year at some points.
   - Each collapse removes from a few centimetres to several metres.
@@ -229,19 +229,19 @@ Normandy's coast is retreating. Chalk cliffs lose about 20 cm a year on average 
 - The HAROPA "chatière" project (new access channel to Port 2000) affects 74 ha of the estuary, 22 ha of which of seabed would be irreversibly artificialised (national nature protection council opinion, 2022) ‡ — [CNPN opinion](https://www.avis-biodiversite.developpement-durable.gouv.fr/IMG/pdf/2022-06-13c-00717_haropa_port_le_havre_chatiere_acces_port_2000_76_avis_du_07_2022.pdf)
 - Estuary habitat loss is covered in §2: water surface from 340 km² (1750) to 142 km² (2005), a little over 1,000 ha of mudflats left, transitional waters 14% in good status.
 
-### Inferences
+### Our reading
 - For a biodiversity datathon, the coast piste (M) is strongest when framed on estuary habitats under port and industrial pressure, which is human-driven. Cliff retreat is largely natural and climate-driven, so it suits a risk framing better than a biodiversity one.
 
-### Gaps
+### Open points
 - No Normandy-only share of eroding coastline from the Cerema indicator was found.
 - No official retreat rates in m per year were found for the Calvados cliffs (Vaches Noires) or the Manche dunes. A "5 m a year" figure for the west Manche coast appeared only in an unverified excerpt and is not used.
 
-## 7. Biodiversity status: regional red lists, observatory indicators, notable declines, protection
+## 7. State of biodiversity and protection
 
-### Takeaway
+### In short
 Regional red lists show heavy threat levels: 39% of Normandy's breeding birds are threatened (2024 list), and 8 species are already extinct in the region. Long-term monitoring shows common farmland birds falling 18–36% since 1996 while other groups are broadly stable. Strong protection covers only about 0.5% of the region.
 
-### Cited Findings
+### Sources
 - Breeding birds red list (GONm, more than 512,000 records; CSRPN opinion of 9 Dec 2024; published Jan 2025): of 205 taxa, 176 were evaluated. Eight are regionally extinct, 24 critically endangered, 20 endangered and 25 vulnerable, so 39% are threatened (69 of 176), plus 7% near threatened (12 species) ‡ — [CSRPN Normandie opinion](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/avis_csrpn_2024-12-09_liste_rouge_oiseaux.pdf)
 - Insect red lists from the CSRPN Normandie opinions of Jan 2022 ‡ — [CSRPN opinion 1](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/avis_2022-01-05.pdf); [CSRPN opinion 2](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/avis_2022-01-06.pdf):
   - Butterflies and burnet moths (2022): of 107 taxa, 8 regionally extinct, 3 critically endangered, 7 endangered and 9 vulnerable, so 17.7% threatened.
@@ -249,7 +249,7 @@ Regional red lists show heavy threat levels: 39% of Normandy's breeding birds ar
 - Reptiles (first official Normandy list, 2021; more than 59,000 records): of 11 species, only 3 are Least Concern and 4 are Near Threatened ‡ — [Liste rouge des Reptiles de Normandie](https://lashf.org/wp-content/uploads/2022/08/Liste-rouge-des-Reptiles-de-Normandie.pdf)
 - Amphibians:
   - The amphibian and reptile red lists published at the end of 2021 showed that several species had worsened. The regional action plan targets 5 species, including the yellow-bellied toad (critically endangered) and the natterjack toad and parsley frog (both vulnerable) ‡ — [CSRPN opinion on the amphibian–reptile action plan, 11 Dec 2024](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/avis_csrpn_2024-12-11_pra-amph-rept.pdf)
-  - Of 15 amphibian taxa monitored in Normandy, 9 are declining. The PDF returned 404 when fetched ‡ — [Astruc et al. 2021, Bull. Soc. Herp. Fr. 178](https://lashf.org/wp-content/uploads/2021/10/N178_Astruc.pdf)
+  - Of 15 amphibian taxa monitored in Normandy, 9 are declining. The PDF link returned 404 ‡ — [Astruc et al. 2021, Bull. Soc. Herp. Fr. 178](https://lashf.org/wp-content/uploads/2021/10/N178_Astruc.pdf)
 - Freshwater fish (former Haute-Normandie region): 31% of native species assessed are threatened, and the Seine has the most threatened species [older] ‡ — [DREAL, freshwater fish red list](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/poissons_d_eau_douce.pdf)
 - Common birds, GONm "Tendances" survey (1996–2023; 87 observers, 170 routes, 403,526 records; general assembly of 6 Apr 2024) — [GONm, Bilan de 27 années de comptage](https://www.gonm.org/public/Telechargements/Etudes/tendances/2024_Tendances-bilan.pdf):
   - Populations are generally stable, except farmland birds.
@@ -261,37 +261,37 @@ Regional red lists show heavy threat levels: 39% of Normandy's breeding birds ar
   - Strong protection covers less than 1% of the region, against a national target of 10% by 2030. The region has 4 regional natural parks, 15 nature reserves, 8 biological reserves and 97 Natura 2000 sites.
   - The CSRPN counts 20.9% protected and judges 22.5% by 2030 achievable. Reaching 1% strong protection by 2030 would need about 14,000 extra ha (about 2,000 ha a year), which it calls "unrealistic though desirable" ‡ — [CSRPN opinion (2022)](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/2022-01-08.pdf)
 
-### Inferences
+### Our reading
 - The farmland-bird declines (GONm) mirror the grassland and hedge losses (§1). The bocage pistes can therefore cite a measured regional biodiversity response, not only habitat loss.
 - Strong protection at 0.54%, against a 10% national target for 2030, is a crisp "blind-spot" headline for piste H. Combined with 39% of breeding birds threatened, it supports "most biodiversity lives outside strongly protected land".
 
-### Gaps
+### Open points
 - No percentages were retrieved from the flora red lists (Basse-Normandie 2015 by the CBN de Brest, and Haute-Normandie), and no unified Normandy flora figure.
 - The mammal red list figures (CSRPN opinion of 13 Jun 2022) were not retrieved, and no wild-bee or pollinator red list for Normandy was found.
-- No headline indicators from the ANBDD biodiversity observatory were retrieved (search budget exhausted).
+- No headline indicators from the ANBDD biodiversity observatory were retrieved (not checked for lack of time).
 
-## 8. Equine sector: horses, equine holdings, associated grassland, national rank
+## 8. Equine sector
 
-### Takeaway
+### In short
 Normandy is France's leading horse region, with about 146,000–147,000 equines. It ranks first for births and is home to 1 in 6 French breeders. Equines use about 92,600 ha, or 5% of farmland. This grassland-dependent activity is a potential ally of bocage and grassland conservation rather than a pressure.
 
-### Cited Findings
+### Sources
 - Normandy has 147,000 equines, the largest number of any French region (ECUS directory 2022), and 863 of the 3,719 equine job offers posted in 2022 were in Normandy — [IFCE press release, 17 Mar 2023](https://www.ifce.fr/wp-content/uploads/2023/03/cpresse-journees-decouvertes-Normandie2023.pdf)
 - The equine-sector observatory for 2025 (Conseil des Chevaux de Normandie, published May 2026) counts 145,800 equines. They make use of 92,600 ha (excluding purchased forage), 5% of farmland. Normandy is the leading region for annual births and the leading economic region for the sector (17,400 jobs, €850 M) ‡ — [Observatoire filière équine 2025](https://chevaux-normandie.com/wp-content/uploads/2026/05/Observatoire-filiere-equine-2025.pdf)
 - There were 12,991 foal births in 2022 (IFCE-SIRE): Manche 4,351, Calvados 4,157, Orne 3,162, Eure 695, Seine-Maritime 626. Equines are held on 2,720 farms and born at 3,550 sites, and 1 French horse breeder in 6 is in Normandy ‡ — [Chambre d'agriculture de Normandie, fact sheet 7 "Le cheval"](https://refonte-normandie.chambres-agriculture.fr/fileadmin/user_upload/Normandie/506_Fichiers-communs/PDF/AGRISCOPIE/Panorama_agriculture/fiche_7_-_Le_cheval.pdf)
 
-### Inferences
+### Our reading
 - 92,600 ha is about 11% of Normandy's 809,000 ha of grasslands (2019). Births, and plausibly pastures, are concentrated in the Manche, Calvados and Orne (Pays d'Auge, Perche, Cotentin), which overlaps the bocage core.
 - Piste N fits P2 (positive human–nature interactions) better than P1. The grassland loss in §1 is driven by dairy systems switching to crops, not by the horse sector.
 
-### Gaps
+### Open points
 - No source was found on the biodiversity value of equine pastures compared with dairy grassland, or on the equine sector's role in hedge upkeep.
 - No national share of equine grassland was found.
 - Totals differ by perimeter: 145,800 against 147,000. One 2024 source citing 117,000 horses and 4,670 breeding operations could not be verified and is not used.
 
-## 9. Positive practices: hedge planting, organic farming, Natura 2000, brownfield renaturation, wetland and river restoration
+## 9. Positive practices
 
-### Takeaway
+### In short
 Positive levers exist and are documented, but they are small compared with the pressures:
 - hedge planting: a target of 320 km in Normandy in 2024, and 40–50 km a year in the Manche
 - organic farming on about 7% of farmland, below France's 10–11%
@@ -299,7 +299,7 @@ Positive levers exist and are documented, but they are small compared with the p
 - action programmes on the 98 priority catchments
 - some conversion of farmland back to nature, and urban brownfields turned into wetlands
 
-### Cited Findings
+### Sources
 - Hedges, Pacte en faveur de la haie:
   - The 2024 Normandy target is 320 km of hedges planted, with €5.83 M ‡ — [DRAAF Normandie investment call 2024](https://draaf.normandie.agriculture.gouv.fr/IMG/pdf/2024-aap-investissement-pactehaie.pdf)
   - The national Pacte budget was cut by three-quarters in October 2024, then exhausted in December ‡ — [Pleinchamp](https://www.pleinchamp.com/actualite/retro-2024-en-mars-on-plante-des-haies-et-en-octobre-on-plante-le-pacte)
@@ -325,19 +325,19 @@ Positive levers exist and are documented, but they are small compared with the p
   - AREAS micro-dams between potato ridges, which hold storms of up to 40 mm (§4).
   - Protected areas covering about 20.6–20.9% of the land (§7).
 
-### Inferences
+### Our reading
 - The effort-versus-need gap is pitch-ready for pistes J and L: plantings run in the hundreds of km a year (320 km target in 2024) against plausible removals in the thousands (about 2,400 km a year at −1.5%). This is an inference from §1, not a measured balance.
 - Organic farming at about 7% against about 10–11% nationally means Normandy lags on this P2 indicator. The Sélune is the region's strongest documented restoration success story.
 
-### Gaps
+### Open points
 - No Normandy tally was found of hedges actually planted under the 2024 Pacte haie or under "Plantons des haies" in 2021–2023.
 - No EPF Normandie renaturation case with a quantified biodiversity outcome was found.
 - No counts of Natura 2000 contracts or agri-environment (MAEC) commitments in Normandy were retrieved.
 - No 2023 or 2024 organic figure for Normandy was found.
 
-## 10. Mapping of candidate pistes A–N to the most acute and best-documented Normandy issues
+## 10. Which pistes target the most acute issues
 
-### Takeaway
+### In short
 The most acute and best-documented Normandy issues are:
 1. Loss of hedgerows and permanent grassland.
 2. Water pollution from farming.
@@ -346,7 +346,7 @@ The most acute and best-documented Normandy issues are:
 
 Pistes C, B, E, I and H target these directly (high). Pistes F, G, M, A, J, L and D address real but narrower or less-quantified issues (medium). Pistes K and N are the least tied to an acute pressure (low).
 
-### Cited Findings
+### Sources
 Pitch-ready headline figures, one or two per issue (full sourcing in §§1–9):
 - Hedges: about 158,000 km today, −50% since 1972, and a density twice the national one (53 against 27 m/ha) — [DREAL/ANBDD 2024](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/lineaireshaies-normandie-2024_anbdd.pdf) ‡; [Canal-U 2025](https://www.canal-u.tv/sites/default/files/medias/fichiers/2025/05/PRESENTATION%20COLLOQUE.pdf) ‡
 - Manche: hedge density halved, 175 to 87 m/ha (1972–2015) — [GIEC normand 2025](https://www.normandie.developpement-durable.gouv.fr/IMG/pdf/giec2_haies_bocage_vf_22janv2025.pdf) ‡
@@ -365,10 +365,10 @@ Pitch-ready headline figures, one or two per issue (full sourcing in §§1–9):
 - Brownfields: about 5,100 sites covering about 3,300 ha — [EPF Normandie 2026](https://cdn.netboard.me/151942/files/684d8ffb563dd10dd0fe726ccacad56d.pdf) ‡
 - Horses: about 147,000 equines, the leading region — [IFCE 2023](https://www.ifce.fr/wp-content/uploads/2023/03/cpresse-journees-decouvertes-Normandie2023.pdf); 92,600 ha of farmland used by equines (5%) — [Observatoire 2025](https://chevaux-normandie.com/wp-content/uploads/2026/05/Observatoire-filiere-equine-2025.pdf) ‡
 
-### Inferences
-The acuteness hints below are judgments drawn from the figures above. "Evidence strength" rates how well each issue is quantified with recent, citable Normandy figures.
+### Our reading
+The acuteness ratings below are judgments drawn from the figures above. "Evidence strength" rates how well each issue is quantified with recent, citable Normandy figures.
 
-| Piste | Problem | Issue targeted and strongest Normandy evidence | Issue-acuteness hint | Evidence strength | Note |
+| Piste | Problem | Issue targeted and strongest Normandy evidence | Issue acuteness | Evidence strength | Note |
 |---|---|---|---|---|---|
 | A. Friches → Nature | P1 | Land take (about 2,000 ha a year) and ZAN. Brownfield stock of about 5,100 sites and 3,300 ha, about 0.1% of the region and less than 2 years of land take | medium | high (EPF observatory, France Stratégie) | Strong ZAN and policy hook, limited ecological leverage; best paired with I and L |
 | B. Multi-criteria restoration map | P1 | Combines the acute layers: hedges, grasslands, wetlands, water, obstacles, land take | high | high (layers documented in §§1–5) | The core answer to P1; weight criteria with §1 and §3 |
@@ -394,9 +394,9 @@ The acuteness hints below are judgments drawn from the figures above. "Evidence 
   - organic farming about 7% against 10.7%
   - the steepest grassland-ratio drop of any region (−6.45%)
 
-### Gaps
-- The acuteness hints are not based on an official regional prioritisation, such as the regional biodiversity strategy or the ANBDD observatory. Neither could be consulted.
-- The shared web-search budget ran out before searches on:
+### Open points
+- The acuteness ratings are not based on an official regional prioritisation, such as the regional biodiversity strategy or the ANBDD observatory. Neither could be consulted.
+- We ran out of time before searching:
   - drained farmland area
   - regional wetland area or share and its losses
   - ANBDD headline indicators
