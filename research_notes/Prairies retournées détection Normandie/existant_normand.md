@@ -1,12 +1,5 @@
 # Existing Normandy indicators, studies, tools and rules on permanent-grassland loss and ploughing (retournement des prairies permanentes)
 
-Status as of 18 October 2026. Each finding says how it was checked:
-- **[full text]**: I read the primary document itself.
-- **[web page]**: I read the web page; the wording below is a paraphrase, not checked line by line.
-- **[excerpt]**: I only saw the figure in a search-engine excerpt, not in the document. Treat it as unverified.
-
-DREAL Normandie PDFs return HTTP 403 when opened online. I downloaded four small PDFs one by one (two CSRPN motions, one DREAL decision, the ANBDD hedge sheet) and read their full text. I downloaded no datasets.
-
 ---
 
 ## 1. The Agreste 2021 study: what it measures and with which data
