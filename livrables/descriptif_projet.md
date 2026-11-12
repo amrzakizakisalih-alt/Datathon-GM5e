@@ -6,7 +6,7 @@ Ce texte suit les rubriques du modèle des organisateurs (`contexte/Descriptif_p
 
 **Béton & Charrue** — « Ce que le béton et la charrue ont pris »
 
-Équipe : [nom de l'équipe]. Membres : [prénom nom, prénom nom…]. Référent : [prénom nom, courriel].
+Équipe : GM5e. Membres : PINEL Robin SECK Cheikh SHERADJ DRISSI Mouad ZAKI SALIH Amr
 
 ## Quelques mots-clés pour décrire la solution
 
