@@ -1,6 +1,6 @@
 # Pistes datathon biodiversité Normandie: methods, tooling, pitfalls and feasibility (pistes A–N), plus a sober web architecture
 
-Scope: Datathon Normandie 2026 (deliverables due 12 Nov 2026 at noon, teams of 2–5, open data only). Notes are current as of 17 Oct 2026. Data availability comes from our own data inventory and was not re-checked. Sections 1–7 cover the cross-cutting key questions. Section 8 holds the per-piste cards (method and tooling, risks, MVP, effort, feasibility). "pd" means person-days.
+Scope: Datathon Normandie 2026 (deliverables due 12 Nov 2026 at noon, teams of 2–5, open data only). Sections 1–7 cover the cross-cutting key questions. Section 8 holds the per-piste cards (method and tooling, risks, MVP, effort, feasibility). "pd" means person-days.
 
 ## 1. Multi-criteria prioritisation: transparent index, MCDA or Zonation/prioritizr, and adjustable weights
 
@@ -113,7 +113,7 @@ Wall-to-wall density and length metrics on a 1 km grid are cheap, and they follo
 - No published memory or performance limits were found for Graphab 3.0 on large regions. No regional-scale Omniscape benchmark was found.
 - No benchmark was found for line–polygon overlay of millions of lines in DuckDB or GeoPandas (only point-in-polygon).
 - The exact formula of the DSB "coherence index" was not retrieved.
-- The 2024 Normandy hedge-linear study PDF (DREAL/ANBDD, `lineaireshaies-normandie-2024_anbdd.pdf`) returned HTTP 403 and could not be read.
+- The 2024 Normandy hedge-linear study PDF (DREAL/ANBDD, `lineaireshaies-normandie-2024_anbdd.pdf`) could not be opened.
 
 ## 3. Prioritising barrier removal
 
@@ -685,4 +685,4 @@ The most feasible pistes are **A (Friches → Nature), G (restorable wetlands) a
 ### Open points
 - Feasibility depends on attributes not profiled here: EPF field completeness, the share of ROE heights known, availability of a hydrographic network and catchment polygons, equine data, and EPCI-level availability of the 68 COP indicators.
 - No information was found on the jury's detailed scoring grid beyond the organisers' published brief (sobriety and feasibility explicitly scored).
-- The effort estimates are expert inferences, not benchmarks. Validate them against a one-day spike on the riskiest step of the chosen piste: the hedge overlay for C, CarHab pre-processing for H, the river network for F.
+- The effort estimates are our own, not benchmarks. Validate them against a one-day spike on the riskiest step of the chosen piste: the hedge overlay for C, CarHab pre-processing for H, the river network for F.

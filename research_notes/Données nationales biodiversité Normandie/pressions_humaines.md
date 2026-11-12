@@ -1,6 +1,6 @@
 # Human pressures on biodiversity: national and European datasets usable for Normandy
 
-Scope: open datasets produced by national bodies (IGN, Cerema, MTE/Géorisques/BRGM/INERIS, RTE/ODRÉ, INSEE, Météo-France) or European ones (EEA, Copernicus). Datasets we already use are excluded (CORINE Land Cover, RPG, IGN hedges, EPF Normandie brownfields and land consumption, Phytatmo). Checked on 17 Oct 2026 through the data.gouv.fr API, the IGN download service (data.geopf.fr) and direct calls to the Géorisques API.
+Scope: open datasets produced by national bodies (IGN, Cerema, MTE/Géorisques/BRGM/INERIS, RTE/ODRÉ, INSEE, Météo-France) or European ones (EEA, Copernicus). Datasets we already use are excluded (CORINE Land Cover, RPG, IGN hedges, EPF Normandie brownfields and land consumption, Phytatmo).
 
 ## Summary table (13 datasets kept and checked, plus 2 flagged)
 
@@ -72,7 +72,7 @@ Géorisques publishes as open data, with no key (tested on 17 Oct 2026), the ICP
 - Géorisques' geographic access restrictions may affect participants outside France or behind some VPNs.
 
 ### Open points
-- The national municipal sanitation portal (ROSEAU / "assainissement.developpement-durable.gouv.fr") could not be consulted: the page tested returns a 404. No checked link to a national export of treatment plants with their ERU compliance.
+- The national municipal sanitation portal (ROSEAU / "assainissement.developpement-durable.gouv.fr") could not be consulted: the page is no longer online. No checked link to a national export of treatment plants with their ERU compliance.
 - The volume of the IREP database and its most recent data year (2023 or 2024) are not confirmed. The page gives "December 2024" as the last update, which may be out of date for a twice-yearly update.
 - The exact licence of the EEA Industrial Reporting files was not read.
 

@@ -1,6 +1,6 @@
 # National open datasets: socio-economic context and public/private actions for nature (usable for Normandy)
 
-Scope: datasets from NATIONAL producers (State, INSEE, OFB, Urssaf, Cerema, IGN, OFGL, EU), covering the 5 Normandy départements (14 Calvados, 50 Manche, 61 Orne, 27 Eure, 76 Seine-Maritime). Status checked 17 Oct 2026. Quick inventory: existence, access link and main metadata verified on the landing page; columns/content not deep-dived unless stated.
+Scope: datasets from NATIONAL producers (State, INSEE, OFB, Urssaf, Cerema, IGN, OFGL, EU), covering the 5 Normandy départements (14 Calvados, 50 Manche, 61 Orne, 27 Eure, 76 Seine-Maritime). For each dataset we checked that it exists, its access link and its main metadata; contents were not explored unless stated.
 
 ## 1. Restoration / nature actions and funding ("positive interactions" side)
 
@@ -14,7 +14,7 @@ The strongest national, project-level, geocodable source is the **Fonds vert pro
 - Format CSV + XLSX, 10 files incl. "Fonds vert Biodiversité" files; dataset last updated 28 July 2026; vintages 2023, 2024, 2025 (a project is in vintage N when its grant was committed before 31 Dec N) — [data.gouv.fr](https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes/)
 - Unit: one row per project × beneficiary; location = "code commune" column, often empty for intercommunal/departmental/regional projects, and sometimes the sponsor's commune rather than the project site; no coordinates mentioned — [data.gouv.fr](https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes/)
 - Licence Licence Ouverte / Etalab 2.0 — [data.gouv.fr](https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes/)
-- Scale: 2023–2025 Fonds vert financed >25,000 projects, €4.5bn of grants, >13,000 beneficiaries; budget programme P380 — [data.gouv.fr excerpt of the dataset description](https://www.data.gouv.fr/datasets/66a215a463a9da4fb801b8cf)
+- Scale: 2023–2025 Fonds vert financed >25,000 projects, €4.5bn of grants, >13,000 beneficiaries; budget programme P380 — [data.gouv.fr dataset description](https://www.data.gouv.fr/datasets/66a215a463a9da4fb801b8cf)
 - Normandy: national coverage, so Normandy included (filter by code commune / département).
 - Use: Problem 2 (map of public "positive" actions: renaturation, biodiversity, friches, adaptation, per commune; € per capita indicators); Problem 1 (where restoration is already funded vs. gaps).
 
@@ -22,7 +22,7 @@ The strongest national, project-level, geocodable source is the **Fonds vert pro
 - URL: https://www.data.gouv.fr/datasets/sites-references-dans-cartofriches/ — [data.gouv.fr](https://www.data.gouv.fr/datasets/sites-references-dans-cartofriches/)
 - Inventory is explicitly a SAMPLE of existing friches and heterogeneous across the territory; data dictionary (Nov 2021) in resources — [data.gouv.fr](https://www.data.gouv.fr/datasets/61892a26c94e39bde1dbf7ac/)
 - Includes Cerema-computed mutability indices P_PV, P_residentiel, P_equipement, P_tertiaire, P_industriel and **P_renaturation** — [data.gouv.fr discussion](https://www.data.gouv.fr/datasets/sites-references-dans-cartofriches/discussions)
-- One page indicates an update on 23 July 2026 (not confirmed) — [data.gouv.fr page, excerpt](https://www.data.gouv.fr/datasets/sites-references-dans-cartofriches/)
+- One page indicates an update on 23 July 2026 (not confirmed) — [data.gouv.fr page](https://www.data.gouv.fr/datasets/sites-references-dans-cartofriches/)
 - Beware: a separate dataset titled just "Cartofriches" is a Loiret extract (last update Apr 2023), not the national file — [data.gouv.fr](https://www.data.gouv.fr/datasets/cartofriches)
 - Unit: site (point/polygon). Format and licence not verified.
 - Use: Problem 1 (renaturation opportunities on brownfields, feasibility via P_renaturation; fits ZAN and "territorial development" narrative).
@@ -114,7 +114,7 @@ INSEE **Filosofi 2021 carroyé 200 m** (published Feb 2026) is the latest fine-g
 **D9 — Nombre d'établissements employeurs et effectifs salariés du secteur privé, par commune × APE (au 31/12 depuis 2006)** (producer: Urssaf)
 - URL: https://www.data.gouv.fr/datasets/nombre-detablissements-employeurs-et-effectifs-salaries-du-secteur-prive-par-commune-x-ape-au-31-12-depuis-2006 (also on open.urssaf.fr) — [data.gouv.fr](https://www.data.gouv.fr/datasets/nombre-detablissements-employeurs-et-effectifs-salaries-du-secteur-prive-par-commune-x-ape-au-31-12-depuis-2006)
 - Formats CSV + JSON; last update 29 May 2026; licence ODbL — [data.gouv.fr](https://www.data.gouv.fr/datasets/nombre-detablissements-employeurs-et-effectifs-salaries-du-secteur-prive-par-commune-x-ape-au-31-12-depuis-2006)
-- Updated ~150 days after year-end; private employers under general scheme (agriculture excluded, MSA scope); apprentices included since June 2023 release; DSN source since 2021 — [excerpt of the dataset description](https://www.data.gouv.fr/datasets/5efd242c72595ba1a48628f2)
+- Updated ~150 days after year-end; private employers under general scheme (agriculture excluded, MSA scope); apprentices included since June 2023 release; DSN source since 2021 — [dataset description](https://www.data.gouv.fr/datasets/5efd242c72595ba1a48628f2)
 - Unit: commune × APE (732 codes), annual series. Normandy: included.
 - Use: "cross environment with economic/industrial activity" — employment in extraction, chemicals, tourism (hotels/restaurants), agri-food per commune; pressure indicators (Problem 2) and socio-economic stakes of restoration (Problem 1).
 
